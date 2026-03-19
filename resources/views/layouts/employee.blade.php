@@ -152,7 +152,7 @@
                 <span style="color: var(--color-text-secondary); font-size: .875rem;">
                     <i class="fas fa-user-circle me-1"></i> {{ auth()->user()->name }}
                 </span>
-                <form action="{{ route('logout') }}" method="POST" class="m-0">
+                <form action="{{ route('logout') }}" method="POST" class="m-0 logout-form">
                     @csrf
                     <button class="btn btn-sm" style="color: var(--color-danger); border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
                         <i class="fas fa-sign-out-alt"></i> Keluar
@@ -176,6 +176,28 @@
         Swal.fire({ icon: 'error', title: 'Gagal!', text: '{{ session('error') }}' });
     </script>
     @endif
+
+    <script>
+        document.querySelectorAll('.logout-form').forEach((form) => {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Keluar dari akun?',
+                    text: 'Sesi login Anda akan diakhiri.',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonColor: '#9CA3AF',
+                    confirmButtonText: 'Ya, Keluar',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 
     @stack('scripts')
 </body>
