@@ -2,24 +2,38 @@
 
 namespace Database\Seeders;
 
+use App\Models\SchedulingRule;
+use App\Models\Specialization;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::firstOrCreate(
+            ['email' => 'admin@andelin.com'],
+            [
+                'name' => 'Super Admin',
+                'password' => bcrypt('password'),
+                'role' => 'admin',
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $specs = ['Konstruksi', 'Elektrikal', 'Plumbing', 'Finishing', 'Pengawasan'];
+        foreach ($specs as $spec) {
+            Specialization::firstOrCreate(['name' => $spec]);
+        }
+
+        SchedulingRule::firstOrCreate([], [
+            'max_hours_per_week' => 40,
+            'max_tasks_per_day' => 3,
+        ]);
+
+        $this->call([
+            EmployeeSeeder::class,
+            TaskSeeder::class,
+            ScheduleSeeder::class,
         ]);
     }
 }
