@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             TaskSeeder::class,
             ScheduleSeeder::class,
+            RequestSeeder::class,
         ]);
     }
 }
