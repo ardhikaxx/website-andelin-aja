@@ -212,11 +212,7 @@
             font-size: .93rem;
             color: inherit;
         }
-        .sidebar-note {
-            font-size: .75rem;
-            color: var(--color-text-muted);
-            margin-top: .1rem;
-        }
+
         .sidebar-arrow {
             margin-left: auto;
             color: var(--color-text-muted);
@@ -456,22 +452,22 @@
                 <nav class="sidebar-links grow">
                     <a href="{{ route('employee.home') }}" class="sidebar-link {{ request()->routeIs('employee.home') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-home"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Beranda</span><span class="sidebar-note">Jadwal kerja hari ini</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Beranda</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('employee.tasks.index') }}" class="sidebar-link {{ request()->routeIs('employee.tasks.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-check-square"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Tugas Saya</span><span class="sidebar-note">Progress pekerjaan aktif</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Tugas Saya</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('employee.schedule.index') }}" class="sidebar-link {{ request()->routeIs('employee.schedule.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-calendar-alt"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Jadwal Saya</span><span class="sidebar-note">Kalender penugasan</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Jadwal Saya</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('employee.requests.index') }}" class="sidebar-link {{ request()->routeIs('employee.requests.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-paper-plane"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Pengajuan</span><span class="sidebar-note">Cuti dan tukar jadwal</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Pengajuan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                 </nav>

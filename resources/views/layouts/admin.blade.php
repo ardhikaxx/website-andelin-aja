@@ -212,11 +212,7 @@
             font-size: .93rem;
             color: inherit;
         }
-        .sidebar-note {
-            font-size: .75rem;
-            color: var(--color-text-muted);
-            margin-top: .1rem;
-        }
+
         .sidebar-arrow {
             margin-left: auto;
             color: var(--color-text-muted);
@@ -570,47 +566,47 @@
                 <nav class="sidebar-links grow">
                     <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-home"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Dashboard</span><span class="sidebar-note">Ringkasan sistem</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Dashboard</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.employees.index') }}" class="sidebar-link {{ request()->routeIs('admin.employees.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-users"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Karyawan</span><span class="sidebar-note">Data personel lapangan</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Karyawan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.specializations.index') }}" class="sidebar-link {{ request()->routeIs('admin.specializations.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-star"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Spesialisasi</span><span class="sidebar-note">Bidang dan keahlian</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Spesialisasi</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.tasks.index') }}" class="sidebar-link {{ request()->routeIs('admin.tasks.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-clipboard-list"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Tugas</span><span class="sidebar-note">Target dan pekerjaan</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Tugas</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.assignments.index') }}" class="sidebar-link {{ request()->routeIs('admin.assignments.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-link"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Penugasan</span><span class="sidebar-note">Assign manual karyawan</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Penugasan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.scheduling.index') }}" class="sidebar-link {{ request()->routeIs('admin.scheduling.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Penjadwalan</span><span class="sidebar-note">Greedy scheduling</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Penjadwalan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.requests.index') }}" class="sidebar-link {{ request()->routeIs('admin.requests.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-paper-plane"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Pengajuan</span><span class="sidebar-note">Cuti dan tukar jadwal</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Pengajuan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.reports.index') }}" class="sidebar-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Laporan</span><span class="sidebar-note">Rekap dan arsip</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Laporan</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                     <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
                         <span class="sidebar-icon"><i class="fas fa-user-shield"></i></span>
-                        <span class="sidebar-text"><span class="sidebar-title">Manajemen Admin</span><span class="sidebar-note">Hak akses dan log</span></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Manajemen Admin</span></span>
                         <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
                     </a>
                 </nav>
