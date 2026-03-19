@@ -45,55 +45,230 @@
         }
         a { text-decoration: none; }
         .sidebar {
-            width: 252px;
+            width: 278px;
             min-height: 100vh;
-            background: rgba(249, 250, 251, 0.96);
-            backdrop-filter: blur(18px);
-            border-right: 1px solid rgba(229, 231, 235, 0.95);
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 100;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(248, 250, 255, 0.97), rgba(245, 247, 251, 0.97));
+            border-right: 1px solid rgba(229, 231, 235, 0.9);
+            box-shadow: 18px 0 50px rgba(15, 23, 42, 0.05);
+            backdrop-filter: blur(18px);
+        }
+        .sidebar-shell {
+            height: calc(100vh - 36px);
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(229, 231, 235, 0.95);
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.08);
             display: flex;
             flex-direction: column;
-            box-shadow: 16px 0 40px rgba(15, 23, 42, 0.04);
-            z-index: 100;
+            overflow: hidden;
         }
         .sidebar-brand {
-            padding: 1.5rem 1.35rem;
+            position: relative;
+            padding: 1.5rem;
             background: var(--gradient-primary);
             color: #fff;
+            overflow: hidden;
+        }
+        .sidebar-brand::after {
+            content: '';
+            position: absolute;
+            top: -38px;
+            right: -24px;
+            width: 118px;
+            height: 118px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+        }
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: .95rem;
+            position: relative;
+            z-index: 1;
+        }
+        .brand-mark {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            font-size: 1.15rem;
+        }
+        .brand-title {
             font-family: 'Poppins', sans-serif;
+            font-size: 1.08rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: .01em;
+            letter-spacing: .02em;
+            margin: 0;
+        }
+        .brand-subtitle {
+            margin: .2rem 0 0;
+            font-size: .78rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .sidebar-nav {
+            padding: 1.15rem .95rem 0;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+        }
+        .sidebar-section-label {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            padding: 0 .55rem .65rem;
+        }
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: .45rem;
         }
         .sidebar-link {
             display: flex;
             align-items: center;
-            gap: .75rem;
-            margin: .2rem .8rem;
-            padding: .78rem 1rem;
+            gap: .85rem;
+            padding: .85rem .95rem;
             color: var(--color-text-secondary);
             border: 1px solid transparent;
+            border-radius: 18px;
             transition: all .2s ease;
-            border-radius: 14px;
         }
-        .sidebar-link:hover,
-        .sidebar-link.active {
-            background: rgba(59, 130, 246, 0.08);
+        .sidebar-link:hover {
             color: var(--color-primary);
-            border-color: rgba(147, 197, 253, 0.6);
+            background: rgba(59, 130, 246, 0.06);
+            border-color: rgba(147, 197, 253, 0.55);
             transform: translateX(2px);
         }
-        .sidebar-link i { width: 18px; text-align: center; }
+        .sidebar-link.active {
+            color: var(--color-primary);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(99, 102, 241, 0.08));
+            border-color: rgba(96, 165, 250, 0.45);
+            box-shadow: 0 14px 24px rgba(59, 130, 246, 0.10);
+        }
+        .sidebar-link.active .sidebar-icon {
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: 0 10px 18px rgba(59, 130, 246, 0.24);
+        }
+        .sidebar-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--color-primary);
+            flex-shrink: 0;
+            transition: all .2s ease;
+        }
+        .sidebar-text {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .sidebar-title {
+            font-weight: 700;
+            font-size: .93rem;
+            color: inherit;
+        }
+        .sidebar-note {
+            font-size: .75rem;
+            color: var(--color-text-muted);
+            margin-top: .1rem;
+        }
+        .sidebar-arrow {
+            margin-left: auto;
+            color: var(--color-text-muted);
+            font-size: .76rem;
+            transition: transform .2s ease;
+        }
+        .sidebar-link:hover .sidebar-arrow,
+        .sidebar-link.active .sidebar-arrow {
+            color: var(--color-primary);
+            transform: translateX(2px);
+        }
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.95);
+            background: linear-gradient(180deg, rgba(248, 250, 255, 0.65), rgba(255, 255, 255, 0.96));
+        }
+        .sidebar-profile {
+            padding: 1rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.05));
+            border: 1px solid rgba(147, 197, 253, 0.5);
+        }
+        .sidebar-profile-top {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            margin-bottom: .85rem;
+        }
+        .sidebar-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: 0 12px 22px rgba(59, 130, 246, 0.24);
+            flex-shrink: 0;
+        }
+        .sidebar-profile-name {
+            font-weight: 700;
+            font-size: .92rem;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+        .sidebar-profile-role {
+            color: var(--color-text-muted);
+            font-size: .76rem;
+            margin: .15rem 0 0;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        .sidebar-profile-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            width: 100%;
+            padding: .8rem 1rem;
+            border-radius: 14px;
+            background: #fff;
+            border: 1px solid rgba(209, 213, 219, 0.9);
+            color: var(--color-text-secondary);
+            font-weight: 700;
+            transition: all .2s ease;
+        }
+        .sidebar-profile-link:hover {
+            color: var(--color-primary);
+            border-color: rgba(96, 165, 250, 0.7);
+            background: rgba(255, 255, 255, 0.96);
+        }
         .topbar {
-            min-height: 70px;
-            background: rgba(255, 255, 255, 0.86);
+            min-height: 74px;
+            background: rgba(255, 255, 255, 0.88);
             border: 1px solid rgba(229, 231, 235, 0.9);
             box-shadow: var(--shadow-soft);
             display: flex;
             align-items: center;
-            padding: .9rem 1.25rem;
+            padding: 1rem 1.25rem;
             backdrop-filter: blur(16px);
         }
         .topbar-title {
@@ -102,24 +277,24 @@
             letter-spacing: -.01em;
         }
         .main-content {
-            margin-left: 252px;
-            padding: 1.75rem;
+            margin-left: 278px;
+            padding: 1.8rem;
             min-height: 100vh;
         }
         .user-chip {
             display: inline-flex;
             align-items: center;
             gap: .5rem;
-            padding: .55rem .9rem;
+            padding: .6rem .95rem;
             border-radius: 999px;
             background: rgba(59, 130, 246, 0.08);
             color: var(--color-primary);
             font-size: .85rem;
-            font-weight: 600;
+            font-weight: 700;
         }
         .logout-button {
             border-radius: 999px !important;
-            padding: .5rem .9rem;
+            padding: .55rem .95rem;
             background: var(--color-bg-card);
         }
         .card-andelin {
@@ -171,9 +346,7 @@
             overflow: hidden;
             background: var(--color-bg-card);
         }
-        .table-andelin {
-            margin-bottom: 0;
-        }
+        .table-andelin { margin-bottom: 0; }
         .table-andelin th {
             background: #F8FAFC;
             color: var(--color-text-secondary);
@@ -191,12 +364,8 @@
             vertical-align: middle;
             padding: 1rem 1.1rem;
         }
-        .table-andelin tbody tr:hover {
-            background: rgba(59, 130, 246, 0.04);
-        }
-        .table-andelin tbody tr:last-child td {
-            border-bottom: none;
-        }
+        .table-andelin tbody tr:hover { background: rgba(59, 130, 246, 0.04); }
+        .table-andelin tbody tr:last-child td { border-bottom: none; }
         .form-control,
         .form-select {
             min-height: 46px;
@@ -211,9 +380,7 @@
             border-color: var(--color-primary);
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
         }
-        textarea.form-control {
-            min-height: 120px;
-        }
+        textarea.form-control { min-height: 120px; }
         .form-label {
             font-weight: 600;
             color: var(--color-text-secondary);
@@ -222,7 +389,7 @@
         }
         .btn {
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
             padding: .62rem 1rem;
             box-shadow: none;
         }
@@ -260,15 +427,11 @@
         .btn-outline-primary,
         .btn-outline-secondary,
         .btn-outline-danger,
-        .btn-outline-success {
-            background: #fff;
-        }
+        .btn-outline-success { background: #fff; }
         .btn-outline-primary:hover,
         .btn-outline-secondary:hover,
         .btn-outline-danger:hover,
-        .btn-outline-success:hover {
-            transform: translateY(-1px);
-        }
+        .btn-outline-success:hover { transform: translateY(-1px); }
         .badge,
         .badge-soft {
             border-radius: 999px;
@@ -295,7 +458,7 @@
             border: 1px solid rgba(209, 213, 219, 0.95);
             color: var(--color-text-secondary);
             background: #fff;
-            font-weight: 600;
+            font-weight: 700;
             box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
         }
         .page-item.active .page-link {
@@ -314,9 +477,7 @@
             border-color: rgba(96, 165, 250, 0.95);
             background: rgba(59, 130, 246, 0.04);
         }
-        .swal2-popup {
-            border-radius: 20px !important;
-        }
+        .swal2-popup { border-radius: 20px !important; }
         .empty-state {
             padding: 2rem 1rem;
             color: var(--color-text-muted);
@@ -328,17 +489,15 @@
                 position: static;
                 width: 100%;
                 min-height: auto;
+                padding: 1rem;
             }
+            .sidebar-shell { height: auto; }
             .main-content {
                 margin-left: 0;
                 padding: 1rem;
             }
-            .topbar {
-                padding: 1rem;
-            }
-            .pagination-wrap {
-                justify-content: center;
-            }
+            .topbar { padding: 1rem; }
+            .pagination-wrap { justify-content: center; }
         }
     </style>
 
@@ -346,42 +505,80 @@
 </head>
 <body>
     <aside class="sidebar">
-        <div class="sidebar-brand">
-            <i class="fas fa-calendar-check me-2"></i> ANDELIN AJA
-        </div>
-        <nav class="py-3 grow">
-            <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ route('admin.employees.index') }}" class="sidebar-link {{ request()->routeIs('admin.employees.*') ? 'active' : '' }}">
-                <i class="fas fa-users"></i> Karyawan
-            </a>
-            <a href="{{ route('admin.specializations.index') }}" class="sidebar-link {{ request()->routeIs('admin.specializations.*') ? 'active' : '' }}">
-                <i class="fas fa-star"></i> Spesialisasi
-            </a>
-            <a href="{{ route('admin.tasks.index') }}" class="sidebar-link {{ request()->routeIs('admin.tasks.*') ? 'active' : '' }}">
-                <i class="fas fa-clipboard-list"></i> Tugas
-            </a>
-            <a href="{{ route('admin.assignments.index') }}" class="sidebar-link {{ request()->routeIs('admin.assignments.*') ? 'active' : '' }}">
-                <i class="fas fa-link"></i> Penugasan
-            </a>
-            <a href="{{ route('admin.scheduling.index') }}" class="sidebar-link {{ request()->routeIs('admin.scheduling.*') ? 'active' : '' }}">
-                <i class="fas fa-robot"></i> Penjadwalan
-            </a>
-            <a href="{{ route('admin.requests.index') }}" class="sidebar-link {{ request()->routeIs('admin.requests.*') ? 'active' : '' }}">
-                <i class="fas fa-paper-plane"></i> Pengajuan
-            </a>
-            <a href="{{ route('admin.reports.index') }}" class="sidebar-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
-                <i class="fas fa-chart-bar"></i> Laporan
-            </a>
-            <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
-                <i class="fas fa-user-shield"></i> Manajemen Admin
-            </a>
-        </nav>
-        <div class="p-3 border-top" style="border-color: var(--color-border) !important;">
-            <a href="{{ route('admin.profile.edit') }}" class="sidebar-link">
-                <i class="fas fa-cog"></i> Profil Saya
-            </a>
+        <div class="sidebar-shell">
+            <div class="sidebar-brand">
+                <div class="brand-row">
+                    <span class="brand-mark"><i class="fas fa-calendar-check"></i></span>
+                    <div>
+                        <p class="brand-title">ANDELIN AJA</p>
+                        <p class="brand-subtitle">Panel admin penjadwalan cerdas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="sidebar-section-label">Navigasi Utama</div>
+                <nav class="sidebar-links grow">
+                    <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-home"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Dashboard</span><span class="sidebar-note">Ringkasan sistem</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.employees.index') }}" class="sidebar-link {{ request()->routeIs('admin.employees.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-users"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Karyawan</span><span class="sidebar-note">Data personel lapangan</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.specializations.index') }}" class="sidebar-link {{ request()->routeIs('admin.specializations.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-star"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Spesialisasi</span><span class="sidebar-note">Bidang dan keahlian</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.tasks.index') }}" class="sidebar-link {{ request()->routeIs('admin.tasks.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-clipboard-list"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Tugas</span><span class="sidebar-note">Target dan pekerjaan</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.assignments.index') }}" class="sidebar-link {{ request()->routeIs('admin.assignments.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-link"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Penugasan</span><span class="sidebar-note">Assign manual karyawan</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.scheduling.index') }}" class="sidebar-link {{ request()->routeIs('admin.scheduling.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Penjadwalan</span><span class="sidebar-note">Greedy scheduling</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.requests.index') }}" class="sidebar-link {{ request()->routeIs('admin.requests.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-paper-plane"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Pengajuan</span><span class="sidebar-note">Cuti dan tukar jadwal</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.reports.index') }}" class="sidebar-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Laporan</span><span class="sidebar-note">Rekap dan arsip</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
+                        <span class="sidebar-icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="sidebar-text"><span class="sidebar-title">Manajemen Admin</span><span class="sidebar-note">Hak akses dan log</span></span>
+                        <span class="sidebar-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-profile">
+                    <div class="sidebar-profile-top">
+                        <span class="sidebar-avatar"><i class="fas fa-user-shield"></i></span>
+                        <div>
+                            <p class="sidebar-profile-name">{{ auth()->user()->name }}</p>
+                            <p class="sidebar-profile-role">Admin</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('admin.profile.edit') }}" class="sidebar-profile-link"><i class="fas fa-cog"></i> Profil Saya</a>
+                </div>
+            </div>
         </div>
     </aside>
 
@@ -389,14 +586,10 @@
         <div class="topbar mb-4 rounded-4">
             <h6 class="mb-0 topbar-title">@yield('page-title', 'Dashboard')</h6>
             <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
-                <span class="user-chip">
-                    <i class="fas fa-user-circle"></i> {{ auth()->user()->name }}
-                </span>
+                <span class="user-chip"><i class="fas fa-user-circle"></i> {{ auth()->user()->name }}</span>
                 <form action="{{ route('logout') }}" method="POST" class="m-0 logout-form">
                     @csrf
-                    <button class="btn btn-sm logout-button" style="color: var(--color-danger); border: 1px solid var(--color-border);">
-                        <i class="fas fa-sign-out-alt me-1"></i> Keluar
-                    </button>
+                    <button class="btn btn-sm logout-button" style="color: var(--color-danger); border: 1px solid var(--color-border);"><i class="fas fa-sign-out-alt me-1"></i> Keluar</button>
                 </form>
             </div>
         </div>
