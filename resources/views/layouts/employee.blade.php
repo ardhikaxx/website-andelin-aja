@@ -44,13 +44,15 @@
             color: var(--color-text-primary);
         }
         a { text-decoration: none; }
-        .sidebar {
+
+        .sidebar.offcanvas-lg {
+            --bs-offcanvas-width: 320px;
             width: 278px;
             min-height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 100;
+            z-index: 1045;
             padding: 18px;
             background: linear-gradient(180deg, rgba(248, 250, 255, 0.97), rgba(245, 247, 251, 0.97));
             border-right: 1px solid rgba(229, 231, 235, 0.9);
@@ -83,6 +85,13 @@
             height: 118px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.16);
+        }
+        .sidebar-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
+            opacity: .9;
         }
         .brand-row {
             display: flex;
@@ -134,6 +143,25 @@
             display: flex;
             flex-direction: column;
             gap: .45rem;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding-right: .35rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(59, 130, 246, 0.35) transparent;
+        }
+        .sidebar-links::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sidebar-links::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-links::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.24);
+            border-radius: 999px;
+        }
+        .sidebar-links::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.42);
         }
         .sidebar-link {
             display: flex;
@@ -271,6 +299,18 @@
             padding: 1rem 1.25rem;
             backdrop-filter: blur(16px);
         }
+        .sidebar-toggle {
+            width: 46px;
+            height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            border: 1px solid rgba(209, 213, 219, 0.95);
+            background: #fff;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
         .main-content {
             margin-left: 278px;
             padding: 1.8rem;
@@ -374,13 +414,19 @@
         .swal2-popup { border-radius: 20px !important; }
         .grow { flex: 1; }
         @media (max-width: 991.98px) {
-            .sidebar {
-                position: static;
-                width: 100%;
-                min-height: auto;
-                padding: 1rem;
+            .sidebar.offcanvas-lg {
+                width: auto;
+                padding: 0;
+                background: transparent;
+                border-right: none;
+                box-shadow: none;
             }
-            .sidebar-shell { height: auto; }
+            .sidebar-shell {
+                height: 100%;
+                min-height: 100vh;
+                border-radius: 0 24px 24px 0;
+                border-left: none;
+            }
             .main-content {
                 margin-left: 0;
                 padding: 1rem;
@@ -392,13 +438,14 @@
     @stack('styles')
 </head>
 <body>
-    <aside class="sidebar">
+    <aside class="sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="employeeSidebar" aria-labelledby="employeeSidebarLabel">
         <div class="sidebar-shell">
             <div class="sidebar-brand">
+                <button type="button" class="btn-close btn-close-white sidebar-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#employeeSidebar" aria-label="Close"></button>
                 <div class="brand-row">
                     <span class="brand-mark"><i class="fas fa-calendar-check"></i></span>
                     <div>
-                        <p class="brand-title">ANDELIN AJA</p>
+                        <p class="brand-title" id="employeeSidebarLabel">ANDELIN AJA</p>
                         <p class="brand-subtitle">Ruang kerja karyawan lapangan</p>
                     </div>
                 </div>
@@ -447,6 +494,9 @@
 
     <div class="main-content">
         <div class="topbar mb-4 rounded-4">
+            <button class="btn sidebar-toggle d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#employeeSidebar" aria-controls="employeeSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
             <h6 class="mb-0 fw-bold">@yield('page-title', 'Beranda')</h6>
             <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
                 <span class="user-chip"><i class="fas fa-user-circle"></i> {{ auth()->user()->name }}</span>
@@ -491,6 +541,16 @@
                         form.submit();
                     }
                 });
+            });
+        });
+
+        document.querySelectorAll('#employeeSidebar .sidebar-link, #employeeSidebar .sidebar-profile-link').forEach((link) => {
+            link.addEventListener('click', function () {
+                if (window.innerWidth < 992) {
+                    const sidebarElement = document.getElementById('employeeSidebar');
+                    const instance = bootstrap.Offcanvas.getOrCreateInstance(sidebarElement);
+                    instance.hide();
+                }
             });
         });
     </script>
