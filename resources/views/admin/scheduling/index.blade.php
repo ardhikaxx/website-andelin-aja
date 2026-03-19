@@ -129,7 +129,7 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-3">{{ $schedules->links() }}</div>
+    <div class="pagination-wrap">{{ $schedules->links() }}</div>
 </div>
 @endsection
 
@@ -180,14 +180,14 @@ document.getElementById('btn-generate').addEventListener('click', function () {
             .then(data => {
                 document.getElementById('greedy-results').innerHTML = data.details.map((item) => {
                     if (item.employee) {
-                        return `<div class="greedy-result-item"><strong>${item.task}</strong> → ${item.employee} (${item.date})</div>`;
+                        return `<div class="greedy-result-item"><strong>${item.task}</strong> -> ${item.employee} (${item.date})</div>`;
                     }
-                    return `<div class="greedy-result-item"><strong>${item.task}</strong> → ${item.reason}</div>`;
+                    return `<div class="greedy-result-item"><strong>${item.task}</strong> -> ${item.reason}</div>`;
                 }).join('');
 
                 Swal.fire({
                     title: 'Selesai!',
-                    html: `✅ <b>${data.scheduled}</b> tugas berhasil dijadwalkan<br>⚠️ <b>${data.skipped}</b> tugas dilewati`,
+                    html: `Berhasil: <b>${data.scheduled}</b> tugas berhasil dijadwalkan<br>Dilewati: <b>${data.skipped}</b> tugas dilewati`,
                     icon: 'success',
                     confirmButtonColor: 'var(--color-primary)'
                 }).then(() => location.reload());

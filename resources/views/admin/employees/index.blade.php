@@ -44,7 +44,7 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-3">{{ $employees->links() }}</div>
+    <div class="pagination-wrap">{{ $employees->links() }}</div>
 </div>
 @endsection
 

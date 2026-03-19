@@ -28,6 +28,6 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-3">{{ $logs->links() }}</div>
+    <div class="pagination-wrap">{{ $logs->links() }}</div>
 </div>
 @endsection

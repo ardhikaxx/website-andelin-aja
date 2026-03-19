@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mt-3">{{ $admins->links() }}</div>
+            <div class="pagination-wrap">{{ $admins->links() }}</div>
         </div>
     </div>
     <div class="col-lg-5">

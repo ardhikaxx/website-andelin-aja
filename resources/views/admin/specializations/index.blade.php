@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mt-3">{{ $specializations->links() }}</div>
+            <div class="pagination-wrap">{{ $specializations->links() }}</div>
         </div>
     </div>
 </div>

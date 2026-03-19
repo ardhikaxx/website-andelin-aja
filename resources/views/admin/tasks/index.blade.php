@@ -43,7 +43,7 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-3">{{ $tasks->links() }}</div>
+    <div class="pagination-wrap">{{ $tasks->links() }}</div>
 </div>
 @endsection
 
