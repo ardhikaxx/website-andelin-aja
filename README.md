@@ -271,11 +271,3 @@ andelin-aja/
 ## 📄 License
 
 MIT License - feel free to use this project for learning and development.
-
----
-
-<div align="center">
-
-**Made with ❤️ using Laravel**
-
-</div>
