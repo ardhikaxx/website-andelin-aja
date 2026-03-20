@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Employee;
 use Illuminate\Support\Facades\Route;
 
+Route::view('/', 'welcome')->name('welcome');
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
@@ -55,5 +57,3 @@ Route::prefix('employee')->name('employee.')->middleware(['auth', 'employee'])->
     Route::get('/profile', [Employee\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [Employee\ProfileController::class, 'update'])->name('profile.update');
 });
-
-Route::get('/', fn () => redirect()->route('login'));
