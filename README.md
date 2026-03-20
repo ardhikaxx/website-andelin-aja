@@ -4,7 +4,7 @@
 
 ### Sistem Cerdas Penjadwalan Karyawan Berbasis Algoritma Greedy
 
-![Laravel](https://img.shields.io/badge/Laravel-11.x-blue?style=flat&logo=laravel)
+![Laravel](https://img.shields.io/badge/Laravel-12.x-blue?style=flat&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat&logo=bootstrap)
@@ -30,7 +30,9 @@
 
 ## 📖 Tentang Proyek
 
-**Andelin Aja** adalah aplikasi sistem penjadwalan karyawan berbasis Laravel yang membantu mengelola jadwal kerja, penugasan tugas, dan pertukaran shift secara efisien. Aplikasi ini menggunakan **Algoritma Greedy** untuk mengotomatisasi penjadwalan berdasarkan keahlian, ketersediaan, dan beban kerja karyawan.
+**Andelin Aja** adalah sebuah platform berbasis web yang dirancang untuk menyediakan penjadwalan karyawan dan penginputan keahlian SDMnya sendiri. Agar bisa menginputkan data karyawan dengan mudah. Sistem ini bertujuan untuk menjembatani antara owner dan karyawan dalam memudahkan beberapa tugasnya. Integrasi teknologi pada website ini memungkinkan manajemen owner dan alokasi sumber daya dilakukan secara terpusat dan terstruktur.
+
+Platform ini menggunakan **Bahasa pemrograman PHP** dan **Algoritma Greedy** untuk mengotomatisasi penjadwalan berdasarkan keahlian, ketersediaan, dan beban kerja karyawan.
 
 ### Dua Role Utama
 
@@ -75,7 +77,7 @@
 
 | Komponen | Teknologi |
 |----------|-----------|
-| Backend | Laravel 11 (PHP 8.2+) |
+| Backend | Laravel 12 (PHP 8.2+) |
 | Database | MySQL / MariaDB |
 | Frontend | Bootstrap 5 |
 | Icons | Font Awesome 6 |
