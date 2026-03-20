@@ -1,55 +1,218 @@
-# Andelin Aja - Sistem Penjadwalan Karyawan
+<div align="center">
 
-Aplikasi sistem penjadwalan karyawan berbasis Laravel yang membantu mengelola jadwal kerja, penugasan tugas, dan pertukaran shift secara efisien.
+# ANDELIN AJA
 
-## Fitur
+### Sistem Cerdas Penjadwalan Karyawan Berbasis Algoritma Greedy
 
-### Fitur Admin
-- **Dashboard** - Overview statistik karyawan, jadwal, dan tugas
-- **Kelola Karyawan** - Tambah, edit, hapus data karyawan
-- **Kelola Spesialisasi** - Mengatur specialization karyawan
-- **Kelola Tugas** - Membuat dan mengelola tugas
-- **Penugasan** - Menugaskan karyawan ke tugas tertentu
-- **Penjadwalan Otomatis** - Generate jadwal otomatis menggunakan algoritma greedy
-- **Kelola Permintaan** - Menyetujui/menolak pertukaran shift
-- **Laporan** - Melihat laporan dan statistik
-- **Kelola Admin** - Mengelola data admin lain
+![Laravel](https://img.shields.io/badge/Laravel-11.x-blue?style=flat&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat&logo=bootstrap)
 
-### Fitur Karyawan
-- **Dashboard** - Melihat jadwal dan tugas hari ini
-- **Jadwal** - Melihat jadwal kerja pribadi
-- **Tugas** - Melihat dan menyelesaikan tugas yang ditugaskan
-- **Permintaan** - Membuat permintaan pertukaran shift
-- **Profil** - Mengubah profil dan password
+</div>
 
-### Fitur Lainnya
-- **Login & Register** - Autentikasi dengan reset password
-- **Middleware Role** - Pembatasan akses berdasarkan role
-- **Logging** - Pencatatan aktivitas admin
+---
 
-## Tech Stack
+## 📋 Daftar Isi
 
-- **Backend**: Laravel 11
-- **Database**: MySQL
-- **Frontend**: Bootstrap 5
-- **Authentication**: Laravel Breeze/Jetstream
+1. [Tentang Proyek](#tentang-proyek)
+2. [Fitur](#fitur)
+3. [Tech Stack](#tech-stack)
+4. [Struktur Database](#struktur-database)
+5. [Struktur Model](#struktur-model)
+6. [Fitur Admin](#fitur-admin)
+7. [Fitur Karyawan](#fitur-karyawan)
+8. [Algoritma Greedy](#algoritma-greedy)
+9. [Instalasi](#instalasi)
+10. [Struktur Folder](#struktur-folder)
 
-## Installation
+---
+
+## 📖 Tentang Proyek
+
+**Andelin Aja** adalah aplikasi sistem penjadwalan karyawan berbasis Laravel yang membantu mengelola jadwal kerja, penugasan tugas, dan pertukaran shift secara efisien. Aplikasi ini menggunakan **Algoritma Greedy** untuk mengotomatisasi penjadwalan berdasarkan keahlian, ketersediaan, dan beban kerja karyawan.
+
+### Dua Role Utama
+
+| Role | Deskripsi |
+|------|-----------|
+| **Admin** | Akses penuh: manajemen karyawan, tugas, jadwal, laporan, log aktivitas |
+| **Karyawan** | Akses terbatas: melihat jadwal pribadi, tugas sendiri, pengajuan cuti/tukar shift |
+
+---
+
+## ✨ Fitur
+
+### Autentikasi
+- Login dengan role-based redirect
+- Reset password via email
+- Logout aman
+
+### Admin
+- Dashboard dengan statistik real-time
+- Manajemen karyawan (CRUD)
+- Manajemen spesialisasi
+- Manajemen tugas
+- Penugasan tugas ke karyawan
+- **Penjadwalan otomatis dengan Algoritma Greedy**
+- Kelola pengajuan cuti & tukar shift
+- Laporan & export data
+- Manajemen admin lain
+- Log aktivitas admin
+- Pengaturan profil
+
+### Karyawan
+- Dashboard jadwal hari ini
+- Kanban board tugas dengan drag & drop
+- Kalender jadwal (FullCalendar)
+- Pengajuan cuti
+- Pengajuan tukar shift
+- Pengaturan profil
+
+---
+
+## 🛠 Tech Stack
+
+| Komponen | Teknologi |
+|----------|-----------|
+| Backend | Laravel 11 (PHP 8.2+) |
+| Database | MySQL / MariaDB |
+| Frontend | Bootstrap 5 |
+| Icons | Font Awesome 6 |
+| Alerts | SweetAlert2 |
+| Calendar | FullCalendar |
+| Drag & Drop | Draggable.js |
+| Fonts | Poppins + Plus Jakarta Sans |
+
+---
+
+## 🗄️ Struktur Database
+
+```
+1. users              → Data user (admin & karyawan)
+2. specializations    → Spesialisasi (perawat, dokter, dll)
+3. employees          → Detail data karyawan
+4. employee_specializations → Relasi many-to-many
+5. tasks              → Definisi tugas
+6. task_assignments   → Penugasan tugas ke karyawan
+7. scheduling_rules   → Aturan penjadwalan (max jam/minggu, max tugas/hari)
+8. employee_availabilities → Ketersediaan karyawan per hari
+9. schedules         → Jadwal kerja karyawan
+10. requests         → Permintaan cuti & tukar shift
+11. shift_swaps      → Data pertukaran shift
+12. reports          → Laporan bulanan
+13. admin_logs       → Log aktivitas admin
+```
+
+---
+
+## 📦 Struktur Model
+
+| Model | Deskripsi |
+|-------|-----------|
+| `User` | Data pengguna dengan role admin/karyawan |
+| `Employee` | Detail karyawan dengan posisi |
+| `Specialization` | Spesialisasi karyawan |
+| `Task` | Definisi tugas dengan deadline |
+| `TaskAssignment` | Relasi tugas ke karyawan |
+| `Schedule` | Jadwal kerja |
+| `SchedulingRule` | Aturan penjadwalan |
+| `EmployeeAvailability` | Ketersediaan karyawan |
+| `Request` | Permintaan cuti/tukar shift |
+| `ShiftSwap` | Data pertukaran shift |
+| `Report` | Laporan bulanan |
+| `AdminLog` | Log aktivitas admin |
+
+---
+
+## 👨‍💼 Fitur Admin
+
+### Dashboard
+- Total karyawan aktif
+- Total tugas aktif
+- Jumlah jadwal dari greedy
+- Jumlah spesialisasi
+- Tabel tugas terbaru
+- Quick actions
+
+### Manajemen
+- **Karyawan**: Tambah, edit, hapus, lihat detail
+- **Spesialisasi**: Kelola spesialisasi karyawan
+- **Tugas**: Buat & kelola tugas dengan deadline
+- **Penugasan**: Assign tugas ke karyawan secara manual
+- **Penjadwalan**: Generate jadwal otomatis + filter & search
+- **Pengajuan**: Approve/reject cuti & tukar shift
+- **Laporan**: Rekap bulanan + export PDF/Excel
+- **Admin**: Kelola admin lain + lihat log aktivitas
+
+---
+
+## 👷 Fitur Karyawan
+
+### Beranda
+- Jadwal kerja hari ini
+- Tugas yang harus diselesaikan
+
+### Tugas (Kanban Board)
+- Kolom: Pending, In Progress, Done
+- Drag & drop untuk ubah status
+
+### Jadwal (Kalender)
+- Tampilan bulan/minggu/list
+- Klik event untuk detail
+
+### Pengajuan
+- Form pengajuan cuti
+- Form tukar shift
+- Riwayat pengajuan dengan status
+
+### Profil
+- Edit data diri
+- Ganti password
+
+---
+
+## 🤖 Algoritma Greedy
+
+Aplikasi ini menggunakan **Greedy Algorithm** untuk penjadwalan otomatis:
+
+### Cara Kerja
+
+1. Ambil semua tugas `pending`, urut berdasarkan deadline (terdekat dulu)
+2. Untuk setiap tugas:
+   - Cari karyawan yang **available** di hari tersebut
+   - Filter karyawan yang **belum penuh** jam kerjanya (max 40 jam/minggu)
+   - Filter karyawan yang **belum penuh** tugasnya (max 3 tugas/hari)
+3. Pilih karyawan dengan **beban kerja terkecil** (greedy choice)
+4. Assign jadwal ke karyawan tersebut
+5. Ulangi hingga semua tugas terjadwal
+
+### Konfigurasi
+
+| Parameter | Default | Deskripsi |
+|-----------|---------|-----------|
+| max_hours_per_week | 40 | Maksimal jam kerja per minggu |
+| max_tasks_per_day | 3 | Maksimal tugas per hari |
+
+---
+
+## 🚀 Instalasi
 
 ```bash
 # Clone repository
 git clone https://github.com/ardhikaxx/website-andelin-aja.git
+cd andelin-aja
 
 # Install dependencies
 composer install
 
 # Copy environment file
-cp .env.example .env
+copy .env.example .env
 
-# Generate key
+# Generate application key
 php artisan key:generate
 
-# Configure database in .env
+# Konfigurasi database di .env
 # DB_CONNECTION=mysql
 # DB_HOST=127.0.0.1
 # DB_PORT=3306
@@ -60,48 +223,57 @@ php artisan key:generate
 # Run migrations
 php artisan migrate
 
-# Seed database (optional)
+# (Optional) Seed database
 php artisan db:seed
 
-# Run server
+# Jalankan server
 php artisan serve
 ```
 
-## Struktur Model
+### Akun Default (Setelah Seeding)
 
-- **User** - Data pengguna (admin/karyawan)
-- **Employee** - Data detail karyawan
-- **Specialization** - Spesialisasi karyawan (perawat, dokter, dll)
-- **Task** - Definisi tugas
-- **TaskAssignment** - Penugasan tugas ke karyawan
-- **Schedule** - Jadwal kerja karyawan
-- **SchedulingRule** - Aturan penjadwalan
-- **EmployeeAvailability** - Ketersediaan karyawan
-- **Request** - Permintaan pertukaran shift
-- **ShiftSwap** - Data pertukaran shift
-- **Report** - Laporan
-- **AdminLog** - Log aktivitas admin
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@andelin.test | password |
+| Karyawan | employee@andelin.test | password |
 
-## Struktur Folder
+---
+
+## 📁 Struktur Folder
 
 ```
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Admin/          # Controller admin
-│   │   ├── Auth/          # Controller autentikasi
-│   │   └── Employee/      # Controller karyawan
-│   └── Middleware/        # Role middleware
-├── Models/                # Eloquent models
-└── Services/             # Business logic (GreedySchedulerService)
-
-resources/views/
-├── admin/                 # View halaman admin
-├── auth/                  # View autentikasi
-├── employee/              # View halaman karyawan
-└── layouts/               # Layout template
+andelin-aja/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Auth/           → LoginController
+│   │   │   ├── Admin/          → Dashboard, Employee, Task, Scheduling, dll
+│   │   │   └── Employee/       → Home, Task, Schedule, Request, dll
+│   │   └── Middleware/         → AdminMiddleware, EmployeeMiddleware
+│   ├── Models/                  → 12 Eloquent models
+│   └── Services/               → GreedySchedulerService
+├── database/
+│   ├── migrations/             → 13 migration files
+│   └── seeders/               → Database seeders
+├── resources/views/
+│   ├── layouts/                → admin.blade.php, employee.blade.php
+│   ├── auth/                   → login, forgot-password, reset-password
+│   ├── admin/                  → dashboard, employees, tasks, scheduling, dll
+│   └── employee/               → home, tasks, schedule, requests, dll
+└── routes/
+    └── web.php                 → Semua route aplikasi
 ```
 
-## License
+---
 
-MIT License
+## 📄 License
+
+MIT License - feel free to use this project for learning and development.
+
+---
+
+<div align="center">
+
+**Made with ❤️ using Laravel**
+
+</div>
