@@ -293,31 +293,98 @@
             background: rgba(255, 255, 255, 0.96);
         }
         .topbar {
-            min-height: 74px;
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(229, 231, 235, 0.9);
-            box-shadow: var(--shadow-soft);
+            position: relative;
+            min-height: 90px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 255, 0.92));
+            border: 1px solid rgba(229, 231, 235, 0.92);
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.06);
             display: flex;
             align-items: center;
-            padding: 1rem 1.25rem;
-            backdrop-filter: blur(16px);
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.15rem 1.25rem;
+            backdrop-filter: blur(18px);
+            overflow: hidden;
+        }
+        .topbar::after {
+            content: '';
+            position: absolute;
+            top: -36px;
+            right: 18px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.14), transparent 68%);
+            pointer-events: none;
+        }
+        .topbar-start {
+            display: flex;
+            align-items: center;
+            gap: .95rem;
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .topbar-heading {
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            min-width: 0;
+        }
+        .topbar-kicker {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            padding: .38rem .7rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.10);
+            color: var(--color-primary);
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
         }
         .topbar-title {
+            margin: 0;
             color: var(--color-text-primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.15rem, 1rem + .5vw, 1.6rem);
             font-weight: 700;
-            letter-spacing: -.01em;
+            letter-spacing: -.02em;
+            line-height: 1.1;
+        }
+        .topbar-subtitle {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: .86rem;
+            line-height: 1.45;
+        }
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            margin-left: auto;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
         }
         .sidebar-toggle {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: 14px;
+            border-radius: 16px;
             border: 1px solid rgba(209, 213, 219, 0.95);
             background: #fff;
             color: var(--color-primary);
             flex-shrink: 0;
+            box-shadow: 0 10px 18px rgba(15, 23, 42, 0.05);
+        }
+        .sidebar-toggle:hover {
+            color: #fff;
+            background: var(--gradient-primary);
+            border-color: transparent;
         }
         .main-content {
             margin-left: 278px;
@@ -327,18 +394,68 @@
         .user-chip {
             display: inline-flex;
             align-items: center;
-            gap: .5rem;
-            padding: .6rem .95rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.08);
-            color: var(--color-primary);
-            font-size: .85rem;
+            gap: .75rem;
+            padding: .55rem .8rem;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.98));
+            border: 1px solid rgba(191, 219, 254, 0.9);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.08);
+            min-width: 0;
+        }
+        .user-chip-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 10px 18px rgba(59, 130, 246, 0.20);
+        }
+        .user-chip-meta {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .user-chip-name {
+            color: var(--color-text-primary);
+            font-size: .84rem;
             font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+        .user-chip-role {
+            color: var(--color-text-muted);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
         }
         .logout-button {
-            border-radius: 999px !important;
-            padding: .55rem .95rem;
-            background: var(--color-bg-card);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .55rem;
+            min-height: 48px;
+            padding: .7rem 1rem;
+            border-radius: 16px !important;
+            background: #fff;
+            border: 1px solid rgba(254, 202, 202, 0.95);
+            color: var(--color-danger);
+            box-shadow: 0 10px 18px rgba(239, 68, 68, 0.08);
+        }
+        .logout-button:hover {
+            background: #FEF2F2;
+            border-color: rgba(248, 113, 113, 0.95);
+            color: #DC2626;
+        }
+        .logout-label {
+            white-space: nowrap;
         }
         .card-andelin {
             background: rgba(255, 255, 255, 0.95);
@@ -546,9 +663,48 @@
                 padding: 1rem;
             }
             .topbar {
+                align-items: stretch;
+                flex-direction: column;
                 padding: 1rem;
+                gap: .95rem;
+            }
+            .topbar-start {
+                align-items: flex-start;
+                width: 100%;
+            }
+            .topbar-heading {
+                width: 100%;
+            }
+            .topbar-actions {
+                width: 100%;
+                margin-left: 0;
+                justify-content: space-between;
+            }
+            .user-chip {
+                flex: 1;
             }
             .pagination-wrap { justify-content: center; }
+        }
+        @media (max-width: 575.98px) {
+            .topbar-subtitle {
+                display: none;
+            }
+            .topbar-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .user-chip {
+                width: 100%;
+            }
+            .user-chip-name {
+                max-width: none;
+            }
+            .logout-form {
+                width: 100%;
+            }
+            .logout-button {
+                width: 100%;
+            }
         }
     </style>
 
@@ -636,15 +792,27 @@
 
     <div class="main-content">
         <div class="topbar mb-4 rounded-4">
-            <button class="btn sidebar-toggle d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar" aria-controls="adminSidebar">
-                <i class="fas fa-bars"></i>
-            </button>
-            <h6 class="mb-0 topbar-title">@yield('page-title', 'Dashboard')</h6>
-            <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
-                <span class="user-chip"><i class="fas fa-user-circle"></i> {{ auth()->user()->name }}</span>
+            <div class="topbar-start">
+                <button class="btn sidebar-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar" aria-controls="adminSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="topbar-heading">
+                    <span class="topbar-kicker">Panel Admin</span>
+                    <h1 class="topbar-title">@yield('page-title', 'Dashboard')</h1>
+                    <p class="topbar-subtitle">Kelola penjadwalan, tugas, pengajuan, dan operasional tim dalam satu panel.</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <span class="user-chip">
+                    <span class="user-chip-avatar"><i class="fas fa-user-shield"></i></span>
+                    <span class="user-chip-meta">
+                        <span class="user-chip-name">{{ auth()->user()->name }}</span>
+                        <span class="user-chip-role">Administrator</span>
+                    </span>
+                </span>
                 <form action="{{ route('logout') }}" method="POST" class="m-0 logout-form">
                     @csrf
-                    <button class="btn btn-sm logout-button" style="color: var(--color-danger); border: 1px solid var(--color-border);"><i class="fas fa-sign-out-alt me-1"></i> Keluar</button>
+                    <button class="btn btn-sm logout-button" type="submit"><i class="fas fa-sign-out-alt"></i><span class="logout-label">Keluar</span></button>
                 </form>
             </div>
         </div>
