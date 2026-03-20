@@ -196,50 +196,21 @@ Aplikasi ini menggunakan **Greedy Algorithm** untuk penjadwalan otomatis:
 | max_hours_per_week | 40 | Maksimal jam kerja per minggu |
 | max_tasks_per_day | 3 | Maksimal tugas per hari |
 
----
-
-## 🚀 Instalasi
-
-```bash
-# Clone repository
-git clone https://github.com/ardhikaxx/website-andelin-aja.git
-cd andelin-aja
-
-# Install dependencies
-composer install
-
-# Copy environment file
-copy .env.example .env
-
-# Generate application key
-php artisan key:generate
-
-# Konfigurasi database di .env
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=andelin_aja
-# DB_USERNAME=root
-# DB_PASSWORD=
-
-# Run migrations
-php artisan migrate
-
-# (Optional) Seed database
-php artisan db:seed
-
-# Jalankan server
-php artisan serve
-```
-
 ### Akun Default (Setelah Seeding)
 
 | Role | Email | Password |
 |------|-------|----------|
-| Admin | admin@andelin.test | password |
-| Karyawan | employee@andelin.test | password |
-
----
+| Admin | admin@andelin.com | password |
+| Karyawan | karyawan1@andelin.com | password |
+| Karyawan | karyawan2@andelin.com | password |
+| Karyawan | karyawan3@andelin.com | password |
+| Karyawan | karyawan4@andelin.com | password |
+| Karyawan | karyawan5@andelin.com | password |
+| Karyawan | karyawan6@andelin.com | password |
+| Karyawan | karyawan7@andelin.com | password |
+| Karyawan | karyawan8@andelin.com | password |
+| Karyawan | karyawan9@andelin.com | password |
+| Karyawan | karyawan10@andelin.com | password |
 
 ## 📁 Struktur Folder
 
