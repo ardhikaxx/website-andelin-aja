@@ -265,9 +265,3 @@ andelin-aja/
 └── routes/
     └── web.php                 → Semua route aplikasi
 ```
-
----
-
-## 📄 License
-
-MIT License - feel free to use this project for learning and development.
