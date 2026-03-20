@@ -27,11 +27,14 @@
             --gradient-primary: linear-gradient(145deg, #1D4ED8 0%, #3B82F6 55%, #60A5FA 100%);
         }
 
-        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+        * {
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
 
         body {
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
             background:
                 radial-gradient(circle at top left, rgba(59, 130, 246, 0.26), transparent 28%),
@@ -39,11 +42,13 @@
                 linear-gradient(180deg, #F6F9FF 0%, var(--color-bg-main) 100%);
             padding: 24px;
             color: var(--color-text-primary);
+            overflow: hidden;
         }
 
         .login-shell {
             width: 100%;
-            min-height: calc(100vh - 48px);
+            height: calc(100vh - 48px);
+            max-height: calc(100vh - 48px);
             display: grid;
             grid-template-columns: 1.12fr .88fr;
             background: rgba(255, 255, 255, 0.6);
@@ -387,7 +392,10 @@
 
         @media (max-width: 991.98px) {
             body {
+                height: auto;
+                min-height: 100vh;
                 padding: 16px;
+                overflow: auto;
             }
 
             .login-shell {
