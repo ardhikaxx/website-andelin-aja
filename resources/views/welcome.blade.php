@@ -687,7 +687,7 @@
                         <span style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">2021</span>
                         <div style="width: 2px; height: 50px; background: var(--color-border);"></div>
                         <div class="text-start">
-                            <div style="font-weight: 700; font-size: 1.25rem;">Beroperasi Seit</div>
+                            <div style="font-weight: 700; font-size: 1.25rem;">Beroperasi Sejak</div>
                             <div style="color: var(--color-text-secondary);">Tahun Pertama</div>
                         </div>
                     </div>
