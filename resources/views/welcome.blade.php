@@ -3,563 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operasional Andelin Aja</title>
+    <title>ANDELIN AJA - Solusi Semua Kebutuhanmu, Tinggal Suruh!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #3B82F6;
-            --color-primary-dark: #2563EB;
+            --color-primary: #2563EB;
+            --color-primary-dark: #1E40AF;
             --color-primary-light: #60A5FA;
-            --color-secondary: #6366F1;
-            --color-accent: #93C5FD;
-            --color-bg-main: #F5F7FB;
+            --color-secondary: #7C3AED;
+            --color-accent: #F59E0B;
+            --color-bg-main: #F8FAFC;
             --color-bg-card: #FFFFFF;
-            --color-bg-sidebar: #F9FAFB;
-            --color-text-primary: #111827;
-            --color-text-secondary: #6B7280;
-            --color-text-muted: #9CA3AF;
-            --color-border: #E5E7EB;
-            --color-divider: #D1D5DB;
-            --color-success: #22C55E;
-            --color-warning: #F59E0B;
-            --color-danger: #EF4444;
-            --gradient-primary: linear-gradient(135deg, #3B82F6, #6366F1);
-            --radius-lg: 20px;
-            --radius-md: 16px;
-            --radius-sm: 10px;
-            --shadow-soft: 0 18px 36px rgba(37, 99, 235, 0.10);
+            --color-text-primary: #0F172A;
+            --color-text-secondary: #475569;
+            --color-border: #E2E8F0;
+            --color-success: #10B981;
+            --gradient-primary: linear-gradient(135deg, #2563EB, #7C3AED);
+            --gradient-whatsapp: linear-gradient(135deg, #22C55E, #16A34A);
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --radius-xl: 2rem;
+            --radius-lg: 1rem;
         }
+
         * {
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        html {
-            scroll-behavior: smooth;
-        }
+
+        html { scroll-behavior: smooth; }
+
         body {
             margin: 0;
-            background:
-                radial-gradient(circle at top left, rgba(59, 130, 246, 0.14), transparent 26%),
-                linear-gradient(180deg, #F9FBFF 0%, var(--color-bg-main) 100%);
+            background-color: var(--color-bg-main);
             color: var(--color-text-primary);
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+        /* --- Decorative Background Elements --- */
+        .bg-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
         }
-        a {
-            text-decoration: none;
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--color-primary-light);
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
         }
+        .blob-1 { top: -100px; right: -100px; }
+        .blob-2 { bottom: 20%; left: -200px; background: var(--color-secondary); }
+
+        /* --- Navbar --- */
         .landing-navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 1rem 0;
-            background: rgba(245, 247, 251, 0.88);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.88);
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            transition: all 0.3s;
         }
         .brand-link {
             display: inline-flex;
             align-items: center;
-            gap: .85rem;
+            gap: .75rem;
             color: var(--color-text-primary);
-            font-weight: 800;
-            letter-spacing: -.02em;
+            text-decoration: none;
         }
         .brand-mark {
-            width: 48px;
-            height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            background: var(--gradient-primary);
-            color: #fff;
-            box-shadow: 0 14px 28px rgba(59, 130, 246, 0.22);
-        }
-        .nav-links {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
+            border-radius: 12px;
+            background: var(--gradient-primary);
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
         }
         .nav-links a {
             color: var(--color-text-secondary);
-            font-size: .92rem;
+            font-weight: 600;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--color-primary); }
+
+        /* --- Buttons --- */
+        .btn-custom {
+            border-radius: 999px;
+            padding: 0.8rem 2rem;
             font-weight: 700;
-        }
-        .nav-links a:hover {
-            color: var(--color-primary);
-        }
-        .btn-landing-primary,
-        .btn-landing-outline {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: .55rem;
-            border-radius: 999px;
-            padding: .85rem 1.2rem;
-            font-weight: 700;
-            transition: all .2s ease;
+            gap: 0.5rem;
+            text-decoration: none;
         }
-        .btn-landing-primary {
+        .btn-primary-gradient {
             background: var(--gradient-primary);
             color: #fff;
-            box-shadow: 0 16px 28px rgba(59, 130, 246, 0.22);
+            border: none;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
-        .btn-landing-primary:hover {
+        .btn-primary-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
             color: #fff;
-            transform: translateY(-1px);
         }
-        .btn-landing-outline {
-            border: 1px solid var(--color-border);
-            color: var(--color-text-primary);
-            background: rgba(255, 255, 255, 0.92);
-        }
-        .btn-landing-outline:hover {
+        .btn-white {
+            background: #fff;
             color: var(--color-primary);
-            border-color: var(--color-primary-light);
+            border: 1px solid var(--color-border);
         }
-        .hero-section {
-            padding: 5rem 0 4rem;
+        .btn-white:hover {
+            background: var(--color-bg-main);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
-        .hero-shell {
-            position: relative;
-            padding: 2rem;
-            border-radius: 32px;
-            background:
-                radial-gradient(circle at top right, rgba(255, 255, 255, 0.20), transparent 24%),
-                linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 52%, var(--color-primary-light) 100%);
-            color: #fff;
-            overflow: hidden;
-            box-shadow: 0 28px 56px rgba(15, 23, 42, 0.16);
-        }
-        .hero-shell::after {
-            content: '';
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            right: -60px;
-            top: -90px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .hero-content,
-        .hero-card {
-            position: relative;
-            z-index: 1;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .55rem;
-            padding: .45rem .78rem;
+
+        /* --- Hero Section --- */
+        .hero-section { padding: 6rem 0; position: relative; }
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--color-primary);
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14);
-            font-size: .75rem;
-            font-weight: 800;
-            letter-spacing: .12em;
-            text-transform: uppercase;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
         .hero-title {
-            margin: 1rem 0 .85rem;
-            font-size: clamp(2.3rem, 2rem + 2vw, 4.3rem);
-            line-height: .98;
-            letter-spacing: -.05em;
-            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--color-text-primary), var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .hero-text {
-            margin: 0;
-            max-width: 620px;
-            color: rgba(255, 255, 255, 0.84);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .9rem;
-            margin-top: 1.6rem;
-        }
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: .9rem;
-            margin-top: 1.8rem;
-        }
-        .hero-stat {
-            padding: 1rem 1.05rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-        }
-        .hero-stat strong {
-            display: block;
-            font-size: 1.45rem;
-            margin-bottom: .25rem;
-        }
-        .hero-stat span {
-            color: rgba(255, 255, 255, 0.76);
-            font-size: .84rem;
-        }
-        .hero-card {
-            padding: 1.25rem;
-            border-radius: 26px;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            backdrop-filter: blur(12px);
-        }
-        .hero-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .hero-card-title {
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 800;
-        }
-        .hero-card-subtitle {
-            margin: .3rem 0 0;
-            color: rgba(255, 255, 255, 0.76);
-            font-size: .82rem;
-        }
-        .hero-card-icon {
-            width: 54px;
-            height: 54px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.16);
-        }
-        .hero-list {
-            display: grid;
-            gap: .75rem;
-        }
-        .hero-list-item {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            padding: .85rem .9rem;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.12);
-        }
-        .hero-list-item i {
-            width: 38px;
-            height: 38px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.18);
-        }
-        .section-block {
-            padding: 4.5rem 0;
-        }
-        .section-head {
-            max-width: 620px;
-            margin-bottom: 2rem;
-        }
-        .section-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: .45rem;
-            padding: .42rem .72rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.08);
-            color: var(--color-primary);
-            font-size: .74rem;
-            font-weight: 800;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .section-title {
-            margin: .9rem 0 .65rem;
-            font-size: clamp(1.8rem, 1.5rem + .7vw, 2.7rem);
-            line-height: 1.08;
-            letter-spacing: -.04em;
-        }
-        .section-text {
-            margin: 0;
+        .hero-desc {
+            font-size: 1.25rem;
             color: var(--color-text-secondary);
-            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
         }
-        .service-card,
-        .about-card,
-        .contact-card,
-        .footer-shell {
-            background: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: 24px;
-            box-shadow: var(--shadow-soft);
-        }
-        .service-card {
-            height: 100%;
-            padding: 1.4rem;
-        }
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            background: var(--gradient-primary);
-            color: #fff;
-            box-shadow: 0 16px 28px rgba(59, 130, 246, 0.18);
-            margin-bottom: 1rem;
-        }
-        .service-title {
-            margin: 0 0 .5rem;
-            font-size: 1.02rem;
-            font-weight: 800;
-        }
-        .service-text {
-            margin: 0;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            font-size: .92rem;
-        }
-        .about-card,
-        .contact-card {
-            height: 100%;
-            padding: 1.6rem;
-        }
-        .about-highlights {
+
+        /* --- Stats Card --- */
+        .stats-grid {
             display: grid;
-            gap: .8rem;
-            margin-top: 1.4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
-        .about-highlight {
-            display: flex;
-            align-items: flex-start;
-            gap: .8rem;
-            padding: .9rem 1rem;
-            border-radius: 18px;
-            background: rgba(59, 130, 246, 0.06);
-            border: 1px solid rgba(147, 197, 253, 0.45);
-        }
-        .about-highlight i {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            background: rgba(59, 130, 246, 0.12);
-            color: var(--color-primary);
-            flex-shrink: 0;
-        }
-        .contact-list {
-            display: grid;
-            gap: .85rem;
-            margin-top: 1.3rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: .9rem;
-            padding: .95rem 1rem;
-            border-radius: 18px;
-            background: var(--color-bg-main);
-            border: 1px solid var(--color-border);
-        }
-        .contact-item i {
-            width: 42px;
-            height: 42px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            background: var(--gradient-primary);
-            color: #fff;
-            flex-shrink: 0;
-        }
-        .contact-item strong {
-            display: block;
-            margin-bottom: .22rem;
-            font-size: .92rem;
-        }
-        .contact-item span,
-        .contact-item a {
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-        .contact-item a:hover {
-            color: var(--color-primary);
-        }
-        .footer-section {
-            padding: 0 0 2rem;
-        }
-        .footer-shell {
+        .stat-card {
+            background: #fff;
             padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--color-border);
+            text-align: center;
         }
-        .footer-title {
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 800;
-        }
-        .footer-text {
-            margin: .35rem 0 0;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            font-size: .9rem;
-        }
-        .footer-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-        .footer-links a {
-            color: var(--color-text-secondary);
-            font-weight: 700;
-        }
-        .footer-links a:hover {
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--color-primary); display: block; }
+        .stat-label { font-size: 0.875rem; color: var(--color-text-secondary); }
+
+        /* --- Section Styling --- */
+        .section-padding { padding: 6rem 0; }
+        .section-kicker {
             color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 800;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: block;
         }
-        @media (max-width: 991.98px) {
-            .landing-navbar {
-                position: static;
-            }
-            .hero-section,
-            .section-block {
-                padding: 3rem 0;
-            }
-            .hero-shell,
-            .about-card,
-            .contact-card,
-            .service-card,
-            .footer-shell {
-                border-radius: 22px;
-            }
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                justify-content: flex-start;
-                margin-top: 1rem;
-            }
-            .footer-links {
-                justify-content: flex-start;
-                margin-top: 1rem;
-            }
+        .section-title { font-size: 2.5rem; margin-bottom: 3rem; }
+
+        /* --- Service Cards --- */
+        .service-card-wrapper { height: 100%; }
+        .service-card {
+            background: #fff;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            height: 100%;
+            border: 1px solid var(--color-border);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
         }
-        @media (max-width: 575.98px) {
-            .hero-shell,
-            .about-card,
-            .contact-card,
-            .service-card,
-            .footer-shell {
-                padding-left: 1.15rem;
-                padding-right: 1.15rem;
-            }
-            .hero-shell {
-                padding-top: 1.4rem;
-                padding-bottom: 1.4rem;
-            }
-            .hero-actions {
-                flex-direction: column;
-            }
-            .btn-landing-primary,
-            .btn-landing-outline {
-                width: 100%;
-            }
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--color-primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 100px; height: 100px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            clip-path: circle(0% at 100% 0%);
+            transition: all 0.4s;
+        }
+        .service-card:hover::after { opacity: 0.05; clip-path: circle(100% at 100% 0%); }
+        
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--color-primary);
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-list { list-style: none; padding: 0; margin: 0; }
+        .service-list li {
+            padding: 0.5rem 0;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .service-list li i { color: var(--color-success); font-size: 0.8rem; }
+
+        /* --- How it Works --- */
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 2;
+        }
+        .step-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--color-border);
+            z-index: 1;
+        }
+
+        /* --- Trust / Why Us --- */
+        .trust-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+        .trust-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* --- Floating WhatsApp --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1001;
+            background: var(--gradient-whatsapp);
+            color: #fff;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .floating-wa:hover { transform: scale(1.1) rotate(10deg); color: #fff; }
+
+        /* --- CTA Card --- */
+        .cta-section { padding-bottom: 6rem; }
+        .cta-box {
+            background: var(--gradient-primary);
+            border-radius: 3rem;
+            padding: 4rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.5);
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        /* --- Footer --- */
+        .footer { padding: 4rem 0 2rem; background: #0F172A; color: rgba(255,255,255,0.6); }
+        .footer-brand { color: #fff; font-size: 1.5rem; margin-bottom: 1.5rem; display: block; font-weight: 800; text-decoration: none; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.2s; }
+        .footer-links a:hover { color: #fff; }
+
+        @media (max-width: 991px) {
+            .step-card:not(:last-child)::after { display: none; }
+            .hero-section { text-align: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-decoration">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
     <nav class="landing-navbar">
         <div class="container">
-            <div class="row align-items-center g-3">
-                <div class="col-lg-4">
-                    <a href="#hero" class="brand-link">
-                        <span class="brand-mark"><i class="fas fa-calendar-check"></i></span>
-                        <span>Operasional Andelin Aja</span>
-                    </a>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="brand-link">
+                    <span class="brand-mark"><i class="fas fa-bolt"></i></span>
+                    <span class="fs-4 fw-bold">ANDELIN AJA</span>
+                </a>
+                <div class="nav-links d-none d-lg-block">
+                    <a href="#layanan">Layanan</a>
+                    <a href="#cara-kerja">Cara Kerja</a>
+                    <a href="#kenapa">Keunggulan</a>
                 </div>
-                <div class="col-lg-5">
-                    <div class="nav-links">
-                        <a href="#hero">Beranda</a>
-                        <a href="#layanan">Layanan</a>
-                        <a href="#tentang">Tentang</a>
-                        <a href="#kontak">Kontak</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-lg-end">
-                    <a href="{{ route('login') }}" class="btn-landing-primary"><i class="fas fa-right-to-bracket"></i> Masuk Sistem</a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
+                    <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4">Pesan Jasa</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section" id="hero">
+    <header class="hero-section">
         <div class="container">
-            <div class="hero-shell">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-7">
-                        <div class="hero-content">
-                            <span class="hero-badge"><i class="fas fa-sparkles"></i> Solusi Operasional Tim Lapangan</span>
-                            <h1 class="hero-title">Andelin Aja membantu operasional tim berjalan lebih rapi, cepat, dan terpantau.</h1>
-                            <p class="hero-text">
-                                Kelola penjadwalan, pembagian tugas, monitoring progres, hingga pengajuan karyawan dalam satu sistem yang dirancang untuk mendukung jasa operasional Andelin Aja.
-                            </p>
-                            <div class="hero-actions">
-                                <a href="#layanan" class="btn-landing-primary"><i class="fas fa-arrow-down"></i> Lihat Layanan</a>
-                                <a href="#kontak" class="btn-landing-outline"><i class="fas fa-phone"></i> Hubungi Kami</a>
-                            </div>
-                            <div class="hero-stats">
-                                <div class="hero-stat">
-                                    <strong>Penjadwalan</strong>
-                                    <span>Pengaturan shift dan tugas lebih tertata.</span>
-                                </div>
-                                <div class="hero-stat">
-                                    <strong>Monitoring</strong>
-                                    <span>Pantau progres tim dan status pekerjaan.</span>
-                                </div>
-                                <div class="hero-stat">
-                                    <strong>Operasional</strong>
-                                    <span>Satu sistem untuk ritme kerja harian.</span>
-                                </div>
-                            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="hero-tag">✨ Jasa Serba Bisa Nomor #1</span>
+                    <h1 class="hero-title">Apa Saja Kebutuhanmu, Kami Kerjakan!</h1>
+                    <p class="hero-desc">
+                        Gak sempat belanja? Malas antre? Atau butuh bantuan beresin rumah? Tinggal suruh <strong>ANDELIN AJA</strong>. Cepat, Terpercaya, dan Tanpa Ribet.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                        <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient btn-lg">
+                            <i class="fas fa-paper-plane"></i> Order Sekarang
+                        </a>
+                        <a href="#layanan" class="btn-custom btn-white btn-lg">
+                            Lihat Layanan
+                        </a>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">1k+</span>
+                            <span class="stat-label">Order Selesai</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">4.9</span>
+                            <span class="stat-label">Rating Puas</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Layanan Siaga</span>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="hero-card">
-                            <div class="hero-card-top">
+                </div>
+                <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
+                    <div class="position-relative">
+                        <div class="service-card p-4" style="border-radius: 3rem; transform: rotate(-3deg);">
+                            <img src="https://img.freepik.com/free-vector/delivery-service-illustrated_23-2148505081.jpg" class="img-fluid rounded-4 mb-4" alt="Delivery Service">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary text-white p-3 rounded-circle"><i class="fas fa-check"></i></div>
                                 <div>
-                                    <p class="hero-card-title">Fokus layanan Andelin Aja</p>
-                                    <p class="hero-card-subtitle">Dirancang untuk kebutuhan operasional yang bergerak cepat.</p>
-                                </div>
-                                <span class="hero-card-icon"><i class="fas fa-layer-group"></i></span>
-                            </div>
-                            <div class="hero-list">
-                                <div class="hero-list-item">
-                                    <i class="fas fa-calendar-days"></i>
-                                    <div>
-                                        <strong>Penjadwalan kerja</strong>
-                                        <div style="color: rgba(255, 255, 255, 0.76); font-size: .84rem; margin-top: .18rem;">Membantu tim tersusun dengan pembagian kerja yang jelas.</div>
-                                    </div>
-                                </div>
-                                <div class="hero-list-item">
-                                    <i class="fas fa-clipboard-list"></i>
-                                    <div>
-                                        <strong>Manajemen tugas</strong>
-                                        <div style="color: rgba(255, 255, 255, 0.76); font-size: .84rem; margin-top: .18rem;">Memastikan setiap pekerjaan punya PIC dan deadline yang terpantau.</div>
-                                    </div>
-                                </div>
-                                <div class="hero-list-item">
-                                    <i class="fas fa-chart-pie"></i>
-                                    <div>
-                                        <strong>Pantauan performa</strong>
-                                        <div style="color: rgba(255, 255, 255, 0.76); font-size: .84rem; margin-top: .18rem;">Ringkas performa tim agar keputusan operasional lebih cepat diambil.</div>
-                                    </div>
+                                    <h5 class="mb-0">Tugas Selesai!</h5>
+                                    <p class="text-muted small mb-0">Kurir telah menyelesaikan pesanan Anda.</p>
                                 </div>
                             </div>
                         </div>
@@ -567,106 +434,155 @@
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="section-block" id="layanan">
+    <section class="section-padding bg-white" id="layanan">
         <div class="container">
-            <div class="section-head">
-                <span class="section-kicker"><i class="fas fa-briefcase"></i> Layanan</span>
-                <h2 class="section-title">Layanan inti untuk mendukung operasional jasa Andelin Aja</h2>
-                <p class="section-text">Tampilan layanan ini difokuskan pada apa yang paling dibutuhkan tim operasional: penjadwalan, manajemen pekerjaan, dan kontrol aktivitas lapangan.</p>
+            <div class="text-center mb-5">
+                <span class="section-kicker">Layanan Kami</span>
+                <h2 class="section-title">Pilih Bantuan Yang Kamu Butuhkan</h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <span class="service-icon"><i class="fas fa-calendar-alt"></i></span>
-                        <h3 class="service-title">Penjadwalan Tim</h3>
-                        <p class="service-text">Menyusun jadwal kerja karyawan dengan alur yang lebih cepat, jelas, dan mudah dipantau oleh admin operasional.</p>
+                        <div class="service-icon"><i class="fas fa-shopping-basket"></i></div>
+                        <h4>Kurir & Jastip</h4>
+                        <p class="text-muted">Beli makanan, titip belanjaan pasar, atau antar barang ketinggalan.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Beli Makanan/Barang</li>
+                            <li><i class="fas fa-check-circle"></i> Ambil/Antar Dokumen</li>
+                            <li><i class="fas fa-check-circle"></i> Jastip Barang Unik</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <span class="service-icon"><i class="fas fa-list-check"></i></span>
-                        <h3 class="service-title">Manajemen Tugas</h3>
-                        <p class="service-text">Membantu pengelolaan tugas aktif, penanggung jawab, tenggat waktu, dan perkembangan status pekerjaan harian.</p>
+                        <div class="service-icon" style="background: rgba(124, 58, 237, 0.1); color: var(--color-secondary);"><i class="fas fa-broom"></i></div>
+                        <h4>Bantuan Rumah</h4>
+                        <p class="text-muted">Bantu jaga kebersihan dan kenyamanan hunian kamu setiap hari.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Bersih-bersih Rumah</li>
+                            <li><i class="fas fa-check-circle"></i> Rakit Furnitur</li>
+                            <li><i class="fas fa-check-circle"></i> Ganti Lampu/Kran</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <span class="service-icon"><i class="fas fa-chart-line"></i></span>
-                        <h3 class="service-title">Monitoring Operasional</h3>
-                        <p class="service-text">Memberikan gambaran ringkas performa dan kondisi tim agar pengambilan keputusan operasional menjadi lebih cepat.</p>
+                        <div class="service-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--color-success);"><i class="fas fa-laptop-code"></i></div>
+                        <h4>Admin & Jasa Ketik</h4>
+                        <p class="text-muted">Tugas kantor atau kuliah menumpuk? Biar kami yang bantu ketik.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Input Data Excel</li>
+                            <li><i class="fas fa-check-circle"></i> Jasa Tulis/Ketik</li>
+                            <li><i class="fas fa-check-circle"></i> Urusan Dokumen</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--color-accent);"><i class="fas fa-tools"></i></div>
+                        <h4>Maintenance</h4>
+                        <p class="text-muted">Perbaikan ringan furniture atau peralatan rumah tangga lainnya.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Perbaikan Kursi</li>
+                            <li><i class="fas fa-check-circle"></i> Cat Ulang Ringan</li>
+                            <li><i class="fas fa-check-circle"></i> Servis Peralatan</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                        <h4>Jasa Personal</h4>
+                        <p class="text-muted">Butuh teman aktivitas atau bantuan unik lainnya? Kami siap.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Teman Belanja/Nonton</li>
+                            <li><i class="fas fa-check-circle"></i> Antre Tiket/Nomor</li>
+                            <li><i class="fas fa-check-circle"></i> Antar Jemput</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card border-primary" style="background: var(--color-bg-main);">
+                        <div class="service-icon bg-primary text-white"><i class="fas fa-plus"></i></div>
+                        <h4>Request Khusus</h4>
+                        <p class="text-muted">Punya kebutuhan lain yang tidak ada di list? Konsultasikan saja!</p>
+                        <a href="https://wa.me/6289666648592" class="fw-bold text-primary text-decoration-none">Tanya via WA →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-block pt-0" id="tentang">
+    <section class="section-padding" id="cara-kerja">
         <div class="container">
-            <div class="row g-4 align-items-stretch">
-                <div class="col-lg-7">
-                    <div class="about-card">
-                        <span class="section-kicker"><i class="fas fa-circle-info"></i> Tentang Kami</span>
-                        <h2 class="section-title">Andelin Aja hadir untuk membuat operasional jasa lebih terstruktur</h2>
-                        <p class="section-text">
-                            Kami membangun pendekatan operasional yang menempatkan kejelasan penjadwalan, kontrol tugas, dan koordinasi tim sebagai fondasi utama. Fokusnya bukan hanya tampilan yang rapi, tetapi alur kerja yang benar-benar membantu aktivitas jasa berjalan lebih efisien.
-                        </p>
-                        <div class="about-highlights">
-                            <div class="about-highlight">
-                                <i class="fas fa-bolt"></i>
-                                <div>
-                                    <strong>Respons cepat</strong>
-                                    <div style="color: var(--color-text-secondary); margin-top: .18rem; line-height: 1.7;">Operasional dapat bergerak lebih gesit dengan data yang selalu mudah diakses.</div>
-                                </div>
-                            </div>
-                            <div class="about-highlight">
-                                <i class="fas fa-people-group"></i>
-                                <div>
-                                    <strong>Koordinasi tim lebih jelas</strong>
-                                    <div style="color: var(--color-text-secondary); margin-top: .18rem; line-height: 1.7;">Setiap pekerjaan, penanggung jawab, dan jadwal tersusun dalam satu alur kerja.</div>
-                                </div>
-                            </div>
-                            <div class="about-highlight">
-                                <i class="fas fa-shield-heart"></i>
-                                <div>
-                                    <strong>Kontrol operasional lebih kuat</strong>
-                                    <div style="color: var(--color-text-secondary); margin-top: .18rem; line-height: 1.7;">Memudahkan admin dalam memantau dan menindaklanjuti kebutuhan tim lapangan.</div>
-                                </div>
-                            </div>
+            <div class="text-center mb-5">
+                <span class="section-kicker">Proses Mudah</span>
+                <h2 class="section-title">Gimana Cara Pakainya?</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5 class="fw-bold">Pesan Jasa</h5>
+                        <p class="text-muted">Hubungi kami via WhatsApp dan jelaskan apa yang perlu dikerjakan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5 class="fw-bold">Kami Kerjakan</h5>
+                        <p class="text-muted">Tim profesional kami akan langsung menuju lokasi atau menjalankan instruksimu.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5 class="fw-bold">Beres & Bayar</h5>
+                        <p class="text-muted">Setelah tugas selesai dengan sempurna, baru kamu lakukan pembayaran.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-white" id="kenapa">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="section-kicker">Mengapa Kami?</span>
+                    <h2 class="section-title">Nikmati Kemudahan Hidup Tanpa Perlu Ribet</h2>
+                    <div class="trust-item">
+                        <div class="trust-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Super Cepat</h5>
+                            <p class="text-muted mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon" style="background: var(--color-secondary);"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h5 class="fw-bold">100% Terpercaya</h5>
+                            <p class="text-muted mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon" style="background: var(--color-success);"><i class="fas fa-tags"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Harga Transparan</h5>
+                            <p class="text-muted mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5" id="kontak">
-                    <div class="contact-card">
-                        <span class="section-kicker"><i class="fas fa-envelope-open-text"></i> Kontak</span>
-                        <h2 class="section-title">Siap berdiskusi untuk kebutuhan layanan Anda</h2>
-                        <p class="section-text">Hubungi Andelin Aja untuk informasi lebih lanjut mengenai layanan operasional, koordinasi tim, dan implementasi sistem kerja yang lebih tertata.</p>
-                        <div class="contact-list">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <strong>Email</strong>
-                                    <a href="mailto:halo@andelinaja.com">halo@andelinaja.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-phone-volume"></i>
-                                <div>
-                                    <strong>Telepon</strong>
-                                    <a href="tel:+6281234567890">+62 812-3456-7890</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-location-dot"></i>
-                                <div>
-                                    <strong>Area Layanan</strong>
-                                    <span>Operasional jasa dan koordinasi tim lapangan di wilayah Indonesia.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 1.4rem;">
-                            <a href="{{ route('login') }}" class="btn-landing-primary"><i class="fas fa-right-to-bracket"></i> Masuk ke Sistem</a>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="p-5 bg-light rounded-5 border">
+                        <h3 class="fw-bold mb-4 text-center">Apa Kata Mereka?</h3>
+                        <div class="text-center">
+                            <i class="fas fa-quote-left fa-2x text-primary opacity-25 mb-3"></i>
+                            <p class="fs-5 italic text-muted mb-4">"Andelin Aja bener-bener nolong banget pas lagi sibuk kantor tapi harus kirim dokumen ke klien. Kurirnya ramah dan cepet banget!"</p>
+                            <h6 class="fw-bold mb-0">Budi Santoso</h6>
+                            <span class="text-muted small">Karyawan Swasta</span>
                         </div>
                     </div>
                 </div>
@@ -674,25 +590,81 @@
         </div>
     </section>
 
-    <footer class="footer-section">
+    <section class="cta-section container">
+        <div class="cta-box">
+            <h2 class="display-4 fw-bold mb-3">Siap Kami Bantu Sekarang?</h2>
+            <p class="fs-5 opacity-75 mb-5 mx-auto" style="max-width: 600px;">Jangan biarkan pekerjaan kecil menghambat harimu. Serahkan semuanya ke ANDELIN AJA.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="https://wa.me/6289666648592" class="btn-custom btn-white btn-lg">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                </a>
+                <a href="{{ route('login') }}" class="btn-custom btn-lg" style="background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+                    Portal Karyawan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
         <div class="container">
-            <div class="footer-shell">
-                <div class="row align-items-center g-3">
-                    <div class="col-lg-7">
-                        <h3 class="footer-title">Operasional Andelin Aja</h3>
-                        <p class="footer-text">Landing page ini merangkum layanan utama Andelin Aja: penjadwalan tim, pengelolaan tugas, monitoring operasional, dan dukungan koordinasi jasa yang lebih tertata.</p>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="footer-links">
-                            <a href="#hero">Beranda</a>
-                            <a href="#layanan">Layanan</a>
-                            <a href="#tentang">Tentang</a>
-                            <a href="#kontak">Kontak</a>
-                        </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a href="#" class="footer-brand">ANDELIN AJA</a>
+                    <p>Solusi jasa serba bisa terbaik di kotamu. Hemat waktu, tenaga, dan biaya dengan bantuan profesional kami.</p>
+                    <div class="d-flex gap-3 fs-5 mt-4">
+                        <a href="#" class="text-white opacity-50"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white opacity-50"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white opacity-50"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
+                <div class="col-md-4 col-lg-2 offset-lg-2">
+                    <h6 class="text-white fw-bold mb-4">Navigasi</h6>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#layanan">Layanan</a></li>
+                        <li><a href="#cara-kerja">Cara Kerja</a></li>
+                        <li><a href="#kenapa">Keunggulan</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4">Legal</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4">Bantuan</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/6289666648592">Customer Service</a></li>
+                        <li><a href="mailto:halo@andelinaja.com">Email Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-5 border-secondary opacity-25">
+            <div class="text-center">
+                <p class="mb-0">&copy; {{ date('Y') }} ANDELIN AJA. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
+
+    <a href="https://wa.me/6289666648592" class="floating-wa" title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll adjustment for fixed header
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.landing-navbar');
+            if (window.scrollY > 50) {
+                nav.style.padding = '0.5rem 0';
+                nav.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.padding = '1rem 0';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
