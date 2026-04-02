@@ -189,6 +189,85 @@ Aplikasi ini menggunakan **Greedy Algorithm** untuk penjadwalan otomatis:
 4. Assign jadwal ke karyawan tersebut
 5. Ulangi hingga semua tugas terjadwal
 
+### Rumus Algoritma Greedy
+
+```
+F(i) = Σ (task_i) untuk setiap tugas i
+     = min(loads[karyawan]) untuk setiap karyawan yang eligible
+
+Constraint:
+- available(karyawan, hari) = true
+- load_hours(karyawan) + task_hours ≤ max_hours_per_week
+- load_tasks(karyawan, hari) + 1 ≤ max_tasks_per_day
+
+Greedy Choice:
+karyawan_terpilih = argmin_karyawan(load_hours(karyawan))
+```
+
+### Pseudocode
+
+```
+FUNCTION generateSchedule(tasks, employees, date):
+    sorted_tasks = sortByDeadline(tasks)
+    schedule = []
+
+    FOR each task IN sorted_tasks:
+        eligible_employees = []
+        
+        FOR each emp IN employees:
+            IF isAvailable(emp, date) AND
+               emp.weekly_hours < MAX_HOURS AND
+               emp.daily_tasks < MAX_TASKS:
+                eligible_employees.add(emp)
+        
+        IF eligible_employees.length > 0:
+            selected_employee = minLoad(eligible_employees)
+            schedule.add(task, selected_employee)
+            updateLoad(selected_employee)
+    
+    RETURN schedule
+```
+
+### Contoh Perhitungan
+
+**Input:**
+| Tugas | Deadline | Estimasi Jam |
+|-------|----------|--------------|
+| T1    | Hari 1   | 4 jam        |
+| T2    | Hari 1   | 3 jam        |
+| T3    | Hari 2   | 5 jam        |
+
+**Karyawan:**
+| Karyawan | Jam Terpakai/Minggu | Tugas/Hari |
+|----------|---------------------|------------|
+| K1       | 32 jam              | 2 tugas    |
+| K2       | 28 jam              | 1 tugas    |
+| K3       | 36 jam              | 2 tugas    |
+
+**Langkah 1 - Tugas T1 (4 jam, Hari 1):**
+- K1: eligible (32 + 4 = 36 ≤ 40) → beban = 32 jam
+- K2: eligible (28 + 4 = 32 ≤ 40) → beban = 28 jam ← **TERPILIH** (terkecil)
+- K3: eligible (36 + 4 = 40 ≤ 40) → beban = 36 jam
+
+**Langkah 2 - Tugas T2 (3 jam, Hari 1):**
+- K1: eligible (32 + 3 = 35 ≤ 40) → beban = 35 jam
+- K2: eligible (28 + 3 = 31 ≤ 40) → beban = 31 jam ← **TERPILIH**
+- K3: eligible (36 + 3 = 39 ≤ 40) → beban = 39 jam
+
+**Langkah 3 - Tugas T3 (5 jam, Hari 2):**
+- K1: eligible (35 + 5 = 40 ≤ 40) → beban = 40 jam
+- K3: eligible (36 + 5 = 41 > 40) → TIDAK ELIGIBEL ← K2 sudah full (31 jam)
+- K2: eligible (31 + 5 = 36 ≤ 40) → beban = 36 jam ← **TERPILIH**
+
+**Hasil Penjadwalan:**
+| Tugas | Karyawan | Jam |
+|--------|----------|-----|
+| T1     | K2       | 4   |
+| T2     | K2       | 3   |
+| T3     | K2       | 5   |
+
+**Total Jam K2:** 12 jam (28 → 40 jam/minggu)
+
 ### Konfigurasi
 
 | Parameter | Default | Deskripsi |
