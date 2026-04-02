@@ -597,10 +597,6 @@
                                     {{ $loop->first ? '' : ', ' }}{{ $spec->name }}
                                 @endforeach
                             </p>
-                            <div class="d-flex justify-content-center gap-3 mt-3">
-                                <a href="https://wa.me/{{ $employee->user->phone ?? '6289666648592' }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
-                            </div>
                         </div>
                     </div>
                 @empty
