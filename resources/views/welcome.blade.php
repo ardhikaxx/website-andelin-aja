@@ -679,7 +679,7 @@
                         Selalu upgrade kemampuan, Giat bekerja dan dituntut menjadi pribadi yang komunikatif, responsif, 
                         dan bisa diandalkan untuk membawa solusi.
                     </p>
-                    <p class="mb-4" style="font-size: 1.25rem; line-height: 1.8; color: var(--color-text-secondary); font-weight: 500;">
+                    <p class="mb-3" style="font-size: 1.25rem; line-height: 1.8; color: var(--color-text-secondary); font-weight: 500;">
                         Banyak juga dari team Andelin Aja yang punya prestasi yang membanggakan & tidak kaleng-kaleng namanya. 
                         Bisa sangat membantu untuk masyarakat Jember, jadi bukan sekadar jasa serba bisa seperti yang lain yaaa...
                     </p>
@@ -687,7 +687,7 @@
                         <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">2021</span>
                         <div style="width: 2px; height: 40px; background: var(--color-border);"></div>
                         <div class="text-start">
-                            <div style="font-weight: 600; font-size: 1.1rem;">Beroperasi Setiap</div>
+                            <div style="font-weight: 800; font-size: 1.1rem;">Beroperasi Sejak</div>
                             <div style="color: var(--color-text-secondary); font-size: 1rem;">Tahun Pertama</div>
                         </div>
                     </div>
