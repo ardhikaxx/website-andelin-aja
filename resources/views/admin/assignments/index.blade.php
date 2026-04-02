@@ -11,7 +11,7 @@
         <div class="row g-3 align-items-end">
             <div class="col-md-5">
                 <label class="form-label">Tugas</label>
-                <select name="task_id" class="form-select" required>
+                <select name="task_id" class="form-select select2" required>
                     <option value="">Pilih tugas</option>
                     @foreach($tasks as $task)
                     <option value="{{ $task->id }}">{{ $task->title }}</option>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-5">
                 <label class="form-label">Karyawan</label>
-                <select name="employee_ids[]" class="form-select" multiple required size="5">
+                <select name="employee_ids[]" class="form-select select2" multiple required>
                     @foreach($employees as $employee)
                     <option value="{{ $employee->id }}">{{ $employee->user->name }}</option>
                     @endforeach
@@ -65,8 +65,31 @@
 </div>
 @endsection
 
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+<style>
+.select2-container .select2-selection--multiple {
+    min-height: 42px;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+}
+.select2-container--focus .select2-selection--multiple {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+</style>
+@endpush
+
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+$(document).ready(function() {
+    $('.select2').select2({
+        placeholder: 'Pilih opsi',
+        allowClear: true
+    });
+});
+
 function confirmDelete(formId) {
     Swal.fire({
         title: 'Hapus Data?',
