@@ -587,15 +587,17 @@
                 @forelse ($employees as $employee)
                     <div class="col-md-6 col-lg-3">
                         <div class="service-card text-center p-4 employee-card-style">
-                            {{-- Use placeholder image if photo_url is empty or invalid --}}
-                            <img src="{{ $employee->photo_url ?: 'https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO' }}" alt="{{ $employee->name ?? 'Karyawan' }}" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-                            <h5 class="fw-bold mb-0">{{ $employee->name ?? 'Nama Karyawan' }}</h5>
-                            <p class="text-muted small">{{ $employee->specialization ?? 'Spesialisasi' }}</p>
+                            <div class="team-avatar mb-3" style="width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 700;">
+                                {{ strtoupper(substr($employee->user->name ?? 'K', 0, 1)) }}
+                            </div>
+                            <h5 class="fw-bold mb-0">{{ $employee->user->name ?? 'Nama Karyawan' }}</h5>
+                            <p class="text-muted small">
+                                @foreach($employee->specializations as $spec)
+                                    {{ $loop->first ? '' : ', ' }}{{ $spec->name }}
+                                @endforeach
+                            </p>
                             <div class="d-flex justify-content-center gap-3 mt-3">
-                                {{-- Ensure phone number is properly formatted for WhatsApp link --}}
-                                {{-- Example: +6289666648592 --}}
-                                <a href="https://wa.me/{{ $employee->phone_number ?? '6289666648592' }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                {{-- Link to employee info page (placeholder) --}}
+                                <a href="https://wa.me/{{ $employee->user->phone ?? '6289666648592' }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                 <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
                             </div>
                         </div>
