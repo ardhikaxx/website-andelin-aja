@@ -580,12 +580,13 @@
                 <span class="section-kicker">Tim Kami</span>
                 <h2 class="section-title">Tenaga Profesional ANDELIN AJA</h2>
             </div>
-            <div class="row g-4">
+            <div class="row g-4" id="employee-list">
                 @php
                 $employees = \App\Models\Employee::with('user', 'specializations')->get();
+                $limit = 8;
                 @endphp
-                @forelse ($employees as $employee)
-                    <div class="col-md-6 col-lg-3">
+                @forelse ($employees as $index => $employee)
+                    <div class="col-md-6 col-lg-3 employee-item" {{ $index >= $limit ? 'style=display:none' : '' }}>
                         <div class="service-card text-center p-4 employee-card-style">
                             <div class="team-avatar mb-3" style="width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 700;">
                                 {{ strtoupper(substr($employee->user->name ?? 'K', 0, 1)) }}
@@ -609,11 +610,14 @@
                     </div>
                 @endforelse
             </div>
-            {{-- Button to show all employees --}}
+            @php
+            $totalEmployees = $employees->count();
+            @endphp
+            @if($totalEmployees > $limit)
             <div class="text-center mt-5">
-                {{-- Update '#' with the actual URL to the full team page if it exists --}}
-                <a href="#" class="btn-custom btn-primary-gradient">Tampilkan Semua Tenaga Profesional</a>
+                <button onclick="showAllEmployees()" class="btn-custom btn-primary-gradient">Tampilkan Semua ({{ $totalEmployees }})</button>
             </div>
+            @endif
         </div>
     </section>
     <!-- End New Section -->
@@ -737,6 +741,15 @@
                 nav.style.boxShadow = 'none';
             }
         });
+    </script>
+    <script>
+        function showAllEmployees() {
+            document.querySelectorAll('.employee-item').forEach(function(item) {
+                item.style.display = '';
+            });
+            var btn = document.querySelector('button[onclick="showAllEmployees()"]');
+            if (btn) btn.style.display = 'none';
+        }
     </script>
 </body>
 </html>
