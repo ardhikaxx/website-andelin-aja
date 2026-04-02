@@ -45,7 +45,7 @@ class EmployeeController extends Controller
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $filename = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path('photos'), $filename);
+            $photo->move(storage_path('photos'), $filename);
             $photoPath = 'photos/' . $filename;
         }
 
@@ -108,17 +108,17 @@ class EmployeeController extends Controller
         $photoPath = $employee->photo;
         
         if ($request->boolean('remove_photo') && $photoPath) {
-            if (file_exists(public_path($photoPath))) {
-                unlink(public_path($photoPath));
+            if (file_exists(storage_path($photoPath))) {
+                unlink(storage_path($photoPath));
             }
             $photoPath = null;
         } elseif ($request->hasFile('photo')) {
-            if ($photoPath && file_exists(public_path($photoPath))) {
-                unlink(public_path($photoPath));
+            if ($photoPath && file_exists(storage_path($photoPath))) {
+                unlink(storage_path($photoPath));
             }
             $photo = $request->file('photo');
             $filename = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path('photos'), $filename);
+            $photo->move(storage_path('photos'), $filename);
             $photoPath = 'photos/' . $filename;
         }
 

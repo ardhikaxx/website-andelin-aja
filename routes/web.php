@@ -5,6 +5,18 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Employee;
 use App\Http\Controllers\EmployeeController; // Import EmployeeController
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
+
+// Route for serving photos from storage
+Route::get('/photos/{filename}', function ($filename) {
+    $path = storage_path('photos/' . $filename);
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    return response($file, 200)->header('Content-Type', $type);
+})->where('filename', '.*');
 
 // Route for the homepage that uses the EmployeeController to pass data
 // Changed from Route::view to Route::get and specified controller method

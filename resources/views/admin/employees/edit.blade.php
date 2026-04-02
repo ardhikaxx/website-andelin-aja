@@ -13,7 +13,7 @@
                 <label class="form-label">Foto Karyawan</label>
                 @if($employee->photo)
                 <div class="mb-2">
-                    <img src="{{ asset($employee->photo) }}" alt="Foto" class="rounded" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img src="{{ $employee->photo ? '/photos/' . basename($employee->photo) : '' }}" alt="Foto" class="rounded" style="width: 100px; height: 100px; object-fit: cover;">
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="remove_photo" value="1" id="remove_photo">

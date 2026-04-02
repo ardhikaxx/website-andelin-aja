@@ -595,7 +595,7 @@
                     <div class="text-center p-4" style="background: rgba(255,255,255,0.15); border-radius: 1.5rem; backdrop-filter: blur(10px);">
                         <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; border: 4px solid #FFD700; overflow: hidden;">
                             @if($emp->photo)
-                            <img src="{{ asset($emp->photo) }}" alt="{{ $emp->user->name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="{{ $emp->photo ? '/photos/' . basename($emp->photo) : '' }}" alt="{{ $emp->user->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                             @else
                             <span style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--gradient-primary); color: #fff;">
                             @if($index == 0)<i class="fas fa-trophy" style="color: #FFD700; font-size: 2rem;"></i>@elseif($index == 1)<i class="fas fa-medal" style="color: #C0C0C0; font-size: 2rem;"></i>@else<i class="fas fa-award" style="color: #CD7F32; font-size: 2rem;"></i>@endif
@@ -634,7 +634,7 @@
                     <div class="col-md-6 col-lg-3 employee-item" {{ $index >= $limit ? 'style=display:none' : '' }}>
                         <div class="service-card text-center p-4 employee-card-style">
                             @if($employee->photo)
-                            <img src="{{ asset($employee->photo) }}" alt="{{ $employee->user->name }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                            <img src="{{ $employee->photo ? '/photos/' . basename($employee->photo) : '' }}" alt="{{ $employee->user->name }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
                             @else
                             <div class="team-avatar mb-3" style="width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 700;">
                                 {{ strtoupper(substr($employee->user->name ?? 'K', 0, 1)) }}

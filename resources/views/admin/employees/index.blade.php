@@ -25,7 +25,7 @@
                 <tr>
                     <td>
                         @if($employee->photo)
-                        <img src="{{ asset($employee->photo) }}" alt="Foto" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                        <img src="{{ $employee->photo ? '/photos/' . basename($employee->photo) : '' }}" alt="Foto" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                         @else
                         <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
                             {{ strtoupper(substr($employee->user->name, 0, 1)) }}
