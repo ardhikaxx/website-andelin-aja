@@ -759,7 +759,9 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
-                    <a href="#" class="footer-brand">ANDELIN AJA</a>
+                    <a href="#">
+                        <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 120px; height: auto; object-fit: contain;">
+                    </a>
                     <p>Solusi jasa serba bisa terbaik di kotamu. Hemat waktu, tenaga, dan biaya dengan bantuan profesional kami.</p>
                     <div class="d-flex gap-3 fs-5 mt-4">
                         <a href="#" class="text-white opacity-50"><i class="fab fa-instagram"></i></a>
