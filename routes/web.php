@@ -3,9 +3,12 @@
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Employee;
+use App\Http\Controllers\EmployeeController; // Import EmployeeController
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('welcome');
+// Route for the homepage that uses the EmployeeController to pass data
+// Changed from Route::view to Route::get and specified controller method
+Route::get('/', [EmployeeController::class, 'showEmployees'])->name('welcome'); // Changed name back to 'welcome' to match original
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

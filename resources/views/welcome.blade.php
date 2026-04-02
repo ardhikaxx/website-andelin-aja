@@ -191,10 +191,14 @@
             letter-spacing: 0.1em;
             font-weight: 800;
             font-size: 0.875rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; /* Reduced margin */
             display: block;
         }
-        .section-title { font-size: 2.5rem; margin-bottom: 3rem; }
+        .section-title {
+            font-size: 2.5rem;
+            margin-top: 0.5rem; /* Added to reduce top spacing */
+            margin-bottom: 3rem;
+        }
 
         /* --- Service Cards --- */
         .service-card-wrapper { height: 100%; }
@@ -224,41 +228,6 @@
             transition: all 0.4s;
         }
         .service-card:hover::after { opacity: 0.05; clip-path: circle(100% at 100% 0%); }
-        
-        /* --- Team Card --- */
-        .team-card {
-            background: #fff;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            border: 1px solid var(--color-border);
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: #fff;
-            font-weight: 700;
-        }
-        .team-name {
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-        .team-position {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-        }
         
         .service-icon {
             width: 64px;
@@ -385,11 +354,41 @@
         .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.2s; }
         .footer-links a:hover { color: #fff; }
 
+        /* --- Custom Employee Card Styling --- */
+        .employee-card-style {
+            /* Add specific styling for employee cards if needed */
+            /* For now, reusing service-card styling is adequate */
+        }
+        .employee-card-style .rounded-circle {
+            border: 3px solid var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+        }
+        .employee-card-style h5 {
+            color: var(--color-primary); /* Name color */
+        }
+        .employee-card-style .text-muted.small {
+            font-style: italic;
+            color: var(--color-text-secondary) !important; /* Ensure secondary color */
+        }
+        .employee-card-style .gap-3 a {
+            color: var(--color-text-secondary);
+            transition: color 0.2s;
+        }
+        .employee-card-style .gap-3 a:hover {
+            color: var(--color-primary);
+        }
+        .employee-card-style .gap-3 a.text-primary {
+            color: var(--color-primary);
+        }
+
+
         @media (max-width: 991px) {
             .step-card:not(:last-child)::after { display: none; }
             .hero-section { text-align: center; }
             .hero-desc { margin-left: auto; margin-right: auto; }
             .nav-links { display: none; }
+            .stats-grid { grid-template-columns: 1fr; } /* Stack stats on small screens */
+            .employee-card-style { margin-bottom: 2rem; } /* Add margin between stacked cards */
         }
     </style>
 </head>
@@ -410,7 +409,7 @@
                     <a href="#layanan">Layanan</a>
                     <a href="#cara-kerja">Cara Kerja</a>
                     <a href="#kenapa">Keunggulan</a>
-                    <a href="#tenaga-profesional">Tim Kami</a> <!-- Added link to new section -->
+                    <a href="#tenaga-profesional">Tim Kami</a> <!-- Link to new section -->
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
@@ -542,46 +541,6 @@
         </div>
     </section>
 
-    <section class="section-padding bg-white" id="tim-kami">
-        <div class="container">
-            <div class="text-center mb-3">
-                <span class="section-kicker">Tim Kami</span>
-                <h2 class="section-title">Tim Profesional Kami</h2>
-                <p class="text-muted mx-auto mb-0" style="max-width: 600px;">Tim profesional Andelin Aja yang siap membantu kebutuhanmu kapan saja dengan layanan terbaik.</p>
-            </div>
-            <div class="row g-4 justify-content-center" id="team-grid">
-                @php
-                $employees = \App\Models\Employee::with('user', 'specializations')->get();
-                $displayed = 6;
-                @endphp
-                @forelse($employees as $index => $emp)
-                <div class="col-md-6 col-lg-4 col-xl-3 team-item" {{ $index >= $displayed ? 'style=display:none' : '' }}>
-                    <div class="team-card">
-                        <div class="team-avatar">
-                            {{ strtoupper(substr($emp->user->name, 0, 1)) }}
-                        </div>
-                        <h5 class="team-name">{{ $emp->user->name }}</h5>
-                        <p class="team-position">
-                            @foreach($emp->specializations as $spec)
-                            {{ $loop->first ? '' : ', ' }}{{ $spec->name }}
-                            @endforeach
-                        </p>
-                    </div>
-                </div>
-                @empty
-                <div class="col-12 text-center py-4">
-                    <p class="text-muted">Tim kami akan segera hadir. Stay tuned!</p>
-                </div>
-                @endforelse
-            </div>
-            @if($employees->count() > $displayed)
-            <div class="text-center mt-4">
-                <button class="btn btn-primary" onclick="showAllTeam()">Tampilkan Semua ({{ $employees->count() }})</button>
-            </div>
-            @endif
-        </div>
-    </section>
-
     <section class="section-padding" id="cara-kerja">
         <div class="container">
             <div class="text-center mb-5">
@@ -614,7 +573,7 @@
         </div>
     </section>
 
-    <!-- New Section: Tenaga Profesional Kami -->
+    <!-- Section: Tenaga Profesional Kami -->
     <section class="section-padding bg-white" id="tenaga-profesional">
         <div class="container">
             <div class="text-center mb-5">
@@ -622,54 +581,40 @@
                 <h2 class="section-title">Tenaga Profesional ANDELIN AJA</h2>
             </div>
             <div class="row g-4">
-                <!-- Employee Data Loop Placeholder -->
-                {{--
-                @foreach ($employees as $employee)
-                --}}
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card text-center p-4" style="border-radius: 2rem;">
-                        {{-- Placeholder Image: Replace with $employee->photo_url if available, or a default --}}
-                        <img src="{{ $employee->photo_url ?? 'https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO' }}" alt="{{ $employee->name ?? 'Karyawan' }}" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-                        <h5 class="fw-bold mb-0">{{ $employee->name ?? 'Nama Karyawan' }}</h5>
-                        <p class="text-muted small">{{ $employee->specialization ?? 'Spesialisasi' }}</p>
-                        <div class="d-flex justify-content-center gap-3 mt-3">
-                            {{-- Replace '#' with actual WhatsApp link if available --}}
-                            <a href="https://wa.me/+62{{ str_replace('-', '', substr($employee->phone_number ?? '6289666648592', -11)) }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                            {{-- Replace '#' with actual employee info link if needed --}}
-                            <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
-                        </div>
-                    </div>
-                </div>
-                {{--
-                @endforeach
-                --}}
-
-                {{-- Fallback if no employees are found or for static display if not using Blade loop --}}
-                @if (empty($employees) || count($employees) === 0)
-                    <div class="col-12 text-center text-muted">
-                        Belum ada data karyawan yang ditampilkan.
-                    </div>
-                @endif
-                {{-- Dummy Employee Cards (if static display is preferred or for testing structure) --}}
-                @for ($i = 0; $i < 4; $i++)
+                @php
+                $employees = \App\Models\Employee::with('user', 'specializations')->get();
+                @endphp
+                @forelse ($employees as $employee)
                     <div class="col-md-6 col-lg-3">
-                        <div class="service-card text-center p-4" style="border-radius: 2rem;">
-                            <img src="https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO" alt="Foto Karyawan" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-                            <h5 class="fw-bold mb-0">Nama Karyawan {{ $i+1 }}</h5>
-                            <p class="text-muted small">Spesialisasi {{ $i+1 }}</p>
+                        <div class="service-card text-center p-4 employee-card-style">
+                            {{-- Use placeholder image if photo_url is empty or invalid --}}
+                            <img src="{{ $employee->photo_url ?: 'https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO' }}" alt="{{ $employee->name ?? 'Karyawan' }}" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                            <h5 class="fw-bold mb-0">{{ $employee->name ?? 'Nama Karyawan' }}</h5>
+                            <p class="text-muted small">{{ $employee->specialization ?? 'Spesialisasi' }}</p>
                             <div class="d-flex justify-content-center gap-3 mt-3">
-                                <a href="https://wa.me/+6289666648592" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                {{-- Ensure phone number is properly formatted for WhatsApp link --}}
+                                {{-- Example: +6289666648592 --}}
+                                <a href="https://wa.me/{{ $employee->phone_number ?? '6289666648592' }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                {{-- Link to employee info page (placeholder) --}}
                                 <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
                             </div>
                         </div>
                     </div>
-                @endfor
-
+                @empty
+                    {{-- Fallback if no employees are found --}}
+                    <div class="col-12 text-center text-muted">
+                        Belum ada data karyawan yang ditampilkan.
+                    </div>
+                @endforelse
+            </div>
+            {{-- Button to show all employees --}}
+            <div class="text-center mt-5">
+                {{-- Update '#' with the actual URL to the full team page if it exists --}}
+                <a href="#" class="btn-custom btn-primary-gradient">Tampilkan Semua Tenaga Profesional</a>
             </div>
         </div>
     </section>
     <!-- End New Section -->
-
 
     <section class="section-padding" id="kenapa">
         <div class="container">
@@ -790,14 +735,6 @@
                 nav.style.boxShadow = 'none';
             }
         });
-    </script>
-    <script>
-        function showAllTeam() {
-            document.querySelectorAll('.team-item').forEach(function(item) {
-                item.style.display = '';
-            });
-            document.querySelector('.btn-primary[onclick="showAllTeam()"]').style.display = 'none';
-        }
     </script>
 </body>
 </html>
