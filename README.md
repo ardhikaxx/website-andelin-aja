@@ -204,6 +204,17 @@ Pilihan Greedy:
 karyawan_terpilih = argmin_karyawan(jam_kerja(karyawan))
 ```
 
+**Penjelasan Rumus:**
+
+- **F(i)** adalah fungsi penjadwalan yang menghitung total tugas untuk setiap tugas i
+- **Σ (task_i)** berarti menjumlahkan semua tugas yang perlu diselesaikan
+- **min(beban_karyawan)** bertujuan mencari karyawan dengan beban kerja terkecil agar распределения merata
+- **Kendala** adalah batas-batas yang harus dipenuhi:
+  - Karyawan harus tersedia di hari yang diminta
+  - Total jam kerja mingguan tidak boleh melebihi 40 jam
+  - Jumlah tugas harian tidak boleh lebih dari 3 tugas
+- **Pilihan Greedy** berarti selalu memilih karyawan dengan jam kerja paling sedikit saat itu juga
+
 ### Kode Semu (Pseudocode)
 
 ```

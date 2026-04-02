@@ -157,9 +157,7 @@
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--color-text-primary), var(--color-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--color-primary);
         }
         .hero-desc {
             font-size: 1.25rem;
@@ -421,14 +419,7 @@
                 <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
                     <div class="position-relative">
                         <div class="service-card p-4" style="border-radius: 3rem; transform: rotate(-3deg);">
-                            <img src="https://img.freepik.com/free-vector/delivery-service-illustrated_23-2148505081.jpg" class="img-fluid rounded-4 mb-4" alt="Delivery Service">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-primary text-white p-3 rounded-circle"><i class="fas fa-check"></i></div>
-                                <div>
-                                    <h5 class="mb-0">Tugas Selesai!</h5>
-                                    <p class="text-muted small mb-0">Kurir telah menyelesaikan pesanan Anda.</p>
-                                </div>
-                            </div>
+                            <img src="https://img.freepik.com/free-vector/delivery-service-illustrated_23-2148505081.jpg" class="img-fluid rounded-4" alt="Delivery Service">
                         </div>
                     </div>
                 </div>
