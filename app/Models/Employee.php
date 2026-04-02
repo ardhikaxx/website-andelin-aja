@@ -25,10 +25,15 @@ class Employee extends Model
         return $this->belongsToMany(Specialization::class, 'employee_specializations');
     }
 
-    public function tasks(): BelongsToMany
-    {
-        return $this->belongsToMany(Task::class, 'task_assignments')->withPivot('assigned_at');
-    }
+public function tasks(): BelongsToMany
+{
+    return $this->belongsToMany(Task::class, 'task_assignments')->withPivot('assigned_at');
+}
+
+public function taskAssignments(): HasMany
+{
+    return $this->hasMany(TaskAssignment::class);
+}
 
     public function schedules(): HasMany
     {
