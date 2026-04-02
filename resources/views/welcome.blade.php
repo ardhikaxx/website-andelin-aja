@@ -683,13 +683,14 @@
                         Banyak juga dari team Andelin Aja yang punya prestasi yang membanggakan & tidak kaleng-kaleng namanya. 
                         Bisa sangat membantu untuk masyarakat Jember, jadi bukan sekadar jasa serba bisa seperti yang lain yaaa...
                     </p>
-                    <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
-                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">2021</span>
-                        <div style="width: 2px; height: 50px; background: var(--color-border);"></div>
+<div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);">2021</span>
+                        <div style="width: 2px; height: 30px; background: var(--color-border);"></div>
                         <div class="text-start">
-                            <div style="font-weight: 700; font-size: 1.25rem;">Beroperasi Sejak</div>
-                            <div style="color: var(--color-text-secondary);">Tahun Pertama</div>
+                            <div style="font-weight: 600; font-size: 0.95rem;">Beroperasi Setiap</div>
+                            <div style="color: var(--color-text-secondary); font-size: 0.85rem;">Tahun Pertama</div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
