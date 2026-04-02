@@ -546,8 +546,8 @@
         <div class="container">
             <div class="text-center mb-5">
                 <span class="section-kicker">Tim Kami</span>
-                <h2 class="section-title">Kenalan Sama Superhero Kami</h2>
-                <p class="text-muted mx-auto" style="max-width: 600px;">Tim profesionalAndelin Aja yang siap membantu kebutuhanmu kapan saja dengan layanan terbaik.</p>
+                <h2 class="section-title">Tim Profesional Kami</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">Tim profesional Andelin Aja yang siap membantu kebutuhanmu kapan saja dengan layanan terbaik.</p>
             </div>
             <div class="row g-4 justify-content-center" id="team-grid">
                 @php
