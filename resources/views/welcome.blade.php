@@ -760,7 +760,7 @@
             <div class="row g-5">
                 <div class="col-lg-4">
                     <a href="#">
-                        <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 120px; height: auto; object-fit: contain;">
+                        <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 120px; height: auto; object-fit: contain; margin-bottom: 1rem;">
                     </a>
                     <p>Solusi jasa serba bisa terbaik di kotamu. Hemat waktu, tenaga, dan biaya dengan bantuan profesional kami.</p>
                     <div class="d-flex gap-3 fs-5 mt-4">
