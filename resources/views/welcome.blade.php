@@ -402,7 +402,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="#" class="brand-link">
-                    <span class="brand-mark"><i class="fas fa-bolt"></i></span>
+                    <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 40px; height: 40px; object-fit: contain;">
                     <span class="fs-4 fw-bold">ANDELIN AJA</span>
                 </a>
                 <div class="nav-links d-none d-lg-block">
