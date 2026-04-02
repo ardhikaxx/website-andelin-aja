@@ -551,7 +551,7 @@
             </div>
             <div class="row g-4 justify-content-center">
                 @php
-                $employees = \App\Models\Employee::with('user', 'specializations')->where('is_active', true)->limit(6)->get();
+                $employees = \App\Models\Employee::with('user', 'specializations')->limit(6)->get();
                 @endphp
                 @forelse($employees as $index => $emp)
                 <div class="col-md-6 col-lg-4 col-xl-3">
