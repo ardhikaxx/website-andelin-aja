@@ -549,12 +549,13 @@
                 <h2 class="section-title">Kenalan Sama Superhero Kami</h2>
                 <p class="text-muted mx-auto" style="max-width: 600px;">Tim profesionalAndelin Aja yang siap membantu kebutuhanmu kapan saja dengan layanan terbaik.</p>
             </div>
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center" id="team-grid">
                 @php
-                $employees = \App\Models\Employee::with('user', 'specializations')->limit(6)->get();
+                $employees = \App\Models\Employee::with('user', 'specializations')->get();
+                $displayed = 6;
                 @endphp
                 @forelse($employees as $index => $emp)
-                <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="col-md-6 col-lg-4 col-xl-3 team-item" {{ $index >= $displayed ? 'style=display:none' : '' }}>
                     <div class="team-card">
                         <div class="team-avatar">
                             {{ strtoupper(substr($emp->user->name, 0, 1)) }}
@@ -573,6 +574,11 @@
                 </div>
                 @endforelse
             </div>
+            @if($employees->count() > $displayed)
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" onclick="showAllTeam()">Tampilkan Semua ({{ $employees->count() }})</button>
+            </div>
+            @endif
         </div>
     </section>
 
@@ -784,6 +790,14 @@
                 nav.style.boxShadow = 'none';
             }
         });
+    </script>
+    <script>
+        function showAllTeam() {
+            document.querySelectorAll('.team-item').forEach(function(item) {
+                item.style.display = '';
+            });
+            document.querySelector('.btn-primary[onclick="showAllTeam()"]').style.display = 'none';
+        }
     </script>
 </body>
 </html>
