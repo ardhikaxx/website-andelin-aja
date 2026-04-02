@@ -193,85 +193,83 @@ Aplikasi ini menggunakan **Greedy Algorithm** untuk penjadwalan otomatis:
 
 ```
 F(i) = Σ (task_i) untuk setiap tugas i
-     = min(loads[karyawan]) untuk setiap karyawan yang eligible
+     = min(beban_karyawan) untuk setiap karyawan yang eligible
 
-Constraint:
-- available(karyawan, hari) = true
-- load_hours(karyawan) + task_hours ≤ max_hours_per_week
-- load_tasks(karyawan, hari) + 1 ≤ max_tasks_per_day
+Kendala (Constraint):
+- tersedia(karyawan, hari) = benar
+- jam_kerja(karyawan) + estimasi_jam_tugas ≤ max_jam_per_minggu
+- jumlah_tugas(karyawan, hari) + 1 ≤ max_tugas_per_hari
 
-Greedy Choice:
-karyawan_terpilih = argmin_karyawan(load_hours(karyawan))
+Pilihan Greedy:
+karyawan_terpilih = argmin_karyawan(jam_kerja(karyawan))
 ```
 
-### Pseudocode
+### Kode Semu (Pseudocode)
 
 ```
-FUNCTION generateSchedule(tasks, employees, date):
-    sorted_tasks = sortByDeadline(tasks)
-    schedule = []
+FUNGSI buatJadwalan(tugas, karyawan, tanggal):
+    tugas_terurut = urutBerdasarkanDeadline(tugas)
+    jadwalan = []
 
-    FOR each task IN sorted_tasks:
-        eligible_employees = []
+    UNTUKSETIAP tugas IN tugas_terurut:
+        karyawan_layak = []
         
-        FOR each emp IN employees:
-            IF isAvailable(emp, date) AND
-               emp.weekly_hours < MAX_HOURS AND
-               emp.daily_tasks < MAX_TASKS:
-                eligible_employees.add(emp)
+        UNTUKSETIAP emp IN karyawan:
+            JIKA tersedia(emp, tanggal) DAN
+               emp.jam_mingguan < MAX_JAM DAN
+               emp.tugas_harian < MAX_TUGAS:
+                karyawan_layak.tambahkan(emp)
         
-        IF eligible_employees.length > 0:
-            selected_employee = minLoad(eligible_employees)
-            schedule.add(task, selected_employee)
-            updateLoad(selected_employee)
+        JIKA karyawan_layak.panjang > 0:
+            karyawan_pilih = bebanTerendah(karyawan_layak)
+            jadwalan.tambahkan(tugas, karyawan_pilih)
+            perbaruiBeban(karyawan_pilih)
     
-    RETURN schedule
+    KEMBALIKAN jadwalan
 ```
 
 ### Contoh Perhitungan
 
-**Input:**
-| Tugas | Deadline | Estimasi Jam |
-|-------|----------|--------------|
-| T1    | Hari 1   | 4 jam        |
-| T2    | Hari 1   | 3 jam        |
-| T3    | Hari 2   | 5 jam        |
+**Data Masuk:**
+| Tugas | Tenggat | Estimasi Jam |
+|-------|--------|-------------|
+| T1    | Hari 1 | 4 jam       |
+| T2    | Hari 1 | 3 jam       |
+| T3    | Hari 2 | 5 jam       |
 
 **Karyawan:**
 | Karyawan | Jam Terpakai/Minggu | Tugas/Hari |
-|----------|---------------------|------------|
-| K1       | 32 jam              | 2 tugas    |
-| K2       | 28 jam              | 1 tugas    |
-| K3       | 36 jam              | 2 tugas    |
+|----------|------------------|------------|
+| K1       | 32 jam          | 2 tugas    |
+| K2       | 28 jam          | 1 tugas    |
+| K3       | 36 jam          | 2 tugas    |
 
 **Langkah 1 - Tugas T1 (4 jam, Hari 1):**
-- K1: eligible (32 + 4 = 36 ≤ 40) → beban = 32 jam
-- K2: eligible (28 + 4 = 32 ≤ 40) → beban = 28 jam ← **TERPILIH** (terkecil)
-- K3: eligible (36 + 4 = 40 ≤ 40) → beban = 36 jam
+- K1: layak (32 + 4 = 36 ≤ 40) → beban = 32 jam
+- K2: layak (28 + 4 = 32 ≤ 40) → beban = 28 jam ← **TERPILIH** (terkecil)
+- K3: layak (36 + 4 = 40 ≤ 40) → beban = 36 jam
 
 **Langkah 2 - Tugas T2 (3 jam, Hari 1):**
-- K1: eligible (32 + 3 = 35 ≤ 40) → beban = 35 jam
-- K2: eligible (28 + 3 = 31 ≤ 40) → beban = 31 jam ← **TERPILIH**
-- K3: eligible (36 + 3 = 39 ≤ 40) → beban = 39 jam
+- K1: layak (32 + 3 = 35 ≤ 40) → beban = 35 jam
+- K2: layak (28 + 3 = 31 ≤ 40) → beban = 31 jam ← **TERPILIH**
+- K3: layak (36 + 3 = 39 ≤ 40) → beban = 39 jam
 
 **Langkah 3 - Tugas T3 (5 jam, Hari 2):**
-- K1: eligible (35 + 5 = 40 ≤ 40) → beban = 40 jam
-- K3: eligible (36 + 5 = 41 > 40) → TIDAK ELIGIBEL ← K2 sudah full (31 jam)
-- K2: eligible (31 + 5 = 36 ≤ 40) → beban = 36 jam ← **TERPILIH**
+- K1: layak (35 + 5 = 40 ≤ 40) → beban = 40 jam
+- K3: layak (36 + 5 = 41 > 40) → TIDAK LAYAK
+- K2: layak (31 + 5 = 36 ≤ 40) → beban = 36 jam ← **TERPILIH**
 
 **Hasil Penjadwalan:**
 | Tugas | Karyawan | Jam |
 |--------|----------|-----|
-| T1     | K2       | 4   |
-| T2     | K2       | 3   |
-| T3     | K2       | 5   |
+| T1     | K2       | 4  |
+| T2     | K2       | 3  |
+| T3     | K2       | 5  |
 
 **Total Jam K2:** 12 jam (28 → 40 jam/minggu)
 
 ### Konfigurasi
 
-| Parameter | Default | Deskripsi |
-|-----------|---------|-----------|
 | max_hours_per_week | 40 | Maksimal jam kerja per minggu |
 | max_tasks_per_day | 3 | Maksimal tugas per hari |
 
