@@ -5,9 +5,14 @@
 
 @section('content')
 <div class="card-andelin p-4">
-    <form action="{{ route('admin.employees.store') }}" method="POST">
+    <form action="{{ route('admin.employees.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Foto Karyawan</label>
+                <input type="file" name="photo" class="form-control" accept="image/*">
+                <small class="text-muted">Format: jpg, png, jpeg, gif, webp. Max 2MB</small>
+            </div>
             <div class="col-md-6">
                 <label class="form-label">Nama</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>

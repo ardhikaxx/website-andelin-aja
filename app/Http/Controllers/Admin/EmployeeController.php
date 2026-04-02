@@ -36,11 +36,20 @@ class EmployeeController extends Controller
             'password' => 'required|min:8|confirmed',
             'phone' => 'nullable|string|max:20',
             'position' => 'required|in:pengawas_1,pengawas_2,senior_team,junior_team',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'specializations' => 'nullable|array',
             'specializations.*' => 'exists:specializations,id',
         ]);
 
-        DB::transaction(function () use ($validated) {
+        $photoPath = null;
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $filename = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('photos'), $filename);
+            $photoPath = 'photos/' . $filename;
+        }
+
+        DB::transaction(function () use ($validated, $photoPath) {
             $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -52,6 +61,7 @@ class EmployeeController extends Controller
             $employee = Employee::create([
                 'user_id' => $user->id,
                 'position' => $validated['position'],
+                'photo' => $photoPath,
             ]);
 
             $employee->specializations()->sync($validated['specializations'] ?? []);
@@ -89,11 +99,30 @@ class EmployeeController extends Controller
             'password' => 'nullable|min:8|confirmed',
             'phone' => 'nullable|string|max:20',
             'position' => 'required|in:pengawas_1,pengawas_2,senior_team,junior_team',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'remove_photo' => 'nullable|boolean',
             'specializations' => 'nullable|array',
             'specializations.*' => 'exists:specializations,id',
         ]);
 
-        DB::transaction(function () use ($validated, $employee) {
+        $photoPath = $employee->photo;
+        
+        if ($request->boolean('remove_photo') && $photoPath) {
+            if (file_exists(public_path($photoPath))) {
+                unlink(public_path($photoPath));
+            }
+            $photoPath = null;
+        } elseif ($request->hasFile('photo')) {
+            if ($photoPath && file_exists(public_path($photoPath))) {
+                unlink(public_path($photoPath));
+            }
+            $photo = $request->file('photo');
+            $filename = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('photos'), $filename);
+            $photoPath = 'photos/' . $filename;
+        }
+
+        DB::transaction(function () use ($validated, $employee, $photoPath) {
             $employee->user->update([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -101,7 +130,10 @@ class EmployeeController extends Controller
                 'password' => ($validated['password'] ?? null) ?: $employee->user->password,
             ]);
 
-            $employee->update(['position' => $validated['position']]);
+            $employee->update([
+                'position' => $validated['position'],
+                'photo' => $photoPath,
+            ]);
             $employee->specializations()->sync($validated['specializations'] ?? []);
 
             AdminLog::create([

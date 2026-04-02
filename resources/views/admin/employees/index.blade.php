@@ -13,6 +13,7 @@
         <table class="table table-andelin align-middle mb-0">
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Nama</th>
                     <th>Posisi</th>
                     <th>Spesialisasi</th>
@@ -22,6 +23,15 @@
             <tbody>
                 @forelse($employees as $employee)
                 <tr>
+                    <td>
+                        @if($employee->photo)
+                        <img src="{{ asset($employee->photo) }}" alt="Foto" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                        @else
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+                            {{ strtoupper(substr($employee->user->name, 0, 1)) }}
+                        </div>
+                        @endif
+                    </td>
                     <td>
                         <div class="fw-semibold">{{ $employee->user->name }}</div>
                         <div class="small text-muted">{{ $employee->user->email }}</div>
