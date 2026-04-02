@@ -573,6 +573,52 @@
         </div>
     </section>
 
+    <!-- Section: Apresiasi Karyawan Terbaik -->
+    @php
+    $topEmployees = \App\Models\Employee::with('user', 'specializations')
+        ->withCount('taskAssignments')
+        ->orderBy('task_assignments_count', 'desc')
+        ->limit(3)
+        ->get();
+    @endphp
+    @if($topEmployees->count() > 0)
+    <section class="section-padding" id="apresiasi" style="background: linear-gradient(135deg, #2563EB, #7C3AED);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-kicker" style="color: #fff;">Apresiasi</span>
+                <h2 class="section-title" style="color: #fff;">Karyawan Terbaik Bulan Ini</h2>
+                <p class="mx-auto" style="max-width: 600px; color: rgba(255,255,255,0.8);">Terima kasih kepada tim terbaik kami yang telah bekerja maksimal untuk melayani Anda.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                @foreach($topEmployees as $index => $emp)
+                <div class="col-md-4">
+                    <div class="text-center p-4" style="background: rgba(255,255,255,0.15); border-radius: 1.5rem; backdrop-filter: blur(10px);">
+                        <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); border: 4px solid #FFD700;">
+                            @if($index == 0)
+                            <i class="fas fa-trophy" style="color: #FFD700; font-size: 2rem;"></i>
+                            @elseif($index == 1)
+                            <i class="fas fa-medal" style="color: #C0C0C0; font-size: 2rem;"></i>
+                            @else
+                            <i class="fas fa-award" style="color: #CD7F32; font-size: 2rem;"></i>
+                            @endif
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: #fff;">{{ $emp->user->name }}</h5>
+                        <p class="mb-2" style="color: rgba(255,255,255,0.8); font-size: 0.875rem;">
+                            @foreach($emp->specializations as $spec)
+                                {{ $loop->first ? '' : ', ' }}{{ $spec->name }}
+                            @endforeach
+                        </p>
+                        <span class="badge" style="background: #FFD700; color: #000; padding: 0.25rem 0.75rem; border-radius: 1rem; font-weight: 700;">
+                            {{ $emp->task_assignments_count }} tugas selesai
+                        </span>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
     <!-- Section: Tenaga Profesional Kami -->
     <section class="section-padding bg-white" id="tenaga-profesional">
         <div class="container">
