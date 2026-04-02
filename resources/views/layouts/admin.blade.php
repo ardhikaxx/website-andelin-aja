@@ -716,9 +716,8 @@
             <div class="sidebar-brand">
                 <button type="button" class="btn-close btn-close-white sidebar-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#adminSidebar" aria-label="Close"></button>
                 <div class="brand-row">
-                    <span class="brand-mark"><i class="fas fa-calendar-check"></i></span>
+                    <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 50px; height: 50px; object-fit: contain;">
                     <div>
-                        <p class="brand-title" id="adminSidebarLabel">ANDELIN AJA</p>
                         <p class="brand-subtitle">Panel admin penjadwalan cerdas</p>
                     </div>
                 </div>
