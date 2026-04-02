@@ -13,7 +13,7 @@ class Employee extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'position'];
+    protected $fillable = ['user_id', 'position', 'photo'];
 
     public function user(): BelongsTo
     {
