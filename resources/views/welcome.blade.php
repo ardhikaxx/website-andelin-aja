@@ -667,6 +667,36 @@
     </section>
     <!-- End New Section -->
 
+    <!-- Section: Tentang Andelin Aja -->
+    <section class="section-padding" id="tentang" style="background: var(--color-bg-main);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <span class="section-kicker">Tentang Kami</span>
+                    <h2 class="section-title mb-4">Andelin Aja</h2>
+                    <p class="mb-4" style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-secondary);">
+                        Andelin adalah sekumpulan anak muda yang memiliki semangat belajar hal baru, berkembang bersama. 
+                        Selalu upgrade kemampuan, Giat bekerja dan dituntut menjadi pribadi yang komunikatif, responsif, 
+                        dan bisa diandalkan untuk membawa solusi.
+                    </p>
+                    <p class="mb-4" style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-secondary);">
+                        Banyak juga dari team Andelin Aja yang punya prestasi yang membanggakan & tidak kaleng-kaleng namanya. 
+                        Bisa sangat membantu untuk masyarakat Jember, jadi bukan sekadar jasa serba bisa seperti yang lain yaaa...
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">2021</span>
+                        <div style="width: 2px; height: 50px; background: var(--color-border);"></div>
+                        <div class="text-start">
+                            <div style="font-weight: 700; font-size: 1.25rem;">Beroperasi Seit</div>
+                            <div style="color: var(--color-text-secondary);">Tahun Pertama</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Section -->
+
     <section class="section-padding" id="kenapa">
         <div class="container">
             <div class="row align-items-center">
