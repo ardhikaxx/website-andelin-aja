@@ -157,7 +157,7 @@
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: var(--color-primary);
+            color: var(--color-primary); /* Changed from gradient to primary color */
         }
         .hero-desc {
             font-size: 1.25rem;
@@ -224,6 +224,41 @@
             transition: all 0.4s;
         }
         .service-card:hover::after { opacity: 0.05; clip-path: circle(100% at 100% 0%); }
+        
+        /* --- Team Card --- */
+        .team-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        .team-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .team-position {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
         
         .service-icon {
             width: 64px;
@@ -375,6 +410,7 @@
                     <a href="#layanan">Layanan</a>
                     <a href="#cara-kerja">Cara Kerja</a>
                     <a href="#kenapa">Keunggulan</a>
+                    <a href="#tenaga-profesional">Tim Kami</a> <!-- Added link to new section -->
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
@@ -506,6 +542,40 @@
         </div>
     </section>
 
+    <section class="section-padding bg-white" id="tim-kami">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-kicker">Tim Kami</span>
+                <h2 class="section-title">Kenalan Sama Superhero Kami</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">Tim profesionalAndelin Aja yang siap membantu kebutuhanmu kapan saja dengan layanan terbaik.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                @php
+                $employees = \App\Models\Employee::with('user', 'specializations')->where('is_active', true)->limit(6)->get();
+                @endphp
+                @forelse($employees as $index => $emp)
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            {{ strtoupper(substr($emp->user->name, 0, 1)) }}
+                        </div>
+                        <h5 class="team-name">{{ $emp->user->name }}</h5>
+                        <p class="team-position">
+                            @foreach($emp->specializations as $spec)
+                            {{ $loop->first ? '' : ', ' }}{{ $spec->name }}
+                            @endforeach
+                        </p>
+                    </div>
+                </div>
+                @empty
+                <div class="col-12 text-center py-4">
+                    <p class="text-muted">Tim kami akan segera hadir. Stay tuned!</p>
+                </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
     <section class="section-padding" id="cara-kerja">
         <div class="container">
             <div class="text-center mb-5">
@@ -538,7 +608,64 @@
         </div>
     </section>
 
-    <section class="section-padding bg-white" id="kenapa">
+    <!-- New Section: Tenaga Profesional Kami -->
+    <section class="section-padding bg-white" id="tenaga-profesional">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-kicker">Tim Kami</span>
+                <h2 class="section-title">Tenaga Profesional ANDELIN AJA</h2>
+            </div>
+            <div class="row g-4">
+                <!-- Employee Data Loop Placeholder -->
+                {{--
+                @foreach ($employees as $employee)
+                --}}
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card text-center p-4" style="border-radius: 2rem;">
+                        {{-- Placeholder Image: Replace with $employee->photo_url if available, or a default --}}
+                        <img src="{{ $employee->photo_url ?? 'https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO' }}" alt="{{ $employee->name ?? 'Karyawan' }}" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                        <h5 class="fw-bold mb-0">{{ $employee->name ?? 'Nama Karyawan' }}</h5>
+                        <p class="text-muted small">{{ $employee->specialization ?? 'Spesialisasi' }}</p>
+                        <div class="d-flex justify-content-center gap-3 mt-3">
+                            {{-- Replace '#' with actual WhatsApp link if available --}}
+                            <a href="https://wa.me/+62{{ str_replace('-', '', substr($employee->phone_number ?? '6289666648592', -11)) }}" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            {{-- Replace '#' with actual employee info link if needed --}}
+                            <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {{--
+                @endforeach
+                --}}
+
+                {{-- Fallback if no employees are found or for static display if not using Blade loop --}}
+                @if (empty($employees) || count($employees) === 0)
+                    <div class="col-12 text-center text-muted">
+                        Belum ada data karyawan yang ditampilkan.
+                    </div>
+                @endif
+                {{-- Dummy Employee Cards (if static display is preferred or for testing structure) --}}
+                @for ($i = 0; $i < 4; $i++)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card text-center p-4" style="border-radius: 2rem;">
+                            <img src="https://via.placeholder.com/150/CCCCCC/FFFFFF?text=FOTO" alt="Foto Karyawan" class="rounded-circle img-fluid mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                            <h5 class="fw-bold mb-0">Nama Karyawan {{ $i+1 }}</h5>
+                            <p class="text-muted small">Spesialisasi {{ $i+1 }}</p>
+                            <div class="d-flex justify-content-center gap-3 mt-3">
+                                <a href="https://wa.me/+6289666648592" class="text-primary" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#" class="text-secondary"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endfor
+
+            </div>
+        </div>
+    </section>
+    <!-- End New Section -->
+
+
+    <section class="section-padding" id="kenapa">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
@@ -615,6 +742,7 @@
                         <li><a href="#layanan">Layanan</a></li>
                         <li><a href="#cara-kerja">Cara Kerja</a></li>
                         <li><a href="#kenapa">Keunggulan</a></li>
+                        <li><a href="#tenaga-profesional">Tim Kami</a></li> <!-- Added link to new section -->
                     </ul>
                 </div>
                 <div class="col-md-4 col-lg-2">
