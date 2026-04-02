@@ -15,9 +15,10 @@ class AssignmentController extends Controller
     public function index(): View
     {
         $tasks = Task::with(['employees.user'])->latest()->paginate(10);
-        $employees = Employee::with('user')->orderBy('id')->get();
+        $employees = Employee::with(['user', 'specializations'])->orderBy('user_id')->get();
+        $allTasks = Task::orderBy('title')->get();
 
-        return view('admin.assignments.index', compact('tasks', 'employees'));
+        return view('admin.assignments.index', compact('tasks', 'employees', 'allTasks'));
     }
 
     public function create(): RedirectResponse
