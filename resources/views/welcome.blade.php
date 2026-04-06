@@ -453,8 +453,8 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
                     <div class="position-relative">
-                        <div class="service-card p-4" style="border-radius: 3rem; transform: rotate(-3deg);">
-                            <img src="{{ asset('assets/logo-andelin.png') }}" class="img-fluid rounded-4" alt="Andelin Aja" style="object-fit: contain; height: 300px; width: 100%;">
+                        <div class="service-card p-4" style="border-radius: 3rem; transform: rotate(-3deg); width: 350px; height: 350px;">
+                            <img src="{{ asset('assets/logo-andelin.png') }}" class="img-fluid rounded-4" alt="Andelin Aja" style="object-fit: contain; height: 100%; width: 100%;">
                         </div>
                     </div>
                 </div>
