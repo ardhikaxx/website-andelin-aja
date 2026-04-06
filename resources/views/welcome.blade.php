@@ -902,7 +902,6 @@
                     <p>Solusi jasa serba bisa terbaik di kotamu. Hemat waktu, tenaga, dan biaya dengan bantuan profesional kami.</p>
                     <div class="d-flex gap-3 fs-5 mt-4">
                         <a href="https://www.instagram.com/andelin_aja.2021/" target="_blank" class="text-white opacity-50"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white opacity-50"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.tiktok.com/@inimiminceweknamanyafifi" target="_blank" class="text-white opacity-50"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
