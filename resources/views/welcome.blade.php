@@ -621,7 +621,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <span class="section-kicker">Proses Mudah</span>
-                <h2 class="section-title">Gimana Cara Pakainya?</h2>
+                <h2 class="section-title">Gimana cara ordernya?</h2>
             </div>
             <div class="row g-5 justify-content-center">
                 <div class="col-md-2">
