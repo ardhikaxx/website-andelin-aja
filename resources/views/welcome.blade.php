@@ -219,7 +219,13 @@
         .mobile-menu .btn-primary-gradient {
             color: #fff !important;
         }
+        .mobile-menu .btn-primary-gradient:hover {
+            color: #fff !important;
+        }
         .mobile-menu .btn-white {
+            color: var(--color-primary);
+        }
+        .mobile-menu .btn-white:hover {
             color: var(--color-primary);
         }
 
