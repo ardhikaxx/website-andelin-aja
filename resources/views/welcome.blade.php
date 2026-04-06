@@ -454,6 +454,7 @@
                 <div class="nav-links d-none d-lg-block">
                     <a href="#layanan">Layanan</a>
                     <a href="#cara-kerja">Cara Kerja</a>
+                    <a href="#harga">Harga</a>
                     <a href="#kenapa">Keunggulan</a>
                     <a href="#tenaga-profesional">Tim Kami</a> <!-- Link to new section -->
                 </div>
@@ -620,6 +621,80 @@
                         <div class="step-number">4</div>
                         <h5 class="fw-bold">Pembayaran</h5>
                         <p class="text-muted">Bayar DP dulu atau langsung full sebelum pekerjaan dimulai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Price List -->
+    <section class="section-padding" id="harga" style="background: #fff;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-kicker">Price List</span>
+                <h2 class="section-title">Patokan Harga Jasa Andelin Aja</h2>
+                <p class="text-muted mx-auto" style="max-width: 700px;">
+                    <strong>#HargaBisaNego</strong> & <strong>#GakMatok</strong><br>
+                    Perkiraan harga dihitung dari beberapa hal, yaitu kalau owner yang kerja maka harga lebih murah, sedangkan kalau dengan tim ada pembagian hasil dan biasanya untuk pekerjaan yang lebih banyak akan memakai tim. Harga juga sesuai dengan banyaknya pekerjaan yang dikerjakan, serta melalui diskusi antara tim, owner, dan customer untuk menentukan harga yang penting sama-sama enak.
+                </p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="price-info-card p-4 p-lg-5" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-radius: 2rem; border: 1px solid var(--color-border);">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="price-icon" style="width: 50px; height: 50px; min-width: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Owner Kerja Langsung</h5>
+                                        <p class="text-muted mb-0 small">Harga lebih murah karena tanpa pembagian hasil</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="price-icon" style="width: 50px; height: 50px; min-width: 50px; background: var(--color-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Pakai Tim</h5>
+                                        <p class="text-muted mb-0 small">Untuk pekerjaan banyak, ada pembagian hasil</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="price-icon" style="width: 50px; height: 50px; min-width: 50px; background: var(--color-success); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                                        <i class="fas fa-list-ol"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Banyak Pekerjaan</h5>
+                                        <p class="text-muted mb-0 small">Semakin banyak job, semakin fleksibel harga</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="price-icon" style="width: 50px; height: 50px; min-width: 50px; background: var(--color-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Discuss Bareng</h5>
+                                        <p class="text-muted mb-0 small">Harga diputuskan bersama sama-sama enak</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-top">
+                            <div class="alert alert-warning d-flex align-items-center mb-0" role="alert">
+                                <i class="fas fa-clock me-2"></i>
+                                <div>
+                                    <strong>Waktu Pesan Ideal:</strong> H-2 atau H-1 sebelum order agar lebih leluasa mengkoordinir tim yang lebih siap. Selama owner free biasanya owner yang mengerjakan sendiri. Jika owner sibuk, maka akan menggunakan tim.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -830,6 +905,7 @@
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#layanan">Layanan</a></li>
                         <li><a href="#cara-kerja">Cara Kerja</a></li>
+                        <li><a href="#harga">Harga</a></li>
                         <li><a href="#kenapa">Keunggulan</a></li>
                         <li><a href="#tenaga-profesional">Tim Kami</a></li> <!-- Added link to new section -->
                     </ul>
@@ -874,7 +950,7 @@
             }
 
             // Active nav link based on scroll position
-            const sections = ['layanan', 'cara-kerja', 'kenapa', 'tenaga-profesional'];
+            const sections = ['layanan', 'cara-kerja', 'harga', 'kenapa', 'tenaga-profesional'];
             const navLinks = document.querySelectorAll('.nav-links a');
             
             let current = '';
