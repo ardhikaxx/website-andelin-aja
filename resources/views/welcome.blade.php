@@ -595,30 +595,37 @@
                 <h2 class="section-title">Gimana Cara Pakainya?</h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h5 class="fw-bold">Pesan Jasa</h5>
                         <p class="text-muted">Hubungi kami via WhatsApp dan jelaskan apa yang perlu dikerjakan.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="step-card">
                         <div class="step-number">2</div>
+                        <h5 class="fw-bold">Cari Tim</h5>
+                        <p class="text-muted">Kami mencari tim yang siap dan available untuk mengerjakan tugas Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
                         <h5 class="fw-bold">Konfirmasi</h5>
                         <p class="text-muted">Kami akan merespon dan memberikan konfirmasi mengenai ketersediaan layanan.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="step-card">
-                        <div class="step-number">3</div>
+                        <div class="step-number">4</div>
                         <h5 class="fw-bold">Kesepakatan Harga</h5>
                         <p class="text-muted">Discuss harga dan persetujuan kerja sebelum pekerjaan dimulai.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="step-card">
-                        <div class="step-number">4</div>
+                        <div class="step-number">5</div>
                         <h5 class="fw-bold">Pembayaran</h5>
                         <p class="text-muted">Bayar DP dulu atau langsung full sebelum pekerjaan dimulai.</p>
                     </div>
