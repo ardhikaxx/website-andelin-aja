@@ -844,7 +844,7 @@
                         <div class="trust-icon-wrapper">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h5 class="fw-bold">Super Cepat</h5>
+                        <h5 class="fw-bold">Fast Respon</h5>
                         <p class="mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
                     </div>
                 </div>
@@ -853,7 +853,7 @@
                         <div class="trust-icon-wrapper" style="background: rgba(124, 58, 237, 0.05); color: var(--color-secondary);">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h5 class="fw-bold">100% Terpercaya</h5>
+                        <h5 class="fw-bold">Dipercaya Dari 2021</h5>
                         <p class="mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
                     </div>
                 </div>
@@ -862,7 +862,7 @@
                         <div class="trust-icon-wrapper" style="background: rgba(16, 185, 129, 0.05); color: var(--color-success);">
                             <i class="fas fa-tags"></i>
                         </div>
-                        <h5 class="fw-bold">Harga Transparan</h5>
+                        <h5 class="fw-bold">Harga Bisa Nego</h5>
                         <p class="mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
                     </div>
                 </div>
