@@ -221,12 +221,18 @@
         }
         .mobile-menu .btn-primary-gradient:hover {
             color: #fff !important;
+            background: var(--gradient-primary) !important;
+            transform: none;
+            box-shadow: none;
         }
         .mobile-menu .btn-white {
             color: var(--color-primary);
         }
         .mobile-menu .btn-white:hover {
             color: var(--color-primary);
+            background: #fff !important;
+            transform: none;
+            box-shadow: none;
         }
 
         @media (max-width: 991px) {
