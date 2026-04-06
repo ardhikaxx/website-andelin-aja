@@ -922,7 +922,7 @@
                             <div class="col-md-7">
                                 <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item" data-bs-interval="3000">
+                                        <div class="carousel-item active" data-bs-interval="3000">
                                             <img src="{{ asset('assets/grand-opening1.jpg') }}" class="d-block w-100" alt="Grand Opening 1">
                                         </div>
                                         <div class="carousel-item" data-bs-interval="3000">
@@ -974,7 +974,7 @@
                             <div class="col-md-7">
                                 <div id="blogCarousel2" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item" data-bs-interval="3000">
+                                        <div class="carousel-item active" data-bs-interval="3000">
                                             <img src="{{ asset('assets/bhakti-sosial1.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 1">
                                         </div>
                                         <div class="carousel-item" data-bs-interval="3000">
