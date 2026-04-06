@@ -912,7 +912,7 @@
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-8">
                     <span class="section-kicker">Blog</span>
-                    <h2 class="section-title mb-0">Berita & Kegiatan Terbaru</h2>
+                    <h2 class="section-title mb-0">Kegiatan Andelin Aja</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -922,7 +922,7 @@
                             <div class="col-md-7">
                                 <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active" data-bs-interval="3000">
+                                        <div class="carousel-item" data-bs-interval="3000">
                                             <img src="{{ asset('assets/grand-opening1.jpg') }}" class="d-block w-100" alt="Grand Opening 1">
                                         </div>
                                         <div class="carousel-item" data-bs-interval="3000">
@@ -930,6 +930,21 @@
                                         </div>
                                         <div class="carousel-item" data-bs-interval="3000">
                                             <img src="{{ asset('assets/grand-opening3.jpg') }}" class="d-block w-100" alt="Grand Opening 3">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial1.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 1">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial2.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 2">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial3.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 3">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial4.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 4">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial5.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 5">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
@@ -950,6 +965,49 @@
                                     </div>
                                     <h3 class="fw-bold mb-4" style="color: var(--color-primary);">Grand Opening Andelin Aja</h3>
                                     <p class="text-muted fs-5 mb-0" style="line-height: 1.6;">Di alun2 dimeriahkan oleh temen2 dancer dari Pshyche</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-featured-card mt-4">
+                        <div class="row g-0">
+                            <div class="col-md-7">
+                                <div id="blogCarousel2" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial1.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 1">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial2.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 2">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial3.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 3">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial4.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 4">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/bhakti-sosial5.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 5">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel2" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#blogCarousel2" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-center">
+                                <div class="blog-content p-4 p-lg-5">
+                                    <div class="blog-meta mb-3">
+                                        <span class="badge bg-success-soft text-success px-3 py-2 rounded-pill">Bhakti Sosial</span>
+                                        <span class="text-muted ms-3 fs-small"><i class="far fa-calendar-alt me-2"></i>2 Maret 2026</span>
+                                    </div>
+                                    <h3 class="fw-bold mb-4" style="color: var(--color-success);">Bhakti Sosial Andelin Aja</h3>
+                                    <p class="text-muted fs-5 mb-0" style="line-height: 1.6;">Bagi-bagi takjil di jalan raya dan pakaian layak pakai di yayasan anak yatim daerah Jember</p>
                                 </div>
                             </div>
                         </div>
