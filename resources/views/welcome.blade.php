@@ -297,25 +297,50 @@
         }
 
         /* --- Trust / Why Us --- */
-        .trust-item {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        .trust-card {
             background: #fff;
-            padding: 1.5rem;
-            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            border-radius: 2rem;
             border: 1px solid var(--color-border);
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
-        .trust-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--color-primary);
-            color: #fff;
-            border-radius: 12px;
+        .trust-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary-light);
+        }
+        .trust-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(37, 99, 235, 0.05);
+            color: var(--color-primary);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            font-size: 2.25rem;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+        }
+        .trust-card:hover .trust-icon-wrapper {
+            background: var(--gradient-primary) !important;
+            color: #fff !important;
+            transform: scale(1.1) rotate(8deg);
+            border-radius: 50%;
+        }
+        .trust-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+        }
+        .trust-card p {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         /* --- Floating WhatsApp --- */
@@ -713,40 +738,40 @@
     </section>
     <!-- End Section -->
 
-    <section class="section-padding" id="kenapa">
+    <section class="section-padding" id="kenapa" style="background: var(--color-bg-main);">
         <div class="container">
-            <div class="row justify-content-center text-center">
+            <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-8">
                     <span class="section-kicker">Keunggulan</span>
-                    <h2 class="section-title">Nikmati Kemudahan Hidup Tanpa Perlu Ribet</h2>
-                    <div class="row mt-5">
-                        <div class="col-md-4">
-                            <div class="trust-item">
-                                <div class="trust-icon"><i class="fas fa-bolt"></i></div>
-                                <div>
-                                    <h5 class="fw-bold">Super Cepat</h5>
-                                    <p class="text-muted mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
-                                </div>
-                            </div>
+                    <h2 class="section-title mb-0">Nikmati Kemudahan Hidup Tanpa Perlu Ribet</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="trust-card">
+                        <div class="trust-icon-wrapper">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <div class="col-md-4">
-                            <div class="trust-item">
-                                <div class="trust-icon" style="background: var(--color-secondary);"><i class="fas fa-shield-alt"></i></div>
-                                <div>
-                                    <h5 class="fw-bold">100% Terpercaya</h5>
-                                    <p class="text-muted mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
-                                </div>
-                            </div>
+                        <h5 class="fw-bold">Super Cepat</h5>
+                        <p class="mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="trust-card">
+                        <div class="trust-icon-wrapper" style="background: rgba(124, 58, 237, 0.05); color: var(--color-secondary);">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="col-md-4">
-                            <div class="trust-item">
-                                <div class="trust-icon" style="background: var(--color-success);"><i class="fas fa-tags"></i></div>
-                                <div>
-                                    <h5 class="fw-bold">Harga Transparan</h5>
-                                    <p class="text-muted mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
-                                </div>
-                            </div>
+                        <h5 class="fw-bold">100% Terpercaya</h5>
+                        <p class="mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="trust-card">
+                        <div class="trust-icon-wrapper" style="background: rgba(16, 185, 129, 0.05); color: var(--color-success);">
+                            <i class="fas fa-tags"></i>
                         </div>
+                        <h5 class="fw-bold">Harga Transparan</h5>
+                        <p class="mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
                     </div>
                 </div>
             </div>
