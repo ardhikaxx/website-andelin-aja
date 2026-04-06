@@ -426,7 +426,7 @@
                     <span class="hero-tag">✨ Jasa Serba Bisa Nomor #1</span>
                     <h1 class="hero-title">Apa Saja Kebutuhanmu, Kami Kerjakan!</h1>
                     <p class="hero-desc">
-                        Gak sempat belanja? Malas antre? Atau butuh bantuan beresin rumah? Tinggal suruh <strong>ANDELIN AJA</strong>. Cepat, Terpercaya, dan Tanpa Ribet.
+                        Gak sempat belanja? Malas antre? Atau butuh bantuan beresin rumah? Tinggal suruh <strong>ANDELIN AJA</strong>. Sudah Dipercaya Pelanggan dari Tahun 2021.
                     </p>
                     <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
                         <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient btn-lg">
