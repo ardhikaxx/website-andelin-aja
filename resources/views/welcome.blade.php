@@ -105,9 +105,20 @@
             margin: 0 1rem;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
         }
-        .nav-links a:hover { color: var(--color-primary); }
+        .nav-links a:hover { 
+            color: var(--color-primary); 
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--color-primary);
+            background: rgba(99, 102, 241, 0.15);
+            font-weight: 700;
+        }
 
         /* --- Buttons --- */
         .btn-custom {
@@ -819,6 +830,28 @@
                 nav.style.padding = '1rem 0';
                 nav.style.boxShadow = 'none';
             }
+
+            // Active nav link based on scroll position
+            const sections = ['layanan', 'cara-kerja', 'kenapa', 'tenaga-profesional'];
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = sectionId;
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
     <script>
