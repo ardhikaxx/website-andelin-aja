@@ -649,9 +649,13 @@
                         </div>
                     </div>
                 @empty
-                    {{-- Fallback if no employees are found --}}
-                    <div class="col-12 text-center text-muted">
-                        Belum ada data karyawan yang ditampilkan.
+                    <div class="col-12">
+                        <div class="alert alert-info d-flex align-items-center text-center" role="alert">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <div>
+                                <strong>Informasi:</strong> Belum ada data karyawan yang ditampilkan.
+                            </div>
+                        </div>
                     </div>
                 @endforelse
             </div>

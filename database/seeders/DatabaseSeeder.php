@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $specs = ['Konstruksi', 'Elektrikal', 'Plumbing', 'Finishing', 'Pengawasan'];
+        $specs = ['Penulis', 'Antar Jemput', 'Pembersih'];
         foreach ($specs as $spec) {
             Specialization::firstOrCreate(['name' => $spec]);
         }
@@ -30,11 +30,11 @@ class DatabaseSeeder extends Seeder
             'max_tasks_per_day' => 3,
         ]);
 
-        $this->call([
-            EmployeeSeeder::class,
-            TaskSeeder::class,
-            ScheduleSeeder::class,
-            RequestSeeder::class,
-        ]);
+        // $this->call([
+        //     EmployeeSeeder::class,
+        //     TaskSeeder::class,
+        //     ScheduleSeeder::class,
+        //     RequestSeeder::class,
+        // ]);
     }
 }
