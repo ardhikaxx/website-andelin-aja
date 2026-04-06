@@ -704,40 +704,37 @@
 
     <section class="section-padding" id="kenapa">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
                     <span class="section-kicker">Mengapa Kami?</span>
                     <h2 class="section-title">Nikmati Kemudahan Hidup Tanpa Perlu Ribet</h2>
-                    <div class="trust-item">
-                        <div class="trust-icon"><i class="fas fa-bolt"></i></div>
-                        <div>
-                            <h5 class="fw-bold">Super Cepat</h5>
-                            <p class="text-muted mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="trust-item">
+                                <div class="trust-icon"><i class="fas fa-bolt"></i></div>
+                                <div>
+                                    <h5 class="fw-bold">Super Cepat</h5>
+                                    <p class="text-muted mb-0">Respon kilat dan pengerjaan tepat waktu sesuai permintaanmu.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon" style="background: var(--color-secondary);"><i class="fas fa-shield-alt"></i></div>
-                        <div>
-                            <h5 class="fw-bold">100% Terpercaya</h5>
-                            <p class="text-muted mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
+                        <div class="col-md-4">
+                            <div class="trust-item">
+                                <div class="trust-icon" style="background: var(--color-secondary);"><i class="fas fa-shield-alt"></i></div>
+                                <div>
+                                    <h5 class="fw-bold">100% Terpercaya</h5>
+                                    <p class="text-muted mb-0">Tim kami sudah terverifikasi dan profesional dalam bekerja.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon" style="background: var(--color-success);"><i class="fas fa-tags"></i></div>
-                        <div>
-                            <h5 class="fw-bold">Harga Transparan</h5>
-                            <p class="text-muted mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="p-5 bg-light rounded-5 border">
-                        <h3 class="fw-bold mb-4 text-center">Apa Kata Mereka?</h3>
-                        <div class="text-center">
-                            <i class="fas fa-quote-left fa-2x text-primary opacity-25 mb-3"></i>
-                            <p class="fs-5 italic text-muted mb-4">"Andelin Aja bener-bener nolong banget pas lagi sibuk kantor tapi harus kirim dokumen ke klien. Kurirnya ramah dan cepet banget!"</p>
-                            <h6 class="fw-bold mb-0">Budi Santoso</h6>
-                            <span class="text-muted small">Karyawan Swasta</span>
+                        <div class="col-md-4">
+                            <div class="trust-item">
+                                <div class="trust-icon" style="background: var(--color-success);"><i class="fas fa-tags"></i></div>
+                                <div>
+                                    <h5 class="fw-bold">Harga Transparan</h5>
+                                    <p class="text-muted mb-0">Tanpa biaya tersembunyi. Harga jujur sesuai beban tugas.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
