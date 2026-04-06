@@ -35,7 +35,10 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 100px; /* Accounts for fixed navbar height */
+        }
 
         body {
             margin: 0;
@@ -71,102 +74,162 @@
 
         /* --- Navbar --- */
         .landing-navbar {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(248, 250, 252, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--color-border);
-            transition: all 0.3s;
+            padding: 1.25rem 0;
+            background: rgba(248, 250, 252, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .landing-navbar.scrolled {
+            padding: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
         }
         .brand-link {
             display: inline-flex;
             align-items: center;
             gap: .75rem;
-            color: var(--color-text-primary);
             text-decoration: none;
+            transition: transform 0.3s;
         }
-        .brand-mark {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: var(--gradient-primary);
-            color: #fff;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-md);
+        .brand-link:hover {
+            transform: scale(1.05);
         }
         .nav-links a {
             color: var(--color-text-secondary);
             font-weight: 600;
-            margin: 0 1rem;
+            margin: 0 0.25rem;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            border-radius: 12px;
             position: relative;
         }
         .nav-links a:hover { 
             color: var(--color-primary); 
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(37, 99, 235, 0.08);
         }
         .nav-links a.active {
             color: var(--color-primary);
-            background: rgba(99, 102, 241, 0.15);
+            background: rgba(37, 99, 235, 0.12);
             font-weight: 700;
         }
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
-            color: var(--color-text-primary);
             cursor: pointer;
             padding: 0.5rem;
+            z-index: 1100;
+            position: relative;
+            width: 40px;
+            height: 40px;
         }
-        .mobile-menu {
-            display: none;
+        .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            position: relative;
+            transition: all 0.3s;
+        }
+        .hamburger::before, .hamburger::after {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
             position: absolute;
-            top: 100%;
             left: 0;
-            right: 0;
-            background: rgba(248, 250, 252, 0.98);
-            backdrop-filter: blur(12px);
-            padding: 1rem;
-            border-bottom: 1px solid var(--color-border);
+            transition: all 0.3s;
+        }
+        .hamburger::before { top: -8px; }
+        .hamburger::after { bottom: -8px; }
+        
+        .mobile-menu-btn.active .hamburger { background: transparent; }
+        .mobile-menu-btn.active .hamburger::before { transform: rotate(45deg); top: 0; }
+        .mobile-menu-btn.active .hamburger::after { transform: rotate(-45deg); bottom: 0; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100vh;
+            background: #fff;
+            z-index: 1050;
+            padding: 80px 1.5rem 2rem;
+            display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            box-shadow: var(--shadow-lg);
+            gap: 0.25rem;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
         }
         .mobile-menu.show {
-            display: flex;
+            right: 0;
+        }
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1040;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .mobile-overlay.show {
+            display: block;
+            opacity: 1;
         }
         .mobile-menu a {
-            color: var(--color-text-secondary);
+            color: var(--color-text-primary);
             font-weight: 600;
             text-decoration: none;
             font-size: 1rem;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
+            padding: 0.875rem 1.25rem;
+            border-radius: 12px;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .mobile-menu a:hover {
+            background: rgba(37, 99, 235, 0.05);
             color: var(--color-primary);
-            background: rgba(99, 102, 241, 0.1);
         }
         .mobile-menu .btn-mobile {
+            margin-top: 1rem;
             display: flex;
-            justify-content: center;
-            margin-top: 0.5rem;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .mobile-menu .btn-primary-gradient {
+            color: #fff !important;
+        }
+        .mobile-menu .btn-white {
+            color: var(--color-primary);
         }
 
         @media (max-width: 991px) {
+            .landing-navbar { padding: 0.75rem 0; }
+            .brand-link img { width: 55px !important; height: 55px !important; }
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .nav-links {
                 display: none;
@@ -207,7 +270,10 @@
         }
 
         /* --- Hero Section --- */
-        .hero-section { padding: 6rem 0; position: relative; }
+        .hero-section { 
+            padding: 10rem 0 6rem; /* Increased top padding from 6rem to 10rem */
+            position: relative; 
+        }
         .hero-tag {
             display: inline-block;
             padding: 0.5rem 1.25rem;
@@ -531,38 +597,64 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="#" class="brand-link">
-                    <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 80px; height: 80px; object-fit: contain;">
+                    <img src="{{ asset('assets/logo-andelin.png') }}" alt="Andelin Aja" style="width: 70px; height: 70px; object-fit: contain;">
                 </a>
                 <div class="nav-links d-none d-lg-block">
                     <a href="#layanan">Layanan</a>
                     <a href="#cara-kerja">Cara Kerja</a>
                     <a href="#harga">Harga</a>
                     <a href="#tenaga-profesional">Tim Kami</a>
+                    <a href="#tentang">Tentang</a>
                     <a href="#kenapa">Keunggulan</a>
+                    <a href="#blog">Blog</a>
                 </div>
                 <div class="d-flex gap-2 align-items-center">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
                     <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4 d-none d-sm-inline-flex">Pesan Jasa</a>
-                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars"></i>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                        <span class="hamburger"></span>
                     </button>
-                </div>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#layanan" onclick="closeMobileMenu()">Layanan</a>
-                <a href="#cara-kerja" onclick="closeMobileMenu()">Cara Kerja</a>
-                <a href="#harga" onclick="closeMobileMenu()">Harga</a>
-                <a href="#tenaga-profesional" onclick="closeMobileMenu()">Tim Kami</a>
-                <a href="#kenapa" onclick="closeMobileMenu()">Keunggulan</a>
-                <div class="btn-mobile">
-                    <a href="{{ route('login') }}" class="btn-custom btn-white px-4 w-100">Login</a>
-                </div>
-                <div class="btn-mobile">
-                    <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4 w-100">Pesan Jasa</a>
                 </div>
             </div>
         </div>
     </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#layanan" onclick="toggleMobileMenu()">
+            <span>Layanan</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#cara-kerja" onclick="toggleMobileMenu()">
+            <span>Cara Kerja</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#harga" onclick="toggleMobileMenu()">
+            <span>Harga</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#tenaga-profesional" onclick="toggleMobileMenu()">
+            <span>Tim Kami</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#tentang" onclick="toggleMobileMenu()">
+            <span>Tentang</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#kenapa" onclick="toggleMobileMenu()">
+            <span>Keunggulan</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <a href="#blog" onclick="toggleMobileMenu()">
+            <span>Blog</span>
+            <i class="fas fa-chevron-right fs-small opacity-50"></i>
+        </a>
+        <div class="btn-mobile">
+            <a href="{{ route('login') }}" class="btn-custom btn-white px-4 w-100 justify-content-center">Login</a>
+            <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4 w-100 justify-content-center">Pesan Jasa</a>
+        </div>
+    </div>
 
     <header class="hero-section">
         <div class="container">
@@ -1157,16 +1249,14 @@
         // Smooth scroll adjustment for fixed header
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('.landing-navbar');
-            if (window.scrollY > 50) {
-                nav.style.padding = '0.5rem 0';
-                nav.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.1)';
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
             } else {
-                nav.style.padding = '1rem 0';
-                nav.style.boxShadow = 'none';
+                nav.classList.remove('scrolled');
             }
 
             // Active nav link based on scroll position
-            const sections = ['layanan', 'cara-kerja', 'harga', 'tenaga-profesional', 'kenapa'];
+            const sections = ['layanan', 'cara-kerja', 'harga', 'tenaga-profesional', 'tentang', 'kenapa', 'blog'];
             const navLinks = document.querySelectorAll('.nav-links a');
             
             let current = '';
@@ -1190,12 +1280,19 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            const btn = document.querySelector('.mobile-menu-btn');
+            
             menu.classList.toggle('show');
-        }
-
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.remove('show');
+            overlay.classList.toggle('show');
+            btn.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (menu.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
     </script>
     <script>
