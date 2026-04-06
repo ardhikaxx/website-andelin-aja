@@ -35,11 +35,17 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Password Baru (Opsional)</label>
-                        <input type="password" name="password" class="form-control">
+                        <div class="position-relative">
+                            <input type="password" name="password" class="form-control" id="password">
+                            <span class="position-absolute end-0 top-50 translate-middle-y" style="top: 70%; right: 10px; cursor: pointer;" onclick="togglePassword('password', 'toggle-password')"><i class="fas fa-eye-slash text-muted" id="toggle-password"></i></span>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Konfirmasi Password Baru</label>
-                        <input type="password" name="password_confirmation" class="form-control">
+                        <div class="position-relative">
+                            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation">
+                            <span class="position-absolute end-0 top-50 translate-middle-y" style="top: 70%; right: 10px; cursor: pointer;" onclick="togglePassword('password_confirmation', 'toggle-confirm')"><i class="fas fa-eye-slash text-muted" id="toggle-confirm"></i></span>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Telepon</label>
@@ -74,5 +80,13 @@
             <a href="{{ route('admin.employees.index') }}" class="btn btn-light">Kembali</a>
         </div>
     </form>
+    <script>
+    function togglePassword(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === "password") { input.type = "text"; icon.classList.remove("fa-eye-slash"); icon.classList.add("fa-eye"); }
+        else { input.type = "password"; icon.classList.remove("fa-eye"); icon.classList.add("fa-eye-slash"); }
+    }
+    </script>
 </div>
 @endsection

@@ -19,11 +19,29 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Password</label>
-            <div class="input-wrap">
+            <div class="input-wrap position-relative">
                 <span class="input-icon"><i class="fas fa-key"></i></span>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required id="password-input">
+                <span class="position-absolute end-0 top-50 translate-middle-y me-3" style="cursor: pointer;" onclick="togglePassword('password-input', 'toggle-icon')">
+                    <i class="fas fa-eye-slash text-muted" id="toggle-icon"></i>
+                </span>
             </div>
         </div>
+        <script>
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+        }
+        </script>
         <div class="auth-meta mb-4">
             <span style="color: var(--color-text-secondary); font-size: .88rem;">Masuk sesuai akun yang terdaftar.</span>
             <a href="{{ route('password.request') }}" class="auth-link">Lupa password?</a>
@@ -32,17 +50,5 @@
             <i class="fas fa-right-to-bracket me-2"></i> Masuk
         </button>
     </form>
-
-    <div class="info-box">
-        <span class="info-label">Akun demo</span>
-        <div class="info-item">
-            <i class="fas fa-user-shield"></i>
-            <span>Admin: <strong>admin@andelin.com</strong> / <strong>password</strong></span>
-        </div>
-        <div class="info-item">
-            <i class="fas fa-user"></i>
-            <span>Karyawan: <strong>karyawan1@andelin.com</strong> / <strong>password</strong></span>
-        </div>
-    </div>
 </div>
 @endsection
