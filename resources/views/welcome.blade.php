@@ -269,8 +269,8 @@
             position: relative;
         }
         .step-number {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: #fff;
             border: 2px solid var(--color-primary);
             color: var(--color-primary);
@@ -278,22 +278,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1rem;
             box-shadow: var(--shadow-md);
             position: relative;
             z-index: 2;
         }
-        .step-card:not(:last-child)::after {
+        .step-card .step-number::after {
             content: '';
             position: absolute;
-            top: 40px;
-            left: 50%;
-            width: 100%;
+            top: 50%;
+            left: 100%;
+            width: 50%;
             height: 2px;
             background: var(--color-border);
+            transform: translateY(-50%);
             z-index: 1;
+        }
+        .step-card:last-child .step-number::after {
+            display: none;
+        }
+        .step-card h5 {
+            font-size: 1rem;
+        }
+        .step-card p {
+            font-size: 0.85rem;
         }
 
         /* --- Trust / Why Us --- */
@@ -420,7 +430,7 @@
 
 
         @media (max-width: 991px) {
-            .step-card:not(:last-child)::after { display: none; }
+            .step-card .step-number::after { display: none; }
             .hero-section { text-align: center; }
             .hero-desc { margin-left: auto; margin-right: auto; }
             .nav-links { display: none; }
@@ -584,25 +594,32 @@
                 <h2 class="section-title">Gimana Cara Pakainya?</h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h5 class="fw-bold">Pesan Jasa</h5>
                         <p class="text-muted">Hubungi kami via WhatsApp dan jelaskan apa yang perlu dikerjakan.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="step-card">
                         <div class="step-number">2</div>
-                        <h5 class="fw-bold">Kami Kerjakan</h5>
-                        <p class="text-muted">Tim profesional kami akan langsung menuju lokasi atau menjalankan instruksimu.</p>
+                        <h5 class="fw-bold">Konfirmasi</h5>
+                        <p class="text-muted">Kami akan merespon dan memberikan konfirmasi mengenai ketersediaan layanan.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="step-card">
                         <div class="step-number">3</div>
-                        <h5 class="fw-bold">Beres & Bayar</h5>
-                        <p class="text-muted">Setelah tugas selesai dengan sempurna, baru kamu lakukan pembayaran.</p>
+                        <h5 class="fw-bold">Kesepakatan Harga</h5>
+                        <p class="text-muted">Discuss harga dan persetujuan kerja sebelum pekerjaan dimulai.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h5 class="fw-bold">Pembayaran</h5>
+                        <p class="text-muted">Bayar DP dulu atau langsung full sebelum pekerjaan dimulai.</p>
                     </div>
                 </div>
             </div>
