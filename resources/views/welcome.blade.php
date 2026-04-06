@@ -1104,21 +1104,6 @@
                                         <div class="carousel-item" data-bs-interval="3000">
                                             <img src="{{ asset('assets/grand-opening3.jpg') }}" class="d-block w-100" alt="Grand Opening 3">
                                         </div>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="{{ asset('assets/bhakti-sosial1.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 1">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="{{ asset('assets/bhakti-sosial2.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 2">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="{{ asset('assets/bhakti-sosial3.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 3">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="{{ asset('assets/bhakti-sosial4.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 4">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="{{ asset('assets/bhakti-sosial5.jpg') }}" class="d-block w-100" alt="Bhakti Sosial 5">
-                                        </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
