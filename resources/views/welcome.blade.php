@@ -119,6 +119,59 @@
             background: rgba(99, 102, 241, 0.15);
             font-weight: 700;
         }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            flex-direction: column;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .mobile-menu.show {
+            display: flex;
+        }
+        .mobile-menu a {
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .mobile-menu a:hover {
+            color: var(--color-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .mobile-menu .btn-mobile {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 991px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
 
         /* --- Buttons --- */
         .btn-custom {
@@ -487,9 +540,25 @@
                     <a href="#tenaga-profesional">Tim Kami</a>
                     <a href="#kenapa">Keunggulan</a>
                 </div>
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 align-items-center">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
-                    <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4">Pesan Jasa</a>
+                    <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4 d-none d-sm-inline-flex">Pesan Jasa</a>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#layanan" onclick="closeMobileMenu()">Layanan</a>
+                <a href="#cara-kerja" onclick="closeMobileMenu()">Cara Kerja</a>
+                <a href="#harga" onclick="closeMobileMenu()">Harga</a>
+                <a href="#tenaga-profesional" onclick="closeMobileMenu()">Tim Kami</a>
+                <a href="#kenapa" onclick="closeMobileMenu()">Keunggulan</a>
+                <div class="btn-mobile">
+                    <a href="{{ route('login') }}" class="btn-custom btn-white px-4 w-100">Login</a>
+                </div>
+                <div class="btn-mobile">
+                    <a href="https://wa.me/6289666648592" class="btn-custom btn-primary-gradient px-4 w-100">Pesan Jasa</a>
                 </div>
             </div>
         </div>
@@ -1118,6 +1187,16 @@
                 }
             });
         });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('show');
+        }
     </script>
     <script>
         function showAllEmployees() {
