@@ -594,7 +594,7 @@
                 <span class="section-kicker">Proses Mudah</span>
                 <h2 class="section-title">Gimana Cara Pakainya?</h2>
             </div>
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-md-2">
                     <div class="step-card">
                         <div class="step-number">1</div>
