@@ -903,7 +903,7 @@
                     <div class="d-flex gap-3 fs-5 mt-4">
                         <a href="https://www.instagram.com/andelin_aja.2021/" target="_blank" class="text-white opacity-50"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-white opacity-50"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white opacity-50"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.tiktok.com/@inimiminceweknamanyafifi" target="_blank" class="text-white opacity-50"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-2 offset-lg-2">
