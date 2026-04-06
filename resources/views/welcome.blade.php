@@ -428,8 +428,37 @@
             color: var(--color-primary);
         }
 
+/* --- Blog Section --- */
+.blog-featured-card {
+    background: #fff;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+}
+.blog-featured-card .carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+.blog-content {
+    background: #fff;
+}
+.bg-primary-soft {
+    background: rgba(37, 99, 235, 0.1);
+}
+.blog-meta {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 
-        @media (max-width: 991px) {
+@media (max-width: 768px) {
+    .blog-featured-card .carousel-item img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 991px) {
+...
             .step-card .step-number::after { display: none; }
             .hero-section { text-align: center; }
             .hero-desc { margin-left: auto; margin-right: auto; }
@@ -456,7 +485,7 @@
                     <a href="#cara-kerja">Cara Kerja</a>
                     <a href="#harga">Harga</a>
                     <a href="#kenapa">Keunggulan</a>
-                    <a href="#tenaga-profesional">Tim Kami</a> <!-- Link to new section -->
+                    <a href="#tenaga-profesional">Tim Kami</a>
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
@@ -877,6 +906,59 @@
         </div>
     </section>
 
+    <!-- Section: Blog -->
+    <section class="section-padding" id="blog" style="background: #fff;">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="section-kicker">Blog</span>
+                    <h2 class="section-title mb-0">Berita & Kegiatan Terbaru</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="blog-featured-card">
+                        <div class="row g-0">
+                            <div class="col-md-7">
+                                <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/grand-opening1.jpg') }}" class="d-block w-100" alt="Grand Opening 1">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/grand-opening2.jpg') }}" class="d-block w-100" alt="Grand Opening 2">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="3000">
+                                            <img src="{{ asset('assets/grand-opening3.jpg') }}" class="d-block w-100" alt="Grand Opening 3">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-center">
+                                <div class="blog-content p-4 p-lg-5">
+                                    <div class="blog-meta mb-3">
+                                        <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill">Event</span>
+                                        <span class="text-muted ms-3 fs-small"><i class="far fa-calendar-alt me-2"></i>29 Juni 2025</span>
+                                    </div>
+                                    <h3 class="fw-bold mb-4" style="color: var(--color-primary);">Grand Opening Andelin Aja</h3>
+                                    <p class="text-muted fs-5 mb-0" style="line-height: 1.6;">Di alun2 dimeriahkan oleh temen2 dancer dari Pshyche</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section container">
         <div class="cta-box">
             <h2 class="display-4 fw-bold mb-3">Siap Kami Bantu Sekarang?</h2>
@@ -913,9 +995,10 @@
                         <li><a href="#cara-kerja">Cara Kerja</a></li>
                         <li><a href="#harga">Harga</a></li>
                         <li><a href="#kenapa">Keunggulan</a></li>
-                        <li><a href="#tenaga-profesional">Tim Kami</a></li> <!-- Added link to new section -->
+                        <li><a href="#tenaga-profesional">Tim Kami</a></li>
                     </ul>
                 </div>
+
                 <div class="col-md-4 col-lg-2">
                     <h6 class="text-white fw-bold mb-4">Legal</h6>
                     <ul class="footer-links">
