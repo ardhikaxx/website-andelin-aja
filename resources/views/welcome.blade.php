@@ -484,8 +484,8 @@
                     <a href="#layanan">Layanan</a>
                     <a href="#cara-kerja">Cara Kerja</a>
                     <a href="#harga">Harga</a>
-                    <a href="#kenapa">Keunggulan</a>
                     <a href="#tenaga-profesional">Tim Kami</a>
+                    <a href="#kenapa">Keunggulan</a>
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('login') }}" class="btn-custom btn-white px-4 d-none d-sm-inline-flex">Login</a>
@@ -994,8 +994,8 @@
                         <li><a href="#layanan">Layanan</a></li>
                         <li><a href="#cara-kerja">Cara Kerja</a></li>
                         <li><a href="#harga">Harga</a></li>
-                        <li><a href="#kenapa">Keunggulan</a></li>
                         <li><a href="#tenaga-profesional">Tim Kami</a></li>
+                        <li><a href="#kenapa">Keunggulan</a></li>
                     </ul>
                 </div>
 
@@ -1039,7 +1039,7 @@
             }
 
             // Active nav link based on scroll position
-            const sections = ['layanan', 'cara-kerja', 'harga', 'kenapa', 'tenaga-profesional'];
+            const sections = ['layanan', 'cara-kerja', 'harga', 'tenaga-profesional', 'kenapa'];
             const navLinks = document.querySelectorAll('.nav-links a');
             
             let current = '';
