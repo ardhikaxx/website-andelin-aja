@@ -717,7 +717,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8">
-                    <span class="section-kicker">Mengapa Kami?</span>
+                    <span class="section-kicker">Keunggulan</span>
                     <h2 class="section-title">Nikmati Kemudahan Hidup Tanpa Perlu Ribet</h2>
                     <div class="row mt-5">
                         <div class="col-md-4">
@@ -839,7 +839,7 @@
             sections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 if (section) {
-                    const sectionTop = section.offsetTop - 100;
+                    const sectionTop = section.offsetTop - 150;
                     if (window.scrollY >= sectionTop) {
                         current = sectionId;
                     }
