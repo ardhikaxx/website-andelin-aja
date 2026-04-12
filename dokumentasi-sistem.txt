@@ -1,0 +1,389 @@
+================================================================================
+DOKUMENTASI SISTEM MANAJEMEN PENJADWALAN KARYAWAN - ANDELIN AJA
+================================================================================
+
+================================================================================
+BAGIAN 1: PENDAHULUAN DAN GAMBARAN UMUM
+================================================================================
+
+Sistem Manajemen Penjadwalan Karyawan Andelin Aja merupakan sebuah aplikasi 
+berbasis web yang dibangun menggunakan framework Laravel. Aplikasi ini 
+dirancang untuk mengelola dan mengorganisir penjadwalan tugas-tugas yang 
+harus dikerjakan oleh karyawan secara efisien dan terstruktur. Sistem ini 
+memiliki dua jenis pengguna utama yaitu ADMIN yang memiliki akses penuh untuk 
+mengelola seluruh aspek sistem dan KARYAWAN yang memiliki akses terbatas 
+untuk melihat jadwal, mengajukan permohonan, dan mengelola profil pribadi 
+mereka.
+
+Dalam sistem ini tersedia dua metode penjadwalan utama yang dapat digunakan 
+yaitu penjadwalan manual dimana admin secara langsung memilih karyawan dan 
+menentukan jadwal untuk setiap tugas, serta penjadwalan otomatis yang 
+menggunakan algoritma Greedy untuk secara otomatis menugaskan tugas kepada 
+karyawan berdasarkan kriteria ketersediaan waktu dan beban kerja. Aplikasi 
+ini juga terintegrasi dengan halaman landing page publik yang berfungsi 
+sebagai website presentasi perusahaan untuk memperkenalkan layanan kepada 
+calon pelanggan.
+
+================================================================================
+BAGIAN 2: KEMAMPUAN DAN FITUR UNTUK ADMINISTRATOR (ADMIN)
+================================================================================
+
+2.1 LOGIN DAN AUTENTIKASI
+
+Admin dapat mengakses sistem dengan melakukan login melalui halaman login 
+yang tersedia dengan memasukkan alamat email dan password yang telah 
+terdaftar. Sistem akan memverifikasi kredensial tersebut dan jika valid, 
+admin akan diarahkan ke halaman dashboard. Jika admin lupa password, 
+mereka dapat menggunakan fitur forgot password untuk melakukan reset 
+dengan memverifikasi identitas melalui email yang terdaftar.
+
+2.2 MELIHAT DASHBOARD DAN STATISTIK
+
+Setelah login, admin dapat melihat halaman dashboard yang menampilkan 
+berbagai informasi statistik penting seperti jumlah total karyawan yang 
+terdaftar dalam sistem, jumlah tugas yang masih berstatus pending atau 
+belum dijadwalkan, jadwal pekerjaan hari ini, serta berbagai aktivitas 
+terbaru yang telah dilakukan dalam sistem. Semua informasi ini ditampilkan 
+dalam bentuk kartu-kartu statistik yang mudah dibaca sehingga admin dapat 
+langsung memahami kondisi sistem secara umum.
+
+2.3 MENGELOLA DATA KARYAWAN
+
+Admin memiliki kemampuan untuk mengelola seluruh data karyawan dalam 
+sistem. Admin dapat menambahkan karyawan baru dengan mengisi data diri 
+seperti nama lengkap, alamat email, nomor telepon, posisi atau jabatan, 
+serta mengunggah foto profil jika diperlukan. Proses penambahan karyawan 
+secara otomatis akan membuatkan akun user yang terhubung dengan data 
+employee sehingga karyawan tersebut dapat melakukan login ke sistem. 
+Admin juga dapat melihat daftar lengkap semua karyawan yang terdaftar 
+beserta detail profil mereka termasuk spesialisasi keahlian yang dimiliki 
+dan ketersediaan waktu kerja mereka setiap minggunya. Fitur pengeditan 
+memungkinkan admin untuk memperbarui informasi karyawan seperti mengubah 
+posisi jabatan, memperbarui foto profil, atau memperbaiki data diri yang 
+salah. Admin juga dapat menghapus data karyawan dari sistem sesuai kebutuhan 
+meskipun penghapusan ini memerlukan pertimbangan ekstra karena akan berdampak 
+pada jadwal yang sudah ada.
+
+2.4 MENGELOLA SPESIALISASI KARYAWAN
+
+Admin dapat mendefinisikan dan mengelola bidang-bidang keahlian atau 
+spesialisasi yang dapat dimiliki oleh karyawan seperti misalnya teknik, 
+administrasi, pelayanan pelanggan, dan berbagai bidang keahlian lainnya. 
+Admin dapat membuat spesialisasi baru, mengubah nama atau deskripsi 
+spesialisasi yang sudah ada, atau menghapus spesialisasi yang tidak 
+diperlukan lagi sesuai dengan kebutuhan organisasi.
+
+2.5 MENGELOLA KETERSEDIAAN WAKTU KARYAWAN
+
+Admin memiliki kemampuan untuk mengelola ketersediaan waktu atau 
+availability setiap karyawan dengan mengatur jadwal waktu kerja yang 
+tersedia untuk setiap hari dalam seminggu mulai dari hari Senin hingga 
+hari Minggu. Data ketersediaan ini sangat penting karena akan digunakan 
+oleh sistem dalam proses penjadwalan otomatis untuk menentukan karyawan 
+mana yang dapat ditugaskan pada hari tertentu.
+
+2.6 MENGELOLA TUGAS
+
+Admin dapat membuat dan mengelola semua tugas yang perlu dikerjakan oleh 
+karyawan. Admin dapat membuat tugas baru dengan mengisi informasi lengkap 
+seperti judul tugas yang jelas, deskripsi yang detail untuk memberikan 
+gambaran kepada karyawan mengenai pekerjaan yang harus dilakukan, serta 
+deadline atau tenggat waktu penyelesaian tugas yang harus dipenuhi. 
+Admin dapat melihat semua tugas yang ada dengan menggunakan filter 
+berdasarkan status untuk memudahkan pengelolaan. Admin juga dapat 
+mengedit detail tugas jika ada kesalahan atau perubahan kebutuhan, 
+dan dapat menghapus tugas yang tidak diperlukan lagi.
+
+2.7 MELAKUKAN PENUGASAN TUGAS
+
+Selain penjadwalan, admin juga dapat melakukan penugasan tugas kepada 
+karyawan tanpa harus membuat jadwal dengan tanggal dan waktu yang spesifik. 
+Admin dapat memilih tugas dari daftar dan memilih satu atau lebih karyawan 
+yang akan ditugaskan untuk menyelesaikan tugas tersebut. Sistem akan 
+menyimpan penugasan dengan timestamp untuk mencatat kapan penugasan dilakukan. 
+Fitur ini berguna untuk pekerjaan yang tidak memiliki batasan waktu ketat 
+atau pekerjaan yang dapat dikerjakan kapan saja.
+
+2.8 MELAKUKAN PENJADWALAN MANUAL
+
+Admin dapat melakukan penjadwalan manual dengan cara memilih karyawan 
+secara spesifik dari daftar, memilih tugas yang akan ditugaskan, 
+menentukan tanggal kerja dengan memilih tanggal spesifik, dan menentukan 
+jam mulai serta jam selesai kerja. Setiap informasi ini harus diisi 
+secara manual oleh admin satu per satu untuk setiap jadwal yang dibuat. 
+Setelah semua informasi diisi dengan lengkap, admin menekan tombol simpan 
+dan sistem akan menyimpan jadwal dengan status scheduled serta menandai 
+bahwa jadwal ini dibuat secara manual. Keunggulan dari cara ini adalah 
+fleksibilitas yang tinggi dimana admin dapat menyesuaikan penugasan sesuai 
+dengan kebutuhan spesifik namun memerlukan waktu dan upaya yang lebih 
+besar terutama ketika jumlah tugas banyak.
+
+2.9 MELAKUKAN PENJADWALAN OTOMATIS DENGAN GREEDY
+
+Admin dapat menjalankan penjadwalan otomatis hanya dengan satu kali 
+klik tombol "Generate" dan sistem akan melakukan seluruh proses secara 
+otomatis tanpa perlu memasukkan data seperti nama karyawan, nama tugas, 
+tanggal, atau waktu kerja karena semua itu akan dihitung dan ditentukan 
+oleh algoritma secara otomatis. Admin hanya perlu memastikan bahwa 
+sudah terdapat tugas-tugas dengan status pending yang perlu dijadwalkan 
+dan bahwa sudah ada karyawan dengan data ketersediaan waktu yang telah 
+dikonfigurasi dengan benar. Algoritma Greedy akan mengurutkan tugas 
+berdasarkan deadline, mencari karyawan yang tersedia dan tidak melebihi 
+batas maksimal tugas per hari atau jam kerja per minggu, kemudian memilih 
+karyawan dengan beban kerja terkecil untuk distribusi yang merata. Hasil 
+akhir berupa jumlah tugas yang berhasil dijadwalkan dan jumlah tugas 
+yang dilewati.
+
+2.10 MENGATUR ATURAN PENJADWALAN
+
+Admin dapat mengkonfigurasi aturan penjadwalan sesuai kebutuhan organisasi. 
+Aturan pertama adalah max_hours_per_week yang mengatur maksimal total 
+jam kerja yang dapat ditugaskan kepada seorang karyawan dalam periode 
+satu minggu dengan nilai default 40 jam yang dapat diubah dalam rentang 
+1 hingga 168 jam. Aturan kedua adalah max_tasks_per_day yang mengatur 
+maksimal jumlah tugas yang dapat ditugaskan kepada seorang karyawan 
+dalam satu hari kerja dengan nilai default 3 tugas yang dapat diubah 
+dalam rentang 1 hingga 24 tugas.
+
+2.11 MENGELOLA PERMOHONAN KARYAWAN
+
+Admin dapat melihat dan mengelola berbagai permohonan yang diajukan oleh 
+karyawan seperti permohonan cuti dengan menentukan tanggal mulai dan 
+tanggal selesai cuti beserta alasan pengajuan, permohonan izin dengan 
+alasan tertentu, atau pertukaran shift dengan karyawan lain. Admin 
+memiliki kewenangan untuk menyetujui atau menolak permohonan dengan 
+menekan tombol approve atau reject. Sistem menyimpan seluruh riwayat 
+permohonan beserta statusnya untuk keperluan tracking dan audit.
+
+2.12 MELIHAT DAN EXPORT LAPORAN
+
+Admin dapat melihat berbagai laporan terkait kinerja karyawan seperti 
+laporan jam kerja yang menyajikan informasi total jam kerja yang telah 
+ditempuh oleh setiap karyawan dalam periode bulanan tertentu dan laporan 
+tugas yang menyajikan informasi jumlah tugas yang telah diselesaikan 
+oleh setiap karyawan. Admin dapat melihat laporan-laporan ini dengan 
+filter berdasarkan karyawan tertentu, bulan, dan tahun. Admin juga 
+dapat mengekspor data laporan dalam format CSV atau Excel yang dapat 
+digunakan untuk analisis lebih lanjut atau pelaporan ke manajemen.
+
+2.13 MENGELOLA ADMIN LAIN
+
+Admin dapat mengelola admin lainnya dalam sistem dengan kemampuan untuk 
+menambahkan admin baru dengan mengisi data seperti nama lengkap, alamat 
+email yang unik, password, dan nomor telepon. Admin dapat melihat 
+daftar semua admin yang terdaftar dalam sistem, mengedit data admin 
+seperti nama, email, atau password, serta menghapus admin dari sistem 
+dengan validasi khusus dimana admin yang sedang aktif login tidak dapat 
+menghapus dirinya sendiri. Admin juga dapat melihat detail admin 
+tertentu beserta riwayat aktivitas atau Admin Log yang telah dilakukan 
+oleh admin tersebut.
+
+2.14 MELIHAT ADMIN LOG
+
+Admin dapat melihat catatan log yang mencatat seluruh aktivitas penting 
+yang dilakukan oleh administrator seperti menghasilkan jadwal otomatis, 
+menghapus jadwal, atau mengubah aturan penjadwalan. Setiap catatan 
+log berisi informasi ID admin yang melakukan tindakan, jenis tindakan 
+yang dilakukan, deskripsi rinci mengenai tindakan tersebut, dan waktu 
+pelaksanaan yang sangat berguna untuk keperluan audit dan tracking 
+sejarah penggunaan sistem.
+
+2.15 MENGELOLA PROFIL PRIBADI
+
+Admin dapat mengelola profil pribadi mereka sendiri dengan mengubah 
+informasi seperti nama lengkap, alamat email, dan nomor telepon. Admin 
+juga dapat mengubah password mereka untuk keamanan akun. Perubahan 
+profil akan disimpan dalam database dan akan berlaku untuk login berikutnya.
+
+================================================================================
+BAGIAN 3: KEMAMPUAN DAN FITUR UNTUK KARYAWAN
+================================================================================
+
+3.1 LOGIN DAN AUTENTISASI
+
+Karyawan dapat mengakses sistem dengan melakukan login melalui halaman 
+login yang sama dengan admin namun dengan kredensial yang berbeda sesuai 
+dengan akun yang telah dibuatkan oleh admin. Karyawan memasukkan alamat 
+email dan password yang telah didaftarkan untuk melakukan login. Sistem 
+akan memverifikasi kredensial tersebut dan jika valid, karyawan akan 
+diarahkan ke halaman dashboard karyawan. Jika karyawan lupa password, 
+mereka dapat menggunakan fitur forgot password untuk melakukan reset 
+password melalui email verifikasi.
+
+3.2 MELIHAT DASHBOARD
+
+Setelah login, karyawan dapat melihat halaman dashboard yang menampilkan 
+informasi personal mereka. Dashboard menampilkan jadwal pekerjaan mereka 
+pada hari tersebut meliputi nama tugas yang harus dikerjakan, tanggal 
+dan waktu kerja, serta status dari jadwal tersebut. Selain jadwal, 
+dashboard juga menampilkan daftar tugas-tugas yang harus diselesaikan 
+baik yang sedang dalam proses maupun yang belum dimulai, serta status 
+dari permohonan-permohonan yang telah diajukan sebelumnya seperti 
+permohonan cuti atau pertukaran shift.
+
+3.3 MELIHAT JADWAL
+
+Karyawan dapat melihat semua jadwal pekerjaan mereka dalam sistem melalui 
+menu jadwal. Karyawan dapat melihat jadwal pribadi mereka dengan filter 
+berdasarkan tanggal tertentu untuk memudahkan pencarian jadwal pada 
+tanggal tertentu. Setiap entry jadwal menampilkan informasi lengkap 
+mengenai tugas yang harus dikerjakan, tanggal pekerjaan, jam mulai 
+dan selesai, serta status dari jadwal tersebut apakah scheduled, 
+in progress, atau completed. Karyawan tidak dapat menambah atau mengubah 
+jadwal secara langsung karena penjadwalan dilakukan oleh admin, namun 
+karyawan dapat melihat detail jadwal mereka dan mempersiapkan pekerjaan 
+sesuai dengan jadwal yang telah ditetapkan.
+
+3.4 MELIHAT DAN MENGUPDATE TUGAS
+
+Karyawan dapat melihat semua tugas yang telah ditugaskan kepada mereka 
+melalui menu tugas. Karyawan dapat melihat daftar tugas lengkap dengan 
+detail seperti judul tugas, deskripsi pekerjaan yang harus dilakukan, 
+deadline penyelesaian, dan status tugas saat ini. Jika diperlukan, 
+karyawan dapat mengupdate status tugas mereka melalui sistem sesuai 
+dengan progres pekerjaan yang sedang dilakukan. Status tugas dapat 
+diubah dari in_progress ke completed ketika pekerjaan telah selesai 
+dikerjakan. Fitur ini memungkinkan karyawan untuk melaporkan kemajuan 
+pekerjaan mereka secara langsung melalui sistem tanpa harus melapor 
+secara manual kepada admin.
+
+3.5 MENGAJUKAN PERMOHONAN
+
+Karyawan dapat mengajukan berbagai jenis permohonan kepada admin melalui 
+menu permohonan. Karyawan dapat mengajukan permohonan cuti dengan 
+menentukan tanggal mulai dan tanggal selesai cuti beserta alasan pengajuan 
+yang akan ditinjau oleh admin. Karyawan juga dapat mengajukan permohonan 
+izin dengan alasan tertentu yang akan diproses berdasarkan kebijakan yang 
+berlaku. Tersedia pula fitur pertukaran shift yang memungkinkan karyawan 
+untuk menukar jadwal shift dengan karyawan lain dimana karyawan perlu 
+memilih jadwal yang akan ditukar dan karyawan yang akan ditukar dengan 
+beserta alasannya. Setiap permohonan yang diajukan akan memiliki status 
+yang dapat berupa pending yang berarti menunggu persetujuan, approved 
+yang berarti disetujui, atau rejected yang berarti ditolak. Karyawan 
+dapat melihat status permohonan mereka untuk mengetahui apakah 
+permohonan mereka telah disetujui atau ditolak beserta alasan penolakannya 
+jika ada.
+
+3.6 MENGELOLA PROFIL
+
+Karyawan dapat melihat dan mengelola informasi profil pribadi mereka 
+melalui menu profil. Karyawan dapat melihat data diri mereka seperti 
+nama lengkap, alamat email, nomor telepon, posisi atau jabatan dalam 
+perusahaan, serta foto profil jika ada. Karyawan dapat mengedit beberapa 
+informasi seperti nomor telepon dan foto profil untuk memperbarui data 
+diri mereka. Selain itu, karyawan juga dapat mengubah password mereka 
+secara berkala untuk menjaga keamanan akun.
+
+================================================================================
+BAGIAN 4: HALAMAN LANDING PAGE PUBLIK
+================================================================================
+
+Sistem Andelin Aja juga memiliki halaman landing page publik yang dapat 
+diakses tanpa harus login melalui URL utama situs. Halaman ini berfungsi 
+sebagai website presentasi perusahaan untuk menarik pelanggan dan 
+memperkenalkan layanan yang ditawarkan kepada masyarakat umum. Halaman 
+ini dibangun dengan desain modern dan responsif sehingga dapat diakses 
+dengan nyaman melalui berbagai perangkat seperti komputer, tablet, 
+dan smartphone.
+
+Bagian utama dari landing page adalah Hero Section yang menampilkan 
+logo perusahaan, slogan "Jasa Serba Bisa Nomor #1", serta tombol-tombol 
+untuk melakukan pemesanan melalui WhatsApp atau melihat daftar layanan 
+yang tersedia. Bagian ini juga menampilkan statistik penting mengenai 
+perusahaan berupa jumlah order yang telah diselesaikan sebanyak lebih 
+dari 1000 order, rating kepuasan pelanggan sebesar 4.9 dari skala 5, 
+serta informasi bahwa layanan tersedia 24 jam penuh selama 7 hari 
+dalam seminggu.
+
+Landing page menampilkan daftar lengkap layanan yang ditawarkan oleh 
+Andelin Aja yang meliputi beberapa kategori utama yaitu Kurir dan Jastip 
+yang mencakup beli makanan atau barang, ambil atau antar dokumen, dan 
+jasa titip barang unik, kemudian Bantuan Rumah yang mencakup bersih-bersih 
+rumah, rakit furnitur, dan ganti lampu atau keran, lalu Admin dan Jasa 
+Ketik yang mencakup input data Excel, jasa tulis atau ketik, dan urusan 
+dokumen, kemudian Maintenance yang meliputi perbaikan kursi, cat ulang 
+ringan, dan servis peralatan, serta Jasa Personal yang mencakup teman 
+belanja atau nonton, antre ticket atau nomor, dan antar jemput. Selain 
+itu terdapat juga opsi Request Khusus untuk kebutuhan unik yang tidak 
+tercakup dalam layanan standar dimana pelanggan dapat menghubungi 
+perusahaan via WhatsApp untuk berkonsultasi.
+
+Bagian Cara Kerja menjelaskan proses pemesanan layanan yang terdiri 
+dari 5 langkah utama yaitu Pesan Jasa dimana pelanggan menghubungi 
+via WhatsApp dan menjelaskan kebutuhan, Cari Tim dimana sistem mencari 
+tim yang tersedia dan siap mengerjakan, Konfirmasi dimana pihak perusahaan 
+merespon dan memberikan konfirmasi ketersediaan layanan, Kesepakatan 
+Harga dimana dilakukan diskusi mengenai harga dan persetujuan sebelum 
+pekerjaan dimulai, dan Pembayaran dimana pelanggan membayar DP atau 
+langsung full sebelum pekerjaan dimulai.
+
+Bagian Price List menjelaskan mekanisme harga yang dimana harga dapat 
+dinegosiasikan atau nego, harga lebih murah jika owner yang bekerja 
+langsung tanpa pembagian hasil, harga fleksibel untuk pekerjaan dalam 
+jumlah banyak yang menggunakan tim, dan harga diputuskan bersama melalui 
+diskusi antara tim, owner, dan customer. Bagian ini juga menyarankan 
+waktu pesan ideal yaitu H-2 atau H-1 sebelum order agar lebih leluasa 
+mengkoordinir tim yang lebih siap.
+
+Landing page juga menampilkan karyawan-karyawan perusahaan dimana data 
+karyawan diambil langsung dari database sistem sehingga selalu up-to-date. 
+Terdapat bagian Apresiasi Karyawan Terbaik yang menampilkan top 3 karyawan 
+dengan jumlah tugas selesai Terbanyak dalam bentuk ranking gold, silver, 
+dan bronze, serta bagian Tim Profesional yang menampilkan semua karyawan 
+dengan foto, nama, dan spesialisasi keahlian.
+
+Bagian Tentang menjelaskan bahwa Andelin Aja adalah sekumpulan anak muda 
+yang memiliki semangat belajar hal baru dan berkembang bersama, selalu 
+mengupgrade kemampuan, giat bekerja, dan dituntut menjadi pribadi yang 
+komunikatif, responsif, dan dapat diandalkan untuk membawa solusi. 
+Perusahaan telah beroperasi sejak tahun 2021 dan telah banyak membantu 
+masyarakat Jember. Keunggulan yang ditawarkan meliputi Fast Respon, 
+Terpercaya Dari 2021 dengan tim profesional, dan Harga Bisa Nego.
+
+Landing page juga memiliki floating WhatsApp button固定 di pojok 
+kanan bawah layar yang memungkinkan pelanggan untuk dengan mudah 
+menghubungi perusahaan via WhatsApp. Tombol ini tersedia di semua 
+halaman dan dapat diakses kapan saja sehingga mempercepat proses 
+pemesanan layanan.
+
+================================================================================
+BAGIAN 5: MODEL DATA DAN RELASI
+================================================================================
+
+Sistem Andelin Aja menggunakan berbagai model data yang saling terkait 
+untuk menyimpan dan mengelola informasi. Model User merepresentasikan 
+pengguna dalam sistem yang dapat berupa admin atau karyawan dengan 
+atribut seperti nama lengkap, email unik sebagai identifikasi login, 
+nomor telepon, peran yang menentukan tingkat akses dalam sistem, 
+password terenkripsi, dan token untuk fitur remember me. User memiliki 
+relasi one-to-one dengan model Employee untuk mengakses data kepegawaian.
+
+Model Employee merepresentasikan data kepegawaian yang berhubungan 
+dengan User dengan atribut seperti posisi atau jabatan dalam perusahaan 
+dan foto profil. Employee terhubung dengan berbagai model lain seperti 
+Schedule untuk jadwal, Request untuk permohonan, Task melalui tabel 
+pivot task_assignments, Specialization melalui tabel pivot 
+employee_specializations, dan EmployeeAvailability untuk ketersediaan 
+waktu.
+
+Model Schedule menyimpan informasi jadwal pekerjaan antara karyawan 
+dan tugas dengan atribut seperti tanggal kerja, waktu mulai dan selesai, 
+status jadwal, dan informasi mengenai siapa yang membuat jadwal apakah 
+manual atau greedy. Model Task merepresentasikan tugas-tugas yang perlu 
+dikerjakan dengan atribut seperti judul tugas, deskripsi, deadline 
+penyelesaian, status tugas, dan informasi admin yang membuat tugas. 
+Model Request merepresentasikan permohonan yang diajukan oleh karyawan 
+seperti cuti atau izin dengan atribut seperti tipe permohonan, deskripsi, 
+tanggal mulai dan selesai, dan status persetujuan.
+
+Model ShiftSwap menyimpan informasi pertukaran shift antara dua karyawan 
+yang terkait dengan sebuah request dan schedule tertentu. Model 
+Specialization merepresentasikan bidang keahlian yang dapat dimiliki 
+oleh karyawan dengan relasi many-to-many dengan Employee. Model 
+EmployeeAvailability menyimpan jadwal ketersediaan waktu kerja karyawan 
+untuk setiap hari dalam seminggu. Model SchedulingRule menyimpan 
+pengaturan aturan penjadwalan global yang berlaku untuk seluruh sistem. 
+Model Report menyimpan laporan bulanan mengenai jam kerja dan jumlah 
+tugas yang diselesaikan oleh setiap karyawan. Model AdminLog menyimpan 
+catatan aktivitas penting yang dilakukan oleh administrator untuk 
+keperluan audit trail.
