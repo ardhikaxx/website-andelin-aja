@@ -65,6 +65,11 @@ Route::prefix('employee')->name('employee.')->middleware(['auth', 'employee'])->
 
     Route::get('/schedule', [Employee\ScheduleController::class, 'index'])->name('schedule.index');
     Route::get('/schedule/events', [Employee\ScheduleController::class, 'events'])->name('schedule.events');
+    Route::get('/schedule/notes', [Employee\ScheduleNoteController::class, 'index'])->name('schedule.notes.index');
+    Route::post('/schedule/notes', [Employee\ScheduleNoteController::class, 'store'])->name('schedule.notes.store');
+    Route::get('/schedule/notes/{note}', [Employee\ScheduleNoteController::class, 'show'])->name('schedule.notes.show');
+    Route::put('/schedule/notes/{note}', [Employee\ScheduleNoteController::class, 'update'])->name('schedule.notes.update');
+    Route::delete('/schedule/notes/{note}', [Employee\ScheduleNoteController::class, 'destroy'])->name('schedule.notes.destroy');
 
     Route::get('/requests', [Employee\RequestController::class, 'index'])->name('requests.index');
     Route::post('/requests', [Employee\RequestController::class, 'store'])->name('requests.store');

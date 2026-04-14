@@ -12,9 +12,14 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'deadline', 'status', 'created_by'];
+    protected $fillable = ['title', 'description', 'deadline', 'status', 'created_by', 'specialization_id'];
 
     protected $casts = ['deadline' => 'date'];
+
+    public function specialization(): BelongsTo
+    {
+        return $this->belongsTo(Specialization::class);
+    }
 
     public function employees(): BelongsToMany
     {

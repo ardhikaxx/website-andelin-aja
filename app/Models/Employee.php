@@ -40,6 +40,11 @@ public function taskAssignments(): HasMany
         return $this->hasMany(Schedule::class);
     }
 
+    public function scheduleNotes(): HasMany
+    {
+        return $this->hasMany(ScheduleNote::class);
+    }
+
     public function availability(): HasMany
     {
         return $this->hasMany(EmployeeAvailability::class);

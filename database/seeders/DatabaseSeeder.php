@@ -30,11 +30,11 @@ class DatabaseSeeder extends Seeder
             'max_tasks_per_day' => 3,
         ]);
 
-        // $this->call([
-        //     EmployeeSeeder::class,
-        //     TaskSeeder::class,
-        //     ScheduleSeeder::class,
-        //     RequestSeeder::class,
-        // ]);
+        $this->call([
+            EmployeeSeeder::class,
+            TaskSeeder::class,
+            ScheduleSeeder::class,
+            RequestSeeder::class,
+        ]);
     }
 }

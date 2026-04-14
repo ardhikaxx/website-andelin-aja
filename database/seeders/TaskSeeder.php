@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
+use App\Models\Specialization;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -13,21 +14,35 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         $admin = User::where('role', 'admin')->firstOrFail();
-        $employees = Employee::query()->get();
+        $specializations = Specialization::all();
+
+        if ($specializations->isEmpty()) {
+            $this->command->error('No specializations found. Run EmployeeSeeder first.');
+            return;
+        }
 
         $taskThemes = [
-            'Inspeksi Lokasi',
-            'Pengecekan Material',
-            'Pemasangan Panel',
-            'Perbaikan Pipa',
-            'Finishing Area',
-            'Audit Keselamatan',
-            'Kalibrasi Mesin',
-            'Pemeriksaan Struktur',
-            'Instalasi Kabel',
-            'Koordinasi Lapangan',
-            'Validasi Kualitas',
-            'Perawatan Harian',
+            'Penulis' => [
+                'Pembuatan Artikel',
+                'Penulisan Konten',
+                'Copywriting',
+                'Editing Naskah',
+                'Review Artikel',
+            ],
+            'Antar Jemput' => [
+                'Pengiriman Paket',
+                'Penjemputan Barang',
+                'Distribusi Dokumen',
+                'Antar Barang ke Client',
+                'Logistik Harian',
+            ],
+            'Pembersih' => [
+                'Pembersihan Gedung',
+                'Sanitasi Area',
+                'Kebersihan Lantai',
+                'Pembersihan Gudang',
+                'Perawatan Toilet',
+            ],
         ];
 
         $areas = [
@@ -43,39 +58,63 @@ class TaskSeeder extends Seeder
             'Sektor Timur',
         ];
 
-        for ($i = 1; $i <= 180; $i++) {
-            $status = match (true) {
-                $i <= 60 => 'done',
-                $i <= 130 => 'in_progress',
-                default => 'pending',
-            };
+        $taskCounter = 1;
 
-            $deadline = match ($status) {
-                'done' => Carbon::today()->subDays(rand(5, 60)),
-                'in_progress' => Carbon::today()->addDays(rand(1, 25)),
-                default => Carbon::today()->addDays(rand(10, 45)),
-            };
+        foreach ($specializations as $spec) {
+            $themes = $taskThemes[$spec->name] ?? ['Tugas'];
+            
+            $tasksPerSpec = 60;
+            
+            for ($i = 1; $i <= $tasksPerSpec; $i++) {
+                $status = match (true) {
+                    $i <= 20 => 'done',
+                    $i <= 45 => 'in_progress',
+                    default => 'pending',
+                };
 
-            $title = $taskThemes[array_rand($taskThemes)] . ' ' . $areas[array_rand($areas)] . ' #' . str_pad((string) $i, 3, '0', STR_PAD_LEFT);
+                $deadline = match ($status) {
+                    'done' => Carbon::today()->subDays(rand(5, 60)),
+                    'in_progress' => Carbon::today()->addDays(rand(1, 25)),
+                    default => Carbon::today()->addDays(rand(10, 45)),
+                };
 
-            $task = Task::create([
-                'title' => $title,
-                'description' => fake()->sentence(18),
-                'deadline' => $deadline,
-                'status' => $status,
-                'created_by' => $admin->id,
-            ]);
+                $theme = $themes[array_rand($themes)];
+                $area = $areas[array_rand($areas)];
+                $title = "{$theme} - {$area} #" . str_pad((string) $taskCounter, 3, '0', STR_PAD_LEFT);
 
-            $assignedEmployees = $employees->shuffle()->take(rand(1, min(3, $employees->count())));
-            $syncData = $assignedEmployees->mapWithKeys(function (Employee $employee) use ($deadline) {
-                return [
-                    $employee->id => [
-                        'assigned_at' => Carbon::parse($deadline)->copy()->subDays(rand(2, 14))->setTime(rand(8, 15), 0),
-                    ],
-                ];
-            })->all();
+                $task = Task::create([
+                    'title' => $title,
+                    'description' => "Tugas {$spec->name}: " . fake()->sentence(15),
+                    'deadline' => $deadline,
+                    'status' => $status,
+                    'specialization_id' => $spec->id,
+                    'created_by' => $admin->id,
+                ]);
 
-            $task->employees()->sync($syncData);
+                $qualifiedEmployees = Employee::whereHas('specializations', function ($query) use ($spec) {
+                    $query->where('specializations.id', $spec->id);
+                })->get();
+
+                if ($qualifiedEmployees->isNotEmpty()) {
+                    $assignedCount = min(rand(1, 3), $qualifiedEmployees->count());
+                    $assignedEmployees = $qualifiedEmployees->shuffle()->take($assignedCount);
+                    
+                    $syncData = $assignedEmployees->mapWithKeys(function (Employee $employee) use ($deadline) {
+                        return [
+                            $employee->id => [
+                                'assigned_at' => Carbon::parse($deadline)->copy()->subDays(rand(2, 14))->setTime(rand(8, 15), 0),
+                            ],
+                        ];
+                    })->all();
+
+                    $task->employees()->sync($syncData);
+                }
+
+                $taskCounter++;
+            }
         }
+
+        $totalTasks = $taskCounter - 1;
+        $this->command->info("Created {$totalTasks} tasks assigned based on specializations!");
     }
 }
