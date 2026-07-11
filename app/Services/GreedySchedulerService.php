@@ -144,7 +144,7 @@ class GreedySchedulerService
     {
         $weekStart = $workDate->copy()->startOfWeek()->toDateString();
 
-        \Log::info('getCandidates called', [
+        Log::info('getCandidates called', [
             'task_id' => $task->id,
             'task_title' => $task->title,
             'specialization_id' => $task->specialization_id,
@@ -161,7 +161,7 @@ class GreedySchedulerService
 
         $employees = $query->get();
 
-        \Log::info('Base employees after availability + specialization filter', [
+        Log::info('Base employees after availability + specialization filter', [
             'count' => $employees->count(),
             'employees' => $employees->map(fn($e) => [
                 'id' => $e->id,
@@ -183,7 +183,7 @@ class GreedySchedulerService
                 && $weeklyHours < $this->rules->max_hours_per_week;
 
             if (!$passed) {
-                \Log::info('Employee filtered out', [
+                Log::info('Employee filtered out', [
                     'employee_id' => $employee->id,
                     'name' => $employee->user?->name,
                     'daily_tasks' => $dailyTasks,
@@ -196,7 +196,7 @@ class GreedySchedulerService
             return $passed;
         });
 
-        \Log::info('Final candidates after capacity filter', [
+        Log::info('Final candidates after capacity filter', [
             'count' => $filtered->count(),
             'employees' => $filtered->pluck('user.name')->toArray(),
         ]);
