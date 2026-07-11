@@ -33,16 +33,25 @@ class SchedulingController extends Controller
 
     public function generate(): JsonResponse
     {
-        $service = new GreedySchedulerService();
-        $result = $service->generate();
+        try {
+            $service = new GreedySchedulerService();
+            $result = $service->generate();
 
-        AdminLog::create([
-            'admin_id' => auth()->id(),
-            'action' => 'GREEDY_GENERATE',
-            'description' => "Dijadwalkan: {$result['scheduled']} tugas, Dilewati: {$result['skipped']} tugas",
-        ]);
+            AdminLog::create([
+                'admin_id' => auth()->id(),
+                'action' => 'GREEDY_GENERATE',
+                'description' => "Dijadwalkan: {$result['scheduled']} tugas, Dilewati: {$result['skipped']} tugas",
+            ]);
 
-        return response()->json($result);
+            return response()->json($result);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'scheduled' => 0,
+                'skipped' => 0,
+                'details' => [],
+                'error' => 'Terjadi kesalahan saat menjalankan algoritma: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function updateRules(Request $request): RedirectResponse

@@ -162,35 +162,102 @@ document.getElementById('btn-generate').addEventListener('click', function () {
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire({
+            let elapsed = 0;
+            const loadingSwal = Swal.fire({
                 title: 'Memproses...',
-                html: 'Algoritma Greedy sedang berjalan...',
+                html: '<div>Algoritma Greedy sedang berjalan...</div><div style="margin-top:8px;font-size:0.85rem;color:#888;">Waktu: <b>0</b> detik</div>',
                 allowOutsideClick: false,
-                didOpen: () => Swal.showLoading()
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    window._greedyTimer = setInterval(() => {
+                        elapsed++;
+                        const htmlContent = '<div>Algoritma Greedy sedang berjalan...</div>' +
+                            '<div style="margin-top:8px;font-size:0.85rem;color:#888;">Waktu: <b>' + elapsed + '</b> detik</div>';
+                        const titleEl = Swal.getTitle();
+                        const htmlEl = Swal.getHtmlContainer();
+                        if (htmlEl) htmlEl.innerHTML = htmlContent;
+                    }, 1000);
+                },
+                willClose: () => {
+                    clearInterval(window._greedyTimer);
+                }
             });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 60000);
 
             fetch('{{ route('admin.scheduling.generate') }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                }
+                },
+                signal: controller.signal
             })
-            .then(response => response.json())
+            .then(response => {
+                clearTimeout(timeoutId);
+                if (!response.ok) return response.json().then(err => { throw err; });
+                return response.json();
+            })
             .then(data => {
-                document.getElementById('greedy-results').innerHTML = data.details.map((item) => {
-                    if (item.employee) {
-                        return `<div class="greedy-result-item"><strong>${item.task}</strong> -> ${item.employee} (${item.date})</div>`;
-                    }
-                    return `<div class="greedy-result-item"><strong>${item.task}</strong> -> ${item.reason}</div>`;
-                }).join('');
+                clearInterval(window._greedyTimer);
+
+                if (data.error) {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        html: data.error,
+                        icon: 'error',
+                        confirmButtonColor: 'var(--color-primary)'
+                    });
+                    return;
+                }
+
+                if (data.message && data.scheduled === 0 && data.skipped === 0) {
+                    document.getElementById('greedy-results').innerHTML =
+                        '<div class="greedy-result-item" style="border-left-color:#f59e0b;background:rgba(245,158,11,0.05);">' + data.message + '</div>';
+                    Swal.fire({
+                        title: 'Tidak Ada Data',
+                        html: data.message,
+                        icon: 'warning',
+                        confirmButtonColor: 'var(--color-primary)'
+                    });
+                    return;
+                }
+
+                if (data.details && data.details.length > 0) {
+                    document.getElementById('greedy-results').innerHTML = data.details.map(function (item) {
+                        if (item.employee) {
+                            return '<div class="greedy-result-item"><strong>' + item.task + '</strong> &rarr; ' + item.employee + ' (' + item.date + ')</div>';
+                        }
+                        return '<div class="greedy-result-item" style="border-left-color:#f59e0b;background:rgba(245,158,11,0.05);"><strong>' + item.task + '</strong> &rarr; ' + item.reason + '</div>';
+                    }).join('');
+                }
 
                 Swal.fire({
                     title: 'Selesai!',
-                    html: `Berhasil: <b>${data.scheduled}</b> tugas berhasil dijadwalkan<br>Dilewati: <b>${data.skipped}</b> tugas dilewati`,
+                    html: 'Berhasil: <b>' + data.scheduled + '</b> tugas berhasil dijadwalkan<br>Dilewati: <b>' + data.skipped + '</b> tugas dilewati',
                     icon: 'success',
                     confirmButtonColor: 'var(--color-primary)'
-                }).then(() => location.reload());
+                }).then(function () { location.reload(); });
+            })
+            .catch(function (err) {
+                clearInterval(window._greedyTimer);
+                if (err.name === 'AbortError') {
+                    Swal.fire({
+                        title: 'Timeout!',
+                        html: 'Algoritma Greedy memakan waktu terlalu lama (>60 detik).<br>Silakan periksa data atau hubungi administrator.',
+                        icon: 'error',
+                        confirmButtonColor: 'var(--color-primary)'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        html: (err.error || err.message || 'Terjadi kesalahan saat menjalankan algoritma Greedy.'),
+                        icon: 'error',
+                        confirmButtonColor: 'var(--color-primary)'
+                    });
+                }
             });
         }
     });
