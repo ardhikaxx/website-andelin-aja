@@ -18,14 +18,26 @@
         </div>
         <div class="row g-3">
             <div class="col-md-6">
+                <label class="form-label">Spesialisasi</label>
+                <select name="specialization_id" class="form-select" required>
+                    @foreach($specializations as $spec)
+                        <option value="{{ $spec->id }}" {{ old('specialization_id', $task->specialization_id) == $spec->id ? 'selected' : '' }}>
+                            {{ $spec->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-6">
                 <label class="form-label">Deadline</label>
                 <input type="date" name="deadline" class="form-control" value="{{ old('deadline', $task->deadline->format('Y-m-d')) }}" required>
             </div>
+        </div>
+        <div class="row g-3">
             <div class="col-md-6">
                 <label class="form-label">Status</label>
                 <select name="status" class="form-select" required>
                     @foreach(['pending','in_progress','done'] as $status)
-                    <option value="{{ $status }}" @selected(old('status', $task->status) === $status)>{{ str_replace('_', ' ', $status) }}</option>
+                        <option value="{{ $status }}" @selected(old('status', $task->status) === $status)>{{ str_replace('_', ' ', $status) }}</option>
                     @endforeach
                 </select>
             </div>

@@ -38,6 +38,10 @@ class AssignmentController extends Controller
         $syncData = collect($validated['employee_ids'])->mapWithKeys(fn ($id) => [$id => ['assigned_at' => now()]]);
         $task->employees()->sync($syncData->all());
 
+        if ($task->status === 'pending') {
+            $task->update(['status' => 'in_progress']);
+        }
+
         AdminLog::create([
             'admin_id' => auth()->id(),
             'action' => 'ASSIGNMENT_UPDATE',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminLog;
+use App\Models\Specialization;
 use App\Models\Task;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class TaskController extends Controller
 
     public function create(): View
     {
-        return view('admin.tasks.create');
+        $specializations = Specialization::orderBy('name')->get();
+
+        return view('admin.tasks.create', compact('specializations'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -29,6 +32,7 @@ class TaskController extends Controller
             'title' => 'required|string|max:200',
             'description' => 'nullable|string',
             'deadline' => 'required|date|after_or_equal:today',
+            'specialization_id' => 'required|exists:specializations,id',
         ]);
 
         $task = Task::create($validated + ['created_by' => auth()->id()]);
@@ -51,7 +55,9 @@ class TaskController extends Controller
 
     public function edit(Task $task): View
     {
-        return view('admin.tasks.edit', compact('task'));
+        $specializations = Specialization::orderBy('name')->get();
+
+        return view('admin.tasks.edit', compact('task', 'specializations'));
     }
 
     public function update(Request $request, Task $task): RedirectResponse
@@ -61,6 +67,7 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'deadline' => 'required|date',
             'status' => 'required|in:pending,in_progress,done',
+            'specialization_id' => 'required|exists:specializations,id',
         ]);
 
         $task->update($validated);

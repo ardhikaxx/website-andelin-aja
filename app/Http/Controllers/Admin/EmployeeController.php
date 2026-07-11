@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdminLog;
 use App\Models\Employee;
+use App\Models\EmployeeAvailability;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -65,6 +66,16 @@ class EmployeeController extends Controller
             ]);
 
             $employee->specializations()->sync($validated['specializations'] ?? []);
+
+            // Create default availability (Mon-Fri 08:00-17:00)
+            for ($day = 1; $day <= 5; $day++) {
+                EmployeeAvailability::create([
+                    'employee_id' => $employee->id,
+                    'day_of_week' => $day,
+                    'start_time' => '08:00',
+                    'end_time' => '17:00',
+                ]);
+            }
 
             AdminLog::create([
                 'admin_id' => auth()->id(),
@@ -135,6 +146,18 @@ class EmployeeController extends Controller
                 'photo' => $photoPath,
             ]);
             $employee->specializations()->sync($validated['specializations'] ?? []);
+
+            // Ensure availability exists
+            if ($employee->availability()->count() === 0) {
+                for ($day = 1; $day <= 5; $day++) {
+                    EmployeeAvailability::create([
+                        'employee_id' => $employee->id,
+                        'day_of_week' => $day,
+                        'start_time' => '08:00',
+                        'end_time' => '17:00',
+                    ]);
+                }
+            }
 
             AdminLog::create([
                 'admin_id' => auth()->id(),
